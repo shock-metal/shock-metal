@@ -20,6 +20,11 @@ import uk.co.shockwaveInteractive.util.handlers.EnumHandler;
 import uk.co.shockwaveInteractive.util.interfaces.IHasModel;
 import uk.co.shockwaveInteractive.util.interfaces.IMetaName;
 
+/*
+ * Base class for Ore Blocks
+ * 
+ * @author HarmanU / vNemesis_HD
+ */
 public class BlockOres extends Block implements IHasModel, IMetaName
 {
 	public static final PropertyEnum<EnumHandler.EnumType> VARIANT = PropertyEnum.<EnumHandler.EnumType>create("variant", EnumHandler.EnumType.class);
@@ -42,7 +47,8 @@ public class BlockOres extends Block implements IHasModel, IMetaName
 		
 		if (VARIANT.getName(EnumHandler.EnumType.SHOCKMETAL).equals("shockmetal"))
 		{
-			this.setLightLevel(3);
+			this.setLightLevel(10);
+			this.setHardness(15);
 		}
 		
 		BlockInit.BLOCKS.add(this);

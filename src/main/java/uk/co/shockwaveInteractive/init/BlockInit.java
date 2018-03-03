@@ -7,6 +7,11 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import uk.co.shockwaveInteractive.objects.blocks.BlockBase;
 
+/*
+ * Initialises Blocks
+ * 
+ * @author HarmanU / vNemesis_HD
+ */
 public class BlockInit 
 {
 	public static List<Block> BLOCKS = new ArrayList<Block>();
