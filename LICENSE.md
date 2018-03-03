@@ -16,7 +16,6 @@ Contribution to this repository means that you are granting us rights over the c
 <ul>
   <li>Fork and modify the code.</li>
   <li>Submit Pull Requests to this repository.</li>
-  <li>Copy portions of this code for use in other projects.</li>
   <li>Write your own code that uses this code as a dependency. i.e. Addons</li>
 </ul>
 
@@ -29,15 +28,13 @@ Contribution to this repository means that you are granting us rights over the c
 ### You MUST
 <ul>
   <li>Maintain a visible repository of your code which is inspired by, derived from, or copied from this code. Basically, if you use it, pay it forward. You keep rights to your OWN code, but you still must make your source visible.</li>
-  <li>Be respectful**</li>
+  <li>Not attempting to or intending to claim partial or total ownership of the original or repackaged code and/or attempting to or intending to redistribute original or repackaged code without prior express written permission from the owners (Shockwave Interactive or HarmanU / vNemesis_HD).</li>
 </ul>
 
 ## Notes, License & Copyright
 *A Functionally Equivalent Statement is a code fragment which, regardless of whitespace and object names, achieves the same result within the context of a Minecraft mod or addon. Basically you can't copy the code, rename the variables, add whitespace and say it's different. It's not, Durr.
 
-**Being respectful means not attempting to or intending to claim partial or total ownership of the original or repackaged code and/or attempting to or intending to redistribute original or repackaged code without prior express written permission from the owners (Shockwave Interactive or Harman Uppal).
-
-Bottom Line, Have a looksy and see if you see something we can improve, tell us. Submit a Pull Request. You can use but don't steal as time and effot has gone into this.
+Bottom Line, Have a looksy and see if you see something we can improve, tell us, Submit a Pull Request, but please don't steal as time and effot has gone into this project.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
