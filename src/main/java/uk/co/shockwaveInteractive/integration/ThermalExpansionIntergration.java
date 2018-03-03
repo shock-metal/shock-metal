@@ -46,7 +46,7 @@ public class ThermalExpansionIntergration
 		
 		ShockMetalMain.logger.info("Thermal Expansion is loaded, Applying Intergration");
 		
-		addFurnaceRecipe(10000, new ItemStack(BlockInit.ORE_NETHER, 1, 0), 	new ItemStack(ItemInit.INGOT_SHOCKMETAL));
+		addFurnaceRecipe(6000, new ItemStack(BlockInit.ORE_NETHER, 1, 0), 	new ItemStack(ItemInit.INGOT_SHOCKMETAL));
 		
 	}
 	

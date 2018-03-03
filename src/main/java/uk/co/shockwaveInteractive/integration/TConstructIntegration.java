@@ -51,7 +51,7 @@ public class TConstructIntegration
 		tag.setString("ore", "Shockmetal"); // ore-suffix: ingotFoo, blockFoo, oreFoo,...
 		tag.setString("ingot", "Shockmetal");
 		tag.setString("block", "Shockmetal");
-		tag.setInteger("time", 30);
+		tag.setInteger("time", 160);
 		tag.setInteger("Amount", 2);
 		tag.setBoolean("toolforge", true); // if set to true, blockFoo can be used to build a toolforge
 		//tag.setTag("alloy", alloysTagList); // you can also send an alloy with the registration (see below)
