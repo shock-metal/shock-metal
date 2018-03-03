@@ -5,7 +5,7 @@ Here is all the license mumbo jumbo.
 ## Art and Sound
 Art and sound assets are released under the Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0), a summary of which can be found at: https://creativecommons.org/licenses/by-nc/4.0/
 
-<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>
+<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a><br /></a>
 
 ## Contributions
 Contribution to this repository means that you are granting us rights over the code that you choose to contribute. If you do not agree with that, do not contribute.
