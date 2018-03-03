@@ -19,6 +19,11 @@ import uk.co.shockwaveInteractive.objects.tools.ToolShovel;
 import uk.co.shockwaveInteractive.objects.tools.ToolSword;
 import uk.co.shockwaveInteractive.util.Reference;
 
+/*
+ * Initialises Items
+ * 
+ * @author HarmanU / vNemesis_HD
+ */
 public class ItemInit 
 {
 
