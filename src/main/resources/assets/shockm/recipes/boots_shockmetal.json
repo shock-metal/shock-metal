@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "I I",
+        "I I"
+    ],
+    
+    "key":
+    {
+        "I":
+        {
+            "item": "shockm:ingot_shockmetal"
+        }
+    },
+    
+    "result":
+    {
+        "item": "shockm:boots_shockmetal"
+    }
+}

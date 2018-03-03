@@ -1,0 +1,28 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        " I ",
+        " I ",
+        " S "
+    ],
+    
+    "key":
+    {
+        "I":
+        {
+            "item": "shockm:ingot_shockmetal"
+        },
+        
+        "S":
+        {
+            "item": "minecraft:stick"
+        }
+    },
+    
+    "result":
+    {
+        "item": "shockm:sword_shockmetal"
+    }
+}

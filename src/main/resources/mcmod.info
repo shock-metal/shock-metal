@@ -1,0 +1,16 @@
+[
+{
+  "modid": "Shockm",
+  "name": "Shock Metal",
+  "description": "Adds a new metal with various properties",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "www.shockwaveinteractive.co.uk",
+  "updateUrl": "",
+  "authorList": ["vNemesis_HD", "Shockwave Interactive"],
+  "credits": "Forge Guys",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
