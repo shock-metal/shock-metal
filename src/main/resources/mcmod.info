@@ -1,16 +1,16 @@
 [
 {
-  "modid": "Shockm",
+  "modid": "shockm",
   "name": "Shock Metal",
-  "description": "Adds a new metal with various properties",
+  "description": "Adds a new metal with at a level higher than diamond, Can be found in the nether but is rare.",
   "version": "${version}",
   "mcversion": "${mcversion}",
-  "url": "www.shockwaveinteractive.co.uk",
-  "updateUrl": "",
+  "url": "http://www.shockwaveinteractive.co.uk",
+  "updateJSON": "https://github.com/Shockwave-Interactive/ShockMetal/blob/master/version.json",
   "authorList": ["vNemesis_HD", "Shockwave Interactive"],
   "credits": "Forge Guys",
-  "logoFile": "",
-  "screenshots": [],
-  "dependencies": []
+  "logoFile": "/shockmetal_logo.png",
+  "screenshots": ["/shot1.png", "/shot2.png"],
+  "dependencies": ["forge"]
 }
 ]
