@@ -21,3 +21,6 @@ tile.ore_nether_shockmetal.name=Shock Metal Ore
 
 #GUI
 itemGroup.shockmetaltab=Shock Metal
+
+#Fluid
+fluid.fluid_shockmetal=Molten Shock Metal
