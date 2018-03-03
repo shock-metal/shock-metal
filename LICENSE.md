@@ -5,7 +5,7 @@ Here is all the license mumbo jumbo.
 ## Art and Sound
 Art and sound assets are released under the Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0), a summary of which can be found at: https://creativecommons.org/licenses/by-nc/4.0/
 
-<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>
+<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a><br /></a>
 
 ## Contributions
 Contribution to this repository means that you are granting us rights over the code that you choose to contribute. If you do not agree with that, do not contribute.
@@ -39,5 +39,7 @@ Contribution to this repository means that you are granting us rights over the c
 
 Bottom Line, Have a looksy and see if you see something we can improve, tell us. Submit a Pull Request. You can use but don't steal as time and effot has gone into this.
 
-©2018 Shockwave Interactive / Harman Uppal
-(most of this license was derived from CofH's License found at https://github.com/CoFH/ThermalFoundation)
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+#### ©2018 Shockwave Interactive / Harman Uppal
+(most of this license was based on CofH's License found at https://github.com/CoFH/ThermalFoundation)
