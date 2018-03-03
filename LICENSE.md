@@ -39,5 +39,7 @@ Contribution to this repository means that you are granting us rights over the c
 
 Bottom Line, Have a looksy and see if you see something we can improve, tell us. Submit a Pull Request. You can use but don't steal as time and effot has gone into this.
 
-©2018 Shockwave Interactive / Harman Uppal
-(most of this license was derived from CofH's License found at https://github.com/CoFH/ThermalFoundation)
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+#### ©2018 Shockwave Interactive / Harman Uppal
+(most of this license was based on CofH's License found at https://github.com/CoFH/ThermalFoundation)
