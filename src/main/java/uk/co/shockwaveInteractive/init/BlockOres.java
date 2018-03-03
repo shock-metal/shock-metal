@@ -42,7 +42,7 @@ public class BlockOres extends Block implements IHasModel, IMetaName
 		
 		if (VARIANT.getName(EnumHandler.EnumType.SHOCKMETAL).equals("shockmetal"))
 		{
-			this.setLightLevel(4);
+			this.setLightLevel(3);
 		}
 		
 		BlockInit.BLOCKS.add(this);
