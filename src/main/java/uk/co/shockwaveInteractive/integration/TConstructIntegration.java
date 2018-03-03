@@ -12,7 +12,6 @@ import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.event.FMLInterModComms;
 import uk.co.shockwaveInteractive.ShockMetalMain;
-import uk.co.shockwaveInteractive.util.interfaces.CanIntegrate;
 
 /*
  * Used for Tinkers' Construct integration

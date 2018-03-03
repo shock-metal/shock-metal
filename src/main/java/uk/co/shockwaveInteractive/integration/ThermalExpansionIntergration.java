@@ -8,7 +8,6 @@ import scala.reflect.internal.Trees.This;
 import uk.co.shockwaveInteractive.ShockMetalMain;
 import uk.co.shockwaveInteractive.init.BlockInit;
 import uk.co.shockwaveInteractive.init.ItemInit;
-import uk.co.shockwaveInteractive.util.interfaces.CanIntegrate;
 
 
 /*
