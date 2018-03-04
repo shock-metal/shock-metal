@@ -42,6 +42,8 @@ public class ShockMetalMain
 	{
 		logger = event.getModLog();
 		RegistryHandler.otherRegistries();
+		
+		TConstructIntegration.runIntegration();
 	}
 	
 	@EventHandler
@@ -51,7 +53,6 @@ public class ShockMetalMain
 		OreDictionary.registerOre("ingotShockmetal", ItemInit.INGOT_SHOCKMETAL);
 		OreDictionary.registerOre("blockShockmetal", BlockInit.BLOCK_SHOCKMETAL);
 		
-		TConstructIntegration.runIntegration();
 		ThermalExpansionIntergration.runIntegration();
 	}
 	

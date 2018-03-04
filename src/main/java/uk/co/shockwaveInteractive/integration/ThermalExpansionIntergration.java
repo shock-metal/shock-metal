@@ -41,10 +41,12 @@ public class ThermalExpansionIntergration
 		if(!Loader.isModLoaded(MOD_ID))
 		{
 			ShockMetalMain.logger.info("Thermal Expansion is not loaded, Integration not applied");
+			ShockMetalMain.logger.trace("Thermal Expansion is not loaded, Integration not applied");
 			return;
 		}
 		
 		ShockMetalMain.logger.info("Thermal Expansion is loaded, Applying Intergration");
+		ShockMetalMain.logger.trace("Thermal Expansion is loaded, Applying Intergration");
 		
 		addFurnaceRecipe(6000, new ItemStack(BlockInit.ORE_NETHER, 1, 0), 	new ItemStack(ItemInit.INGOT_SHOCKMETAL));
 		

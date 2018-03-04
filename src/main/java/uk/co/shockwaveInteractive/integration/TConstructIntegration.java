@@ -26,10 +26,12 @@ public class TConstructIntegration
 		if(!Loader.isModLoaded("tconstruct"))
 		{
 			ShockMetalMain.logger.info("Tinkers' Construct is not loaded, Integration not applied");
+			ShockMetalMain.logger.trace("Tinkers' Construct is not loaded, Integration not applied");
 			return;
 		}
 		
 		ShockMetalMain.logger.info("Tinkers' Construct is loaded, Applying Intergration");
+		ShockMetalMain.logger.trace("Tinkers' Construct is loaded, Applying Intergration");
 		
 		// create fluid.
 		// You don't need to add textures for the fluid, just create a Fluid Class that overwrites getColor
@@ -44,16 +46,29 @@ public class TConstructIntegration
 		// add block for fluid (if desired)
 		Block fluidBlock = new BlockFluidClassic(myFluid, Material.LAVA);
 		// <register block regularly>
-
-		// create NBT for the IMC
+		
+		addSmelteryRecipe(myFluid.getName(), "ore", "Shockmetal", 2, true);
+		
+	}
+	
+	
+	/**
+	 * Adds a smeltery recipe to the Tinkers' smeltery
+	 * 
+	 * @param fluid - fluid that is generated
+	 * @param oreDictPrefix - ore, ingot, block
+	 * @param oreDictItem - item. block. etc
+	 * @param time - time to smelt in seconds
+	 * @param amount - Amount the recipe produces in ingots
+	 * @param toolForge - can the metal be used to build a tool forge
+	 */
+	public static void addSmelteryRecipe(String fluidName, String oreDictPrefix, String oreDictItem, int amount, boolean toolForge)
+	{
 		NBTTagCompound tag = new NBTTagCompound();
-		tag.setString("fluid", myFluid.getName()); // name of the fluid
-		tag.setString("ore", "Shockmetal"); // ore-suffix: ingotFoo, blockFoo, oreFoo,...
-		tag.setString("ingot", "Shockmetal");
-		tag.setString("block", "Shockmetal");
-		tag.setInteger("time", 160);
-		tag.setInteger("Amount", 2);
-		tag.setBoolean("toolforge", true); // if set to true, blockFoo can be used to build a toolforge
+		tag.setString("fluid", fluidName); // name of the fluid
+		tag.setString(oreDictPrefix, oreDictItem); // ore-suffix: ingotFoo, blockFoo, oreFoo,...
+		tag.setInteger("Amount", amount);
+		tag.setBoolean("toolforge", toolForge); // if set to true, blockFoo can be used to build a toolforge
 		//tag.setTag("alloy", alloysTagList); // you can also send an alloy with the registration (see below)
 
 		// send the NBT to TCon
