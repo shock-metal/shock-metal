@@ -6,6 +6,8 @@
 
 A small minecraft mod that adds a new tier of material above diamond with higher statistics overall. More can be found on the wiki <a href=https://github.com/Shockwave-Interactive/ShockMetal/wiki > here </a>
 
+**Download at: https://minecraft.curseforge.com/projects/shock-metal**
+
 
 ## Mod Support
 Thermal Expansion
