@@ -1,6 +1,6 @@
 # ShockMetal - a minecraft mod
 <p align="center">
-  <img src=https://img.shields.io/badge/Mod%20Version%20-1.0.0-red.svg alt="Mod Version Badge" />
+  <img src=https://img.shields.io/badge/Mod%20Version%20-1.0.1-blue.svg alt="Mod Version Badge" />
   <img src=https://img.shields.io/badge/Minecraft-1.12.2-green.svg alt="MC version" />
 </p>
 
