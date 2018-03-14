@@ -8,6 +8,7 @@ import scala.reflect.internal.Trees.This;
 import uk.co.shockwaveInteractive.ShockMetalMain;
 import uk.co.shockwaveInteractive.init.BlockInit;
 import uk.co.shockwaveInteractive.init.ItemInit;
+import uk.co.shockwaveInteractive.util.config.ShockMetalConfiguration;
 
 
 /*
@@ -15,7 +16,7 @@ import uk.co.shockwaveInteractive.init.ItemInit;
  * 
  * @author HarmanU / vNemesis_HD
  * 
- * Thanks to King Lemming for initial file strucutre
+ * Thanks to King Lemming for initial file structure
  */
 public class ThermalExpansionIntergration
 {
@@ -38,7 +39,7 @@ public class ThermalExpansionIntergration
 	
 	public static void runIntegration()
 	{
-		if(!Loader.isModLoaded(MOD_ID))
+		if(!Loader.isModLoaded(MOD_ID) || !ShockMetalConfiguration.thermalExpansionIntegration)
 		{
 			ShockMetalMain.logger.info("Thermal Expansion is not loaded, Integration not applied");
 			ShockMetalMain.logger.trace("Thermal Expansion is not loaded, Integration not applied");
@@ -48,7 +49,7 @@ public class ThermalExpansionIntergration
 		ShockMetalMain.logger.info("Thermal Expansion is loaded, Applying Intergration");
 		ShockMetalMain.logger.trace("Thermal Expansion is loaded, Applying Intergration");
 		
-		addFurnaceRecipe(6000, new ItemStack(BlockInit.ORE_NETHER, 1, 0), 	new ItemStack(ItemInit.INGOT_SHOCKMETAL));
+		addFurnaceRecipe(15000, new ItemStack(BlockInit.ORE_NETHER, 1, 0), 	new ItemStack(ItemInit.INGOT_SHOCKMETAL));
 		
 	}
 	
