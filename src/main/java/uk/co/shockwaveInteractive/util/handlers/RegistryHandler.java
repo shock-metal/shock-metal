@@ -53,5 +53,6 @@ public class RegistryHandler
 		GameRegistry.registerWorldGenerator(new WorldGenCustomOres(), 0);
 		
 		GameRegistry.addSmelting(new ItemStack(BlockInit.ORE_NETHER ,1 ,0), new ItemStack(ItemInit.INGOT_SHOCKMETAL), 1.0f);
+		GameRegistry.addSmelting(new ItemStack(ItemInit.DUST_SHOCKMETAL ,1 ,0), new ItemStack(ItemInit.INGOT_SHOCKMETAL), 1.0f);
 	}
 }
