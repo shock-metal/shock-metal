@@ -44,6 +44,8 @@ public class ShockMetalMain
 		RegistryHandler.otherRegistries();
 		
 		TConstructIntegration.runIntegration();
+		
+		proxy.preInit();
 	}
 	
 	@EventHandler
@@ -51,6 +53,7 @@ public class ShockMetalMain
 	{
 		OreDictionary.registerOre("oreShockmetal", new ItemStack(BlockInit.ORE_NETHER ,1 ,0));
 		OreDictionary.registerOre("ingotShockmetal", ItemInit.INGOT_SHOCKMETAL);
+		OreDictionary.registerOre("dustShockmetal", ItemInit.DUST_SHOCKMETAL);
 		OreDictionary.registerOre("blockShockmetal", BlockInit.BLOCK_SHOCKMETAL);
 		
 		ThermalExpansionIntergration.runIntegration();
