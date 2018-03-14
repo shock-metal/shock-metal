@@ -4,6 +4,7 @@ import java.awt.Color;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.item.EnumRarity;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.BlockFluidClassic;
@@ -12,6 +13,7 @@ import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.event.FMLInterModComms;
 import uk.co.shockwaveInteractive.ShockMetalMain;
+import uk.co.shockwaveInteractive.util.config.ShockMetalConfiguration;
 
 /*
  * Used for Tinkers' Construct integration
@@ -23,7 +25,7 @@ public class TConstructIntegration
 	
 	public static void runIntegration()
 	{
-		if(!Loader.isModLoaded("tconstruct"))
+		if(!Loader.isModLoaded("tconstruct") || !ShockMetalConfiguration.tinkersIntegration)
 		{
 			ShockMetalMain.logger.info("Tinkers' Construct is not loaded, Integration not applied");
 			ShockMetalMain.logger.trace("Tinkers' Construct is not loaded, Integration not applied");
@@ -40,13 +42,15 @@ public class TConstructIntegration
 		// flowing: "tconstruct:blocks/fluids/molten_metal_flow"
 		Fluid myFluid = new Fluid("fluid_shockmetal", new ResourceLocation("tconstruct:blocks/fluids/molten_metal"), new ResourceLocation("tconstruct:blocks/fluids/molten_metal_flow"));
 		myFluid.setColor(new Color(47, 43, 73));
+		myFluid.setTemperature(1600);
+		myFluid.setRarity(EnumRarity.EPIC);
 		FluidRegistry.registerFluid(myFluid); // fluid has to be registered
 		FluidRegistry.addBucketForFluid(myFluid); // add a bucket for the fluid
 
 		// add block for fluid (if desired)
 		Block fluidBlock = new BlockFluidClassic(myFluid, Material.LAVA);
-		// <register block regularly>
 		
+		// <register block regularly>
 		addSmelteryRecipe(myFluid.getName(), "ore", "Shockmetal", 2, true);
 		
 	}
