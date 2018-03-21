@@ -11,6 +11,8 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+
+import uk.co.shockwaveInteractive.ShockMetalMain;
 import uk.co.shockwaveInteractive.util.Reference;
 
 public class ShockMetalConfiguration 
@@ -33,6 +35,8 @@ public class ShockMetalConfiguration
 
 		public static void preInit()
 		{
+			ShockMetalMain.logger.info("Loading configuration file");
+			
 			/*
 			 * Here is where you specify the location from where your config file
 			 * will be read, or created if it is not present.
@@ -148,22 +152,22 @@ public class ShockMetalConfiguration
 			// booleans
 			final boolean THERMAL_INTE_DEFAULT_VALUE = true;
 			Property propThermalInte = config.get(CATEGORY_NAME_INTEGRATION, "tinkersIntegration", THERMAL_INTE_DEFAULT_VALUE);
-			propThermalInte.setComment("Configuration boolean (tinkersIntegration)");
+			propThermalInte.setComment("Enable / Disable integration with Tinkers' Construct");
 			propThermalInte.setLanguageKey("gui.shockmetalconfiguration.tinkersIntegration").setRequiresMcRestart(true);
 			
 			final boolean TINKERS_INTE_DEFAULT_VALUE = true;
 			Property propTinkersInte = config.get(CATEGORY_NAME_INTEGRATION, "thermalExpansionIntegration", TINKERS_INTE_DEFAULT_VALUE);
-			propTinkersInte.setComment("Configuration boolean (thermalExpansionIntegration)");
+			propTinkersInte.setComment("Enable / Disable integration with Thermal Expansion");
 			propTinkersInte.setLanguageKey("gui.shockmetalconfiguration.thermalExpansionIntegration").setRequiresMcRestart(true);
 			
 			// doubles
 			
-			final double MATERIAL_DAMAGE_MIN_VALUE = 4.0;
-			final double MATERIAL_DAMAGE_MAX_VALUE = 8.0;
-			final double MATERIAL_DAMAGE_DEFAULT_VALUE = 6.0;
+			final double MATERIAL_DAMAGE_MIN_VALUE = 8.0;
+			final double MATERIAL_DAMAGE_MAX_VALUE = 14.0;
+			final double MATERIAL_DAMAGE_DEFAULT_VALUE = 10.0;
 			Property propMaterialDamage = config.get(CATEGORY_NAME_GENERAL, "materialDamage", MATERIAL_DAMAGE_DEFAULT_VALUE,
-					"Configuration double (materialDamage)", MATERIAL_DAMAGE_MIN_VALUE, MATERIAL_DAMAGE_MAX_VALUE);
-			propMaterialDamage.setLanguageKey("gui.shockmetalconfiguration.materialDamage");
+					"Amount of damage the Shock Metal Material deals in half-hearts.", MATERIAL_DAMAGE_MIN_VALUE, MATERIAL_DAMAGE_MAX_VALUE);
+			propMaterialDamage.setLanguageKey("gui.shockmetalconfiguration.materialDamage").setRequiresMcRestart(true);
 
 //			// integer
 //			final int MY_INT_MIN_VALUE = 3;
