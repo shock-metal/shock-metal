@@ -19,6 +19,7 @@ import uk.co.shockwaveInteractive.objects.tools.ToolPickaxe;
 import uk.co.shockwaveInteractive.objects.tools.ToolShovel;
 import uk.co.shockwaveInteractive.objects.tools.ToolSword;
 import uk.co.shockwaveInteractive.util.Reference;
+import uk.co.shockwaveInteractive.util.config.ShockMetalConfiguration;
 
 /*
  * Initialises Items
@@ -32,13 +33,14 @@ public class ItemInit
 	
 	
 	//---------------------------- Materials ----------------------------
-	public static final ToolMaterial TOOL_SHOCKMETAL = EnumHelper.addToolMaterial("tool_shockmetal", 4, 2500, 10.0f, 6.0f, 10);
+	public static final ToolMaterial TOOL_SHOCKMETAL = EnumHelper.addToolMaterial("tool_shockmetal", 5, 1600, 10.0f, (float) ShockMetalConfiguration.materialDamage, 10);
 	public static final ArmorMaterial ARMOUR_SHOCKMETAL = EnumHelper.addArmorMaterial("armour_shockmetal", Reference.MODID + ":shockmetal", 45, new int[]{5, 10, 16, 6}, 10, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.5f);
 	
 	//---------------------------- Items ----------------------------
 	public static final Item INGOT_SHOCKMETAL = new ItemBase("ingot_shockmetal", true);
 	public static final Item DUST_SHOCKMETAL = new ItemBase("dust_shockmetal", true);
 	public static final Item BOOK_SHOCKMETALMANUAL = new ItemShockMetalBook("book_shockmetalmanual");
+	public static final Item FRAME_DIAMOND = new ItemBase("frame_diamond", false);
 	
 	//---------------------------- Tools ----------------------------
 	public static final Item AXE_SHOCKMETAL = new ToolAxe("axe_shockmetal", TOOL_SHOCKMETAL);
