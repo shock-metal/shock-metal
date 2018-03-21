@@ -1,4 +1,4 @@
-package uk.co.shockwaveInteractive.integration;
+package uk.co.shockwaveInteractive.integration.thermalexpansion;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -18,7 +18,7 @@ import uk.co.shockwaveInteractive.util.config.ShockMetalConfiguration;
  * 
  * Thanks to King Lemming for initial file structure
  */
-public class ThermalExpansionIntergration
+public class ThermalExpansionIntegration
 {
 	static final String MOD_ID = "thermalexpansion";
 	
@@ -37,20 +37,10 @@ public class ThermalExpansionIntergration
 
 	public static final String ADD_FURNACE_RECIPE = "addfurnacerecipe";
 	
-	public static void runIntegration()
+	
+	public static void runInit()
 	{
-		if(!Loader.isModLoaded(MOD_ID) || !ShockMetalConfiguration.thermalExpansionIntegration)
-		{
-			ShockMetalMain.logger.info("Thermal Expansion is not loaded, Integration not applied");
-			ShockMetalMain.logger.trace("Thermal Expansion is not loaded, Integration not applied");
-			return;
-		}
-		
-		ShockMetalMain.logger.info("Thermal Expansion is loaded, Applying Intergration");
-		ShockMetalMain.logger.trace("Thermal Expansion is loaded, Applying Intergration");
-		
 		addFurnaceRecipe(15000, new ItemStack(BlockInit.ORE_NETHER, 1, 0), 	new ItemStack(ItemInit.INGOT_SHOCKMETAL));
-		
 	}
 	
 	/* FURNACE */
