@@ -19,7 +19,7 @@ public class WorldGenCustomOres implements IWorldGenerator
 {
 	private WorldGenerator ore_nether_shockmetal;
 	
-	private int ore_nether_shockmetal_chance = 10;
+	private int ore_nether_shockmetal_chance = 5;
 	
 	public WorldGenCustomOres()
 	{
