@@ -1,6 +1,15 @@
 
 #Items
 item.ingot_shockmetal.name=Shock Metal Ingot
+item.dust_shockmetal.name=Pulvarised Shock Metal
+item.book_shockmetalmanual.name=A guide on Shock Metal
+item.frame_diamond.name=Frame: Diamond
+
+#Materials
+material.shockmetal.name=Shock Metal
+
+#Containers
+container.molecular_manipulator=Molecular Manipulator
 
 #Tools
 item.axe_shockmetal.name=Shock Metal Axe
@@ -19,8 +28,24 @@ item.boots_shockmetal.name=Shock Metal Boots
 tile.block_shockmetal.name=Shock Metal Block
 tile.ore_nether_shockmetal.name=Shock Metal Ore
 
+#Tile Entities
+tile.molecular_manipulator.name=Molecular Manipulator
+
 #GUI
 itemGroup.shockmetaltab=Shock Metal
 
+#Config and GUI
+gui.shockmetalconfiguration.mainTitle=Shock Metal Config
+gui.shockmetalconfiguration.materialDamage= Shock Metal Damage Value
+gui.shockmetalconfiguration.thermalExpansionIntegration= Enable Thermal Expansion Integration
+gui.shockmetalconfiguration.tinkersIntegration= Enable Tinkers Construct Integration
+gui.shockmetalconfiguration.ctgy.general.tooltip=Configure General Setings
+gui.shockmetalconfiguration.ctgy.integration.tooltip=Configure Mod Integration Settings
+
 #Fluid
-fluid.fluid_shockmetal=Molten Shock Metal
+fluid.fluidShockMetal=Molten Shock Metal
+fluid.fluidShockMetal.name=Molten Shock Metal
+
+#Modifiers
+modifier.shockmetal.name=Un-Dead Thunder
+modifier.shockmetal.desc=Sets fire to the Un-dead, absorbing their matter to heal your wounds!
