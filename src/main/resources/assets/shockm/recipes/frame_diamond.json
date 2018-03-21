@@ -1,0 +1,40 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "CSC",
+        "SDS",
+        "CSC"
+    ],
+    
+    "key":
+    {
+        "C": [
+      {
+        "item": "minecraft:coal",
+        "data": 0
+      },
+      {
+        "item": "minecraft:coal",
+        "data": 1
+      }
+        ],
+        
+        "S":
+        {
+            "item": "minecraft:stick"
+        },
+        
+        "D":
+        {
+            "item": "minecraft:diamond"
+        }
+    },
+    
+    "result":
+    {
+        "item": "shockm:frame_diamond",
+        "count": 1
+    }
+}

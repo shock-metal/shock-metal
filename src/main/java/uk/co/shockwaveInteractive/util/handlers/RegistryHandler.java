@@ -7,9 +7,12 @@ import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import uk.co.shockwaveInteractive.ShockMetalMain;
 import uk.co.shockwaveInteractive.init.BlockInit;
 import uk.co.shockwaveInteractive.init.ItemInit;
+import uk.co.shockwaveInteractive.util.Reference;
 import uk.co.shockwaveInteractive.util.interfaces.IHasModel;
 import uk.co.shockwaveInteractive.world.gen.WorldGenCustomOres;
 
@@ -26,6 +29,7 @@ public class RegistryHandler
 	public static void onBlockRegister(RegistryEvent.Register<Block> event)
 	{
 		event.getRegistry().registerAll(BlockInit.BLOCKS.toArray(new Block[0]));
+		TileEntityHandler.registerTileEntities();
 	}
 	
 	@SubscribeEvent
@@ -46,6 +50,11 @@ public class RegistryHandler
 				( (IHasModel)block ).registerModels();
 			}
 		}
+	}
+	
+	public static void initRegistries()
+	{
+		NetworkRegistry.INSTANCE.registerGuiHandler(ShockMetalMain.instance, new GUIHandler());
 	}
 	
 	public static void otherRegistries()
