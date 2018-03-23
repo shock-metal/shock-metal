@@ -12,6 +12,7 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 import uk.co.shockwaveInteractive.init.BlockInit;
@@ -22,6 +23,7 @@ import uk.co.shockwaveInteractive.integration.thermalexpansion.ThermalExpansionI
 import uk.co.shockwaveInteractive.proxy.CommonProxy;
 import uk.co.shockwaveInteractive.tabs.shockMetalTab;
 import uk.co.shockwaveInteractive.util.Reference;
+import uk.co.shockwaveInteractive.util.command.ShockMetalCommand;
 import uk.co.shockwaveInteractive.util.config.ShockMetalConfiguration;
 import uk.co.shockwaveInteractive.util.handlers.RegistryHandler;
 
@@ -30,6 +32,8 @@ public class ShockMetalMain
 {
 	
 	public static Logger logger;
+	
+	public static FMLPreInitializationEvent preIntEvent;
 
 	@Instance
 	public static ShockMetalMain instance;
@@ -42,6 +46,8 @@ public class ShockMetalMain
 	@EventHandler
 	public static void preInit(FMLPreInitializationEvent event)
 	{
+		preIntEvent = event;
+		
 		logger = event.getModLog();
 		RegistryHandler.otherRegistries();
 		ShockMetalConfiguration.preInit();	// Loads Config
@@ -70,5 +76,11 @@ public class ShockMetalMain
 	{
 		
 	}
+	
+	@EventHandler
+    public void serverStarting(FMLServerStartingEvent event) 
+	{
+        event.registerServerCommand(new ShockMetalCommand());
+    }
 	
 }
