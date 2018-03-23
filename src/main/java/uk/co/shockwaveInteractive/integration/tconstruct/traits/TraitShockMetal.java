@@ -8,6 +8,7 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.text.TextFormatting;
 import slimeknights.tconstruct.library.traits.AbstractTrait;
+import uk.co.shockwaveInteractive.util.config.ShockMetalConfiguration;
 
 public class TraitShockMetal extends AbstractTrait{
 	
@@ -21,7 +22,7 @@ public class TraitShockMetal extends AbstractTrait{
 	@Override
 	public void afterHit(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damageDealt, boolean wasCritical, boolean wasHit) 
 	{
-		if (!player.world.isRemote && wasHit && random.nextFloat() <= 0.1f) 
+		if (!player.world.isRemote && wasHit && random.nextFloat() <= 0.1f && ShockMetalConfiguration.swordLightning) 
 		{
 			EntityLightningBolt lightning = new EntityLightningBolt(player.getEntityWorld(), target.getPosition().getX(), target.getPosition().getY(), target.getPosition().getZ(), false);
 			player.getEntityWorld().addWeatherEffect(lightning);

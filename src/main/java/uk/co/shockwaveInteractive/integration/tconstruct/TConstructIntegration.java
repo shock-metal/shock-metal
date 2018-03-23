@@ -1,22 +1,35 @@
 package uk.co.shockwaveInteractive.integration.tconstruct;
 
 import java.awt.Color;
+import java.util.Locale;
+
+import javax.annotation.Nonnull;
 
 import org.apache.commons.lang3.StringUtils;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.renderer.ItemMeshDefinition;
+import net.minecraft.client.renderer.block.model.ModelBakery;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.renderer.block.statemap.StateMapperBase;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fluids.BlockFluidClassic;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.event.FMLInterModComms;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 import slimeknights.tconstruct.TConstruct;
 import slimeknights.tconstruct.library.MaterialIntegration;
@@ -72,7 +85,7 @@ public class TConstructIntegration
 		sb.append("------------------------------ Start ------------------------------");
 		
 		// Register fluids
-		Fluid fluidShockMetal = addMoltenFluid("fluidShockMetal", new Color(47, 43, 73), 1600, EnumRarity.EPIC);
+		Fluid fluidShockMetal = addMoltenFluid("fluidshockmetal", new Color(101, 93, 158), 1600, EnumRarity.EPIC);
 		sb.append("\n\t\t\t\t| Added " + fluidShockMetal.getName() + " to the fluid registry");
 		
 		// Create Materials
@@ -88,6 +101,11 @@ public class TConstructIntegration
 		
 		// Register them and their statistics
 		TinkerRegistry.addMaterialStats(matShockmetal, new HeadMaterialStats(1000, 10.0f, (float) ShockMetalConfiguration.materialDamage, HarvestLevels.COBALT), new HandleMaterialStats(1.1f, 350), new ExtraMaterialStats(250),	new BowMaterialStats(0.3f, 1.60f, 5f));
+		
+		if (ShockMetalMain.preIntEvent.getSide().isClient()) 
+		{
+			registerFluidModels(fluidShockMetal);
+		}
 		
 		sb.append("\n\t\t\t\t------------------------------  End  ------------------------------");
 		ShockMetalMain.logger.info(sb.toString());
@@ -116,7 +134,9 @@ public class TConstructIntegration
 		newFluid.setColor(colour);
 		newFluid.setTemperature(temp);
 		newFluid.setRarity(rarity);
+		newFluid.setUnlocalizedName(newFluid.getName().toLowerCase(Locale.UK));
 		FluidRegistry.registerFluid(newFluid); // fluid has to be registered
+		FluidRegistry.addBucketForFluid(newFluid);
 		
 		initFluidMetal(newFluid);
 		return newFluid;
@@ -143,13 +163,12 @@ public class TConstructIntegration
 	public static void initFluidMetal(Fluid fluid) 
 	{
 		setUpMoltenBlock(fluid);
-		FluidRegistry.addBucketForFluid(fluid);
-		ShockMetalMain.proxy.registerFluidModels(fluid);
+		registerFluidModels(fluid);
 	}
 	
 	private static Block setUpMoltenBlock(Fluid fluid)
 	{
-		Block block = new BlockFluidClassic(fluid, net.minecraft.block.material.Material.LAVA);
+		Block block = new BlockMolten(fluid);
 		return setUpBlock(block, "molten_" + fluid.getName());
 	}
 	
@@ -163,6 +182,54 @@ public class TConstructIntegration
 		ForgeRegistries.BLOCKS.register(block);
 		ForgeRegistries.ITEMS.register(IB);
 		return block;
+	}
+	
+	@SideOnly(Side.CLIENT)
+	public static void registerFluidModels(Fluid fluid) {
+		if (fluid == null) {
+			return;
+		}
+
+		Block block = fluid.getBlock();
+		if (block != null) {
+			Item item = Item.getItemFromBlock(block);
+			FluidStateMapper mapper = new FluidStateMapper(fluid);
+
+			// item-model
+			if (item != null) {
+				ModelBakery.registerItemVariants(item);
+				ModelLoader.setCustomMeshDefinition(item, mapper);
+			}
+			// block-model
+			ModelLoader.setCustomStateMapper(block, mapper);
+		}
+	}
+
+	@SideOnly(Side.CLIENT)
+	public static class FluidStateMapper extends StateMapperBase implements ItemMeshDefinition {
+
+		public final Fluid fluid;
+		public final ModelResourceLocation location;
+
+		public FluidStateMapper(Fluid fluid) {
+			this.fluid = fluid;
+
+			// have each block hold its fluid per nbt? hm
+			this.location = new ModelResourceLocation(new ResourceLocation("shockm", "fluid_block"),
+					fluid.getName());
+		}
+
+		@Nonnull
+		@Override
+		protected ModelResourceLocation getModelResourceLocation(@Nonnull IBlockState state) {
+			return location;
+		}
+
+		@Nonnull
+		@Override
+		public ModelResourceLocation getModelLocation(@Nonnull ItemStack stack) {
+			return location;
+		}
 	}
 	
 	
