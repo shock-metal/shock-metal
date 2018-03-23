@@ -29,6 +29,7 @@ public class ShockMetalConfiguration
 		public static boolean tinkersIntegration;
 		public static boolean thermalExpansionIntegration;
 		public static double materialDamage;
+		public static boolean swordLightning;
 
 		public static final String CATEGORY_NAME_GENERAL = "category_general";
 		public static final String CATEGORY_NAME_INTEGRATION = "category_integration";
@@ -83,7 +84,7 @@ public class ShockMetalConfiguration
 		}
 
 		/**
-		 * save the MBEConfiguration variables (fields) to disk
+		 * save the ShockConfiguration variables (fields) to disk
 		 */
 		public static void syncFromFields() {
 			syncConfig(false, false);
@@ -159,6 +160,11 @@ public class ShockMetalConfiguration
 			Property propTinkersInte = config.get(CATEGORY_NAME_INTEGRATION, "thermalExpansionIntegration", TINKERS_INTE_DEFAULT_VALUE);
 			propTinkersInte.setComment("Enable / Disable integration with Thermal Expansion");
 			propTinkersInte.setLanguageKey("gui.shockmetalconfiguration.thermalExpansionIntegration").setRequiresMcRestart(true);
+			
+			final boolean SWORD_LIGHTNING_DEFAULT_VALUE = true;
+			Property propSwordLightning = config.get(CATEGORY_NAME_INTEGRATION, "swordLightning", SWORD_LIGHTNING_DEFAULT_VALUE);
+			propSwordLightning.setComment("Enable / Disable shock metal sword lightning ability (for tinkers material)");
+			propSwordLightning.setLanguageKey("gui.shockmetalconfiguration.swordLightning").setRequiresMcRestart(true);
 			
 			// doubles
 			
@@ -247,6 +253,7 @@ public class ShockMetalConfiguration
 
 				tinkersIntegration = propTinkersInte.getBoolean(TINKERS_INTE_DEFAULT_VALUE); // can also use a literal (see integer example) if desired
 				thermalExpansionIntegration = propThermalInte.getBoolean(THERMAL_INTE_DEFAULT_VALUE); // can also use a literal (see integer example) if desired
+				swordLightning = propSwordLightning.getBoolean(SWORD_LIGHTNING_DEFAULT_VALUE); // can also use a literal (see integer example) if desired
 
 				materialDamage = propMaterialDamage.getDouble(MATERIAL_DAMAGE_DEFAULT_VALUE);
 				if (materialDamage > MATERIAL_DAMAGE_MAX_VALUE || materialDamage < MATERIAL_DAMAGE_MIN_VALUE) {
@@ -287,6 +294,7 @@ public class ShockMetalConfiguration
 			propMaterialDamage.set(materialDamage);
 			propTinkersInte.set(tinkersIntegration);
 			propThermalInte.set(thermalExpansionIntegration);
+			propSwordLightning.set(swordLightning);
 
 			if (config.hasChanged()) {
 				config.save();

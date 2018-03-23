@@ -43,9 +43,9 @@ public class ToolSword extends ItemSword implements IHasModel
 		
 		if(GuiScreen.isShiftKeyDown())
 		{
-			tooltip.add("The sword seems to rip the atoms of undead enenmies causing them to combust. It also seems to absorb the energy to hep heal your wounds.");
+			tooltip.add(ChatFormatting.WHITE + "The sword seems to rip the atoms of undead enenmies causing them to combust. It also seems to absorb the energy to hep heal your wounds.");
 		}
-		else tooltip.add(ChatFormatting.UNDERLINE+"Press <<SHIFT>> for more Info");
+		else tooltip.add(ChatFormatting.DARK_PURPLE + "Press <<SHIFT>> for more Info");
 		
 		super.addInformation(stack, worldIn, tooltip, flagIn);
 	}
@@ -63,14 +63,6 @@ public class ToolSword extends ItemSword implements IHasModel
 		return super.hitEntity(stack, target, attacker);
 	}
 	
-//	public void afterHit(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damageDealt, boolean wasCritical, boolean wasHit) {
-//		if (!player.world.isRemote && wasHit && (new Random().nextFloat()) <= 0.1f) {
-//			EntityLightningBolt lightning = new EntityLightningBolt(player.getEntityWorld(), target.getPosition().getX(),
-//					target.getPosition().getY(), target.getPosition().getZ(), false);
-//			player.getEntityWorld().addWeatherEffect(lightning);
-//		}
-//	}
-
 	@Override
 	public void registerModels() {
 		
