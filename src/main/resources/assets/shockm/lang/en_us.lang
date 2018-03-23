@@ -8,6 +8,9 @@ item.frame_diamond.name=Frame: Diamond
 #Materials
 material.shockmetal.name=Shock Metal
 
+#Messages
+message.shockm.mm.desc=Currently work in progress!!!
+
 #Containers
 container.molecular_manipulator=Molecular Manipulator
 
@@ -36,16 +39,22 @@ itemGroup.shockmetaltab=Shock Metal
 
 #Config and GUI
 gui.shockmetalconfiguration.mainTitle=Shock Metal Config
+
 gui.shockmetalconfiguration.materialDamage= Shock Metal Damage Value
+
 gui.shockmetalconfiguration.thermalExpansionIntegration= Enable Thermal Expansion Integration
+
 gui.shockmetalconfiguration.tinkersIntegration= Enable Tinkers Construct Integration
+
+gui.shockmetalconfiguration.swordLightning= Enable / Disable Shockmetal sword lightning ability
+
 gui.shockmetalconfiguration.ctgy.general.tooltip=Configure General Setings
 gui.shockmetalconfiguration.ctgy.integration.tooltip=Configure Mod Integration Settings
 
 #Fluid
-fluid.fluidShockMetal=Molten Shock Metal
-fluid.fluidShockMetal.name=Molten Shock Metal
+fluid.fluidshockmetal=Molten Shock Metal
+fluid.fluidshockmetal.name=Molten Shock Metal
 
-#Modifiers
-modifier.shockmetal.name=Un-Dead Thunder
+#Modifiers - tconstruct
+modifier.shockmetal.name=Atom Ripper
 modifier.shockmetal.desc=Sets fire to the Un-dead, absorbing their matter to heal your wounds!

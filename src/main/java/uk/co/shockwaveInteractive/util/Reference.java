@@ -10,4 +10,5 @@ public class Reference {
 	public static final boolean DEBUG = true;
 	
 	public static final int GUI_MOLECULAR_MANIPULATOR = 0;
+	public static final int GUI_SHOCK_METAL_MANUAL = 1;
 }
