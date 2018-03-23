@@ -25,28 +25,6 @@ public class ClientProxy extends CommonProxy
 		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(new ResourceLocation(Reference.MODID, filename), id));
 	}
 	
-	@Override
-	@Optional.Method(modid="tconstrut")
-	public void registerFluidModels(Fluid fluid) 
-	{
-		if (fluid == null) return;
-		
-		Block block = fluid.getBlock();
-		
-		if (block != null) 
-		{
-			Item item = Item.getItemFromBlock(block);
-			slimeknights.tconstruct.shared.FluidsClientProxy.FluidStateMapper mapper = new slimeknights.tconstruct.shared.FluidsClientProxy.FluidStateMapper(fluid);
-			
-			if (item != null) 
-			{
-				ModelBakery.registerItemVariants(item);
-				ModelLoader.setCustomMeshDefinition(item, mapper);
-			}
-			ModelLoader.setCustomStateMapper(block, mapper);
-		}
-	}
-	
 	public void preInit()
 	{
 		super.preInit();

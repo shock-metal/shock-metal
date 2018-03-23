@@ -25,6 +25,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.Mirror;
 import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 import uk.co.shockwaveInteractive.ShockMetalMain;
 import uk.co.shockwaveInteractive.init.BlockInit;
@@ -47,7 +48,7 @@ public class BlockMolecularManipulator extends BlockBase implements ITileEntityP
 	@Override
 	public void addInformation(ItemStack stack, World player, List<String> tooltip, ITooltipFlag advanced)
 	{
-		tooltip.add("Atoms and molecules now answer to you!, Allows for various transformations of materials");
+		tooltip.add("(Work In Progress!!!) Atoms and molecules now answer to you!, Allows for various transformations of materials");
 		super.addInformation(stack, player, tooltip, advanced);
 	}
 	
@@ -68,9 +69,9 @@ public class BlockMolecularManipulator extends BlockBase implements ITileEntityP
 		
 		if(!worldIn.isRemote)
 		{
-			playerIn.openGui(ShockMetalMain.instance, Reference.GUI_MOLECULAR_MANIPULATOR, worldIn, pos.getX(), pos.getY(), pos.getZ());
+			//playerIn.openGui(ShockMetalMain.instance, Reference.GUI_MOLECULAR_MANIPULATOR, worldIn, pos.getX(), pos.getY(), pos.getZ());
+			playerIn.sendMessage(new TextComponentTranslation("message.shockm.mm.desc"));
 		}
-		
 		return true;
 	}
 	

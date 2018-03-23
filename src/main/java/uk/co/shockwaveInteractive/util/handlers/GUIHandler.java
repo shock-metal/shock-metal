@@ -5,6 +5,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.IGuiHandler;
 import uk.co.shockwaveInteractive.gui.GuiMolecularManipulator;
+import uk.co.shockwaveInteractive.gui.GuiShockmetalManual;
 import uk.co.shockwaveInteractive.objects.blocks.machines.molecularmanipulator.ContainerMolecularManipulator;
 import uk.co.shockwaveInteractive.objects.blocks.machines.molecularmanipulator.TileEntityMolecularManipulator;
 import uk.co.shockwaveInteractive.util.Reference;
@@ -18,6 +19,10 @@ public class GUIHandler implements IGuiHandler{
 			{
 				return new ContainerMolecularManipulator(player.inventory, (TileEntityMolecularManipulator)world.getTileEntity(new BlockPos(x,y,z)));
 			}
+			else if(ID == Reference.GUI_SHOCK_METAL_MANUAL)
+			{
+				return new GuiShockmetalManual();
+			}
 			
 			return null;
 		}
@@ -28,6 +33,10 @@ public class GUIHandler implements IGuiHandler{
 			if(ID == Reference.GUI_MOLECULAR_MANIPULATOR)
 			{
 				return new GuiMolecularManipulator(player.inventory, (TileEntityMolecularManipulator)world.getTileEntity(new BlockPos(x,y,z)));
+			}
+			else if(ID == Reference.GUI_SHOCK_METAL_MANUAL)
+			{
+				return new GuiShockmetalManual();
 			}
 			return null;
 		}

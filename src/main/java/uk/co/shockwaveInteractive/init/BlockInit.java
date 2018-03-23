@@ -1,4 +1,4 @@
-package uk.co.shockwaveInteractive.init;
+ package uk.co.shockwaveInteractive.init;
 
 import java.util.ArrayList;
 import java.util.List;
