@@ -6,27 +6,19 @@
 ---
 ## Version 1.1.0
 ### Additions
-#### Items
 - Shock metal dust with ore dictionary (Any mod that supports dusts with oreDict should now show recipes for it)
 - Framed item including
  Textures
  Crafting recipe
  MM Recipe
 - Manual (incomplete content)	 
-#### Textures
 - Animated texture for Shock metal dust		 
-#### Machines / Blocks
 - Added Molecular Manipulator (WIP)		 
-#### Core
 - Configuration file added    
 ### Modifications
-#### Textures
 - Shock metal ingot now has new animated texture
-#### Tools
 - Shock metal sword now does more damage and sets un-dead mobs on fire
-#### World
 - Ore chance reduced from 10% to 5%
-#### Integration
 - Refactor of Integration system
-		 - Better Tinkers' Integration (Materials, Part smelting, weapon trait)
+- Better Tinkers' Integration (Materials, Part smelting, weapon trait)
 ---
