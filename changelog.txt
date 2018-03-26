@@ -9,11 +9,11 @@
 | - Additions
 |       - Items
 |           -- Shock metal dust with ore dictionary (Any mod that supports dusts with oreDict should now show recipes for it)
-|           -- Framed items including
+|           -- Framed item including
 |               --- Textures
 |               --- Crafting recipe
 |               --- MM Recipe
-|           -- Manual (WIP)
+|           -- Manual (incomplete content)
 |           
 |       - Textures
 |           - Animated texture for Shock metal dust
