@@ -10,4 +10,4 @@ Here is some sample text, describe the issue or suggestion in as much detail as 
 
 ## Images / links
 * Example image1: **image link / file here**
-* Example link: **link here**
+* Example link: [You can enter alt text here](https://github.com/Shockwave-Interactive/ShockMetal)
