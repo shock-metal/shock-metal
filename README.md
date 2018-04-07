@@ -10,8 +10,8 @@ A small minecraft mod that adds a new tier of material above diamond with higher
 
 
 ## Mod Support
-Thermal Expansion
-Tinkers' Construct
+* Thermal Expansion
+* Tinkers' Construct
 
 ## License
 License can be found in license.md file or at https://github.com/Shockwave-Interactive/ShockMetal/blob/master/LICENSE.md
