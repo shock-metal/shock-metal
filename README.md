@@ -14,5 +14,7 @@ A small minecraft mod that adds a new tier of material above diamond with higher
 * Tinkers' Construct
 
 ## License
+You have my permision to use my mod in mod packs
+
 License can be found in license.md file or at https://github.com/Shockwave-Interactive/ShockMetal/blob/master/LICENSE.md
 ©2018 Shockwave Interactive / Harman Uppal
