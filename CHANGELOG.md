@@ -22,3 +22,7 @@
 - Refactor of Integration system
 - Better Tinkers' Integration (Materials, Part smelting, weapon trait)
 ---
+## Version 1.1.0
+### Fixes
+- Fixed issue with Shockmetal ore harvest level ( for example, cobalt pickaxe being unable to harvest block )
+---
