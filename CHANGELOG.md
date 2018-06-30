@@ -1,8 +1,8 @@
 # Change Log
 
-## Version 1.0.1
+## Version 1.1.1
 ### Fixes
- - Fixed tinkers' recipe now working
+- Fixed issue with Shockmetal ore harvest level ( for example, cobalt pickaxe being unable to harvest block )
 ---
 ## Version 1.1.0
 ### Additions
@@ -22,7 +22,7 @@
 - Refactor of Integration system
 - Better Tinkers' Integration (Materials, Part smelting, weapon trait)
 ---
-## Version 1.1.0
+## Version 1.0.1
 ### Fixes
-- Fixed issue with Shockmetal ore harvest level ( for example, cobalt pickaxe being unable to harvest block )
----
+ - Fixed tinkers' recipe now working
+
