@@ -96,12 +96,16 @@ public class TConstructIntegration
 		matShockmetal.setRepresentativeItem("ingotShockmetal");
 		matShockmetal.setFluid(fluidShockMetal);
 		matShockmetal.setRenderInfo(new MaterialRenderInfo.Metal(5064311, 0.5f, 1.0f, 0.2f));
-		sb.append("\n\t\t\t\t| Createed " + matShockmetal.getLocalizedName() + " material");
+		sb.append("\n\t\t\t\t| Created " + matShockmetal.getLocalizedName() + " material");
 		
 		
-		// Register them and their statistics
-		TinkerRegistry.addMaterialStats(matShockmetal, new HeadMaterialStats(1000, 10.0f, (float) ShockMetalConfiguration.materialDamage, HarvestLevels.COBALT), new HandleMaterialStats(1.1f, 350), new ExtraMaterialStats(250),	new BowMaterialStats(0.3f, 1.60f, 5f));
+		// Register materials
+		TinkerRegistry.addMaterialStats(matShockmetal, new HeadMaterialStats(1000, 10.0f, (float) ShockMetalConfiguration.materialDamage, HarvestLevels.COBALT),
+													   new HandleMaterialStats(1.1f, 350),
+													   new ExtraMaterialStats(250),
+													   new BowMaterialStats(0.3f, 1.60f, 5f));
 		
+		// Register fluids
 		if (ShockMetalMain.preIntEvent.getSide().isClient()) 
 		{
 			registerFluidModels(fluidShockMetal);
@@ -111,6 +115,7 @@ public class TConstructIntegration
 		ShockMetalMain.logger.info(sb.toString());
 	}
 	
+	// Register Material Integrations
 	private static void registerMI()
 	{
 		MaterialIntegration matIntergration = new MaterialIntegration(matShockmetal, matShockmetal.getFluid(), "Shockmetal").toolforge();

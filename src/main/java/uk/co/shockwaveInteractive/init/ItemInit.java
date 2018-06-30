@@ -33,6 +33,7 @@ public class ItemInit
 	
 	
 	//---------------------------- Materials ----------------------------
+																				// String name, int harvestLevel, int maxUses, float efficiency, float damage, int enchantability
 	public static final ToolMaterial TOOL_SHOCKMETAL = EnumHelper.addToolMaterial("tool_shockmetal", 5, 1600, 10.0f, (float) ShockMetalConfiguration.materialDamage, 10);
 	public static final ArmorMaterial ARMOUR_SHOCKMETAL = EnumHelper.addArmorMaterial("armour_shockmetal", Reference.MODID + ":shockmetal", 45, new int[]{5, 10, 16, 6}, 10, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.5f);
 	

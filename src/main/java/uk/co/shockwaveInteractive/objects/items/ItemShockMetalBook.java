@@ -48,7 +48,7 @@ public class ItemShockMetalBook extends Item implements IHasModel
 		super.addInformation(stack, worldIn, tooltip, flagIn);
 	}
 	 
-	 @Override
+	@Override
 	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) 
 	 {
 		 ItemStack itemStack = playerIn.getHeldItem(handIn);
