@@ -1,7 +1,6 @@
 package uk.co.shockwaveInteractive.objects.tools;
 
 import java.util.List;
-import java.util.Random;
 
 import com.google.common.collect.Multimap;
 import com.mojang.realmsclient.gui.ChatFormatting;
@@ -13,12 +12,18 @@ import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.effect.EntityLightningBolt;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.DamageSource;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import uk.co.shockwaveInteractive.ShockMetalMain;
 import uk.co.shockwaveInteractive.init.ItemInit;
@@ -43,7 +48,7 @@ public class ToolSword extends ItemSword implements IHasModel
 		
 		if(GuiScreen.isShiftKeyDown())
 		{
-			tooltip.add(ChatFormatting.WHITE + "The sword seems to rip the atoms of undead enenmies causing them to combust. It also seems to absorb the energy to hep heal your wounds.");
+			tooltip.add(ChatFormatting.WHITE + "The sword seems to rip the atoms of undead enenmies causing them to combust. It also seems to absorb the energy to help heal your wounds.");
 		}
 		else tooltip.add(ChatFormatting.DARK_PURPLE + "Press <<SHIFT>> for more Info");
 		
@@ -62,6 +67,35 @@ public class ToolSword extends ItemSword implements IHasModel
 		
 		return super.hitEntity(stack, target, attacker);
 	}
+	
+//	@Override
+//	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) 
+//	 {
+//		// Get the sword in his hand
+//		 ItemStack itemStack = playerIn.getHeldItem(handIn);
+//		 
+//		if (!playerIn.world.isRemote && ShockMetalConfiguration.swordLightning) 
+//		{
+//					
+//			Vec3d posVec = new Vec3d(playerIn.posX, playerIn.posY + playerIn.getEyeHeight(), playerIn.posZ);
+//	        Vec3d lookVec = playerIn.getLookVec();
+//	        
+//	        RayTraceResult trace = worldIn.rayTraceBlocks(posVec, posVec.add(lookVec));
+//	        
+//	        if(trace != null)
+//	        {
+//				itemStack.damageItem(80, playerIn);
+//		        BlockPos pos = trace.getBlockPos();
+//		        
+//		        double distance = posVec.distanceTo(new Vec3d(pos.getX(), pos.getY(), pos.getZ()));
+//		        
+//				EntityLightningBolt lightning = new EntityLightningBolt(playerIn.getEntityWorld(), pos.getX(), pos.getY(), pos.getZ(), false);
+//				playerIn.getEntityWorld().addWeatherEffect(lightning);
+//	        }
+//		}
+//		  
+//		 return new ActionResult<>(EnumActionResult.SUCCESS, itemStack);
+//	}
 	
 	@Override
 	public void registerModels() {
