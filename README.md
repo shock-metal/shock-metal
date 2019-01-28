@@ -1,3 +1,5 @@
+# I am currently busy at the moment, when I have some free time I will continue this mod and add support for other mod integrations
+
 # ShockMetal - a minecraft mod
 <p align="center">
   <img src=https://img.shields.io/badge/Mod%20Version%20-1.1.0-blue.svg alt="Mod Version Badge" />
