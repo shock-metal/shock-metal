@@ -1,4 +1,4 @@
-# I am currently busy at the moment, when I have some free time I will continue this mod and add support for other mod integrations
+# I am currently busy at the moment, when I have some free time I will continue this mod and add support for other mod integrations, Thank you
 
 # ShockMetal - a minecraft mod
 <p align="center">
