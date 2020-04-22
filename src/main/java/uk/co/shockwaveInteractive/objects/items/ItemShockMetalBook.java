@@ -16,6 +16,8 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import uk.co.shockwaveInteractive.ShockMetalMain;
 import uk.co.shockwaveInteractive.gui.GuiShockmetalManual;
 import uk.co.shockwaveInteractive.init.ItemInit;
@@ -36,6 +38,7 @@ public class ItemShockMetalBook extends Item implements IHasModel
 	}
 	 
 	 @Override
+	 @SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 		 
 		 if(GuiScreen.isShiftKeyDown())
@@ -49,6 +52,7 @@ public class ItemShockMetalBook extends Item implements IHasModel
 	}
 	 
 	@Override
+	@SideOnly(Side.CLIENT)
 	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) 
 	 {
 		 ItemStack itemStack = playerIn.getHeldItem(handIn);
@@ -59,11 +63,11 @@ public class ItemShockMetalBook extends Item implements IHasModel
 		    return new ActionResult<>(EnumActionResult.SUCCESS, itemStack);
 	}
 	 
-		@Override
-		public void registerModels() {
-			
-			ShockMetalMain.proxy.registerItemRenderer(this, 0, "inventory");
-			
-		}
+	@Override
+	public void registerModels() {
+		
+		ShockMetalMain.proxy.registerItemRenderer(this, 0, "inventory");
+		
+	}
 	 
 }

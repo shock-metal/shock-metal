@@ -11,6 +11,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import uk.co.shockwaveInteractive.ShockMetalMain;
 import uk.co.shockwaveInteractive.init.BlockInit;
 import uk.co.shockwaveInteractive.init.ItemInit;
@@ -54,6 +55,7 @@ public class RegistryHandler
 		}
 	}
 	
+	@SideOnly(Side.CLIENT)
 	public static void initRegistries()
 	{
 		NetworkRegistry.INSTANCE.registerGuiHandler(ShockMetalMain.instance, new GUIHandler());
