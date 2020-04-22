@@ -37,7 +37,7 @@ public class BlockOres extends Block implements IHasModel, IMetaName
 	{
 		super(Material.ROCK);
 		setHarvestLevel(effectiveTool, miningLevel);
-		setUnlocalizedName(name);
+		setTranslationKey(name);
 		setRegistryName(name);
 		setCreativeTab(ShockMetalMain.shockmetaltab);
 		setDefaultState(this.blockState.getBaseState().withProperty(VARIANT, EnumHandler.EnumType.SHOCKMETAL));

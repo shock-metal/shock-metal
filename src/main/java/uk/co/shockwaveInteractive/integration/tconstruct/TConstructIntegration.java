@@ -5,8 +5,6 @@ import java.util.Locale;
 
 import javax.annotation.Nonnull;
 
-import org.apache.commons.lang3.StringUtils;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.ItemMeshDefinition;
@@ -21,17 +19,12 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.fluids.BlockFluidClassic;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
-import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.event.FMLInterModComms;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.minecraftforge.oredict.OreDictionary;
-import slimeknights.tconstruct.TConstruct;
 import slimeknights.tconstruct.library.MaterialIntegration;
 import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.client.MaterialRenderInfo;
@@ -42,13 +35,10 @@ import slimeknights.tconstruct.library.materials.HandleMaterialStats;
 import slimeknights.tconstruct.library.materials.HeadMaterialStats;
 import slimeknights.tconstruct.library.materials.Material;
 import slimeknights.tconstruct.library.utils.HarvestLevels;
-import slimeknights.tconstruct.smeltery.TinkerSmeltery;
 import slimeknights.tconstruct.smeltery.block.BlockMolten;
 import uk.co.shockwaveInteractive.ShockMetalMain;
-import uk.co.shockwaveInteractive.init.ItemInit;
-import uk.co.shockwaveInteractive.integration.IntegrationModule;
+import uk.co.shockwaveInteractive.integration.tconstruct.TConstructIntegration.FluidStateMapper;
 import uk.co.shockwaveInteractive.integration.tconstruct.traits.TraitShockMetal;
-import uk.co.shockwaveInteractive.util.Reference;
 import uk.co.shockwaveInteractive.util.config.ShockMetalConfiguration;
 
 /*
@@ -179,7 +169,7 @@ public class TConstructIntegration
 	
 	public static <T extends Block> T setUpBlock(T block, String name) 
 	{
-		block.setUnlocalizedName(name);
+		block.setTranslationKey(name);
 		block.setRegistryName(name);
 		
 		Item IB = new ItemBlock(block).setRegistryName(block.getRegistryName());

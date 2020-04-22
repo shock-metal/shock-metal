@@ -20,7 +20,7 @@ public class BlockBase extends Block implements IHasModel
 		super(material);
 		setHarvestLevel(effectiveTool, miningLevel);
 		setHardness(hardness);
-		setUnlocalizedName(name);
+		setTranslationKey(name);
 		setRegistryName(name);
 		setCreativeTab(ShockMetalMain.shockmetaltab);
 		

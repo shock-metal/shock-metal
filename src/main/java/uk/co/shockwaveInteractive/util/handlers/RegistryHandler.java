@@ -10,6 +10,7 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.relauncher.Side;
 import uk.co.shockwaveInteractive.ShockMetalMain;
 import uk.co.shockwaveInteractive.init.BlockInit;
 import uk.co.shockwaveInteractive.init.ItemInit;

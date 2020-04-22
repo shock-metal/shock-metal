@@ -12,8 +12,7 @@ public class shockMetalTab extends CreativeTabs
 	}
 
 	@Override
-	public ItemStack getTabIconItem() {
-		
+	public ItemStack createIcon() {
 		return new ItemStack(ItemInit.INGOT_SHOCKMETAL);
 	}
 	

@@ -20,7 +20,7 @@ public class ItemBase extends Item implements IHasModel
 	
 	public ItemBase(String name, boolean isRare)
 	{
-		setUnlocalizedName(name);
+		setTranslationKey(name);
 		setRegistryName(name);
 		setCreativeTab(ShockMetalMain.shockmetaltab);
 		this.isRare = isRare;
@@ -38,7 +38,7 @@ public class ItemBase extends Item implements IHasModel
 	@Override
 	public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 		
-		if(this.getUnlocalizedName().equals("item.ingot_shockmetal"))
+		if(this.getTranslationKey().equals("item.ingot_shockmetal"))
 		{
 			tooltip.add(ChatFormatting.DARK_PURPLE + "Shocking!");
 		}

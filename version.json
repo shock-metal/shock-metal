@@ -1,10 +1,10 @@
 {
-  "homepage": "https://github.com/Shockwave-Interactive/ShockMetal/releases",
+  "homepage": "https://github.com/shock-metal/shock-metal/releases",
   "1.12.2": {
-    "1.0.0": "https://github.com/HarmanU/ShockMetal/blob/master/CHANGELOG.md",
-    "1.0.1": "https://github.com/HarmanU/ShockMetal/blob/master/CHANGELOG.md",
-	"1.1.0": "https://github.com/HarmanU/ShockMetal/blob/master/CHANGELOG.md",
-	"1.1.1": "https://github.com/HarmanU/ShockMetal/blob/master/CHANGELOG.md"
+    "1.0.0": "https://github.com/shock-metal/shock-metal/blob/master/version.json",
+    "1.0.1": "https://github.com/shock-metal/shock-metal/blob/master/version.json",
+	"1.1.0": "https://github.com/shock-metal/shock-metal/blob/master/version.json",
+	"1.1.1": "https://github.com/shock-metal/shock-metal/blob/master/version.json"
   },
   "promos": {
     "1.12.2-latest": "1.1.1",

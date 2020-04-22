@@ -27,7 +27,7 @@ public class ItemShockMetalBook extends Item implements IHasModel
 	
 	 public ItemShockMetalBook(String name) 
 	 {
-			setUnlocalizedName(name);
+		 setTranslationKey(name);
 			setRegistryName(name);
 		    this.setCreativeTab(ShockMetalMain.shockmetaltab);
 		    this.setMaxStackSize(1);

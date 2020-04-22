@@ -169,12 +169,15 @@ public class BlockMolecularManipulator extends BlockBase implements ITileEntityP
 	@Override
 	public IBlockState getStateFromMeta(int meta) 
 	{
-		EnumFacing facing = EnumFacing.getFront(meta);
-		
-		if(facing.getAxis() == EnumFacing.Axis.Y)
-		{
-			facing = EnumFacing.NORTH;
-		}
+		// TODO: FIX THIS
+//		EnumFacing facing = EnumFacing.get(meta);
+//		
+//		if(facing.getAxis() == EnumFacing.Axis.Y)
+//		{
+//			
+//		}
+//		
+		EnumFacing facing = EnumFacing.NORTH;
 		
 		return this.getDefaultState().withProperty(FACING, facing);
 	}
