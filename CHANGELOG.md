@@ -1,7 +1,7 @@
 # Change Log
 
 ## Version 1.16.4-0.1.0
-Note: This is an early version for 1.16.4. It's been a long time since i made this mod and quite a lot has chnaged.
+Note: This is an early version for 1.16.4. It's been a long time since i made this mod and quite a lot has changed.
 Thus this update is just to get the basics working until I have enought time to fully fix everything. Some yet to be
 updated features include:
 - Configuration Screen
