@@ -6,7 +6,7 @@ Thus this update is just to get the basics working until I have enought time to 
 updated features include:
 - Configuration Screen
 - Interactable Blocks
-- Mod Itegration (Mainly waiting for mods to be released for 1.16.4)
+- Mod Integration (Mainly waiting for mods to be released for 1.16.4)
 - Mod Guide
 
 With the release of netherite I also plan to re-evalutate this mod. for now this provides a tier above netherite.
