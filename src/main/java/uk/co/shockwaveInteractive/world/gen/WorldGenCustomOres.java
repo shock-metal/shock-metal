@@ -1,67 +1,87 @@
-package uk.co.shockwaveInteractive.world.gen;
+package uk.co.shockwaveinteractive.world.gen;
 
-import java.util.Random;
+import net.minecraft.util.registry.Registry;
+import net.minecraft.util.registry.WorldGenRegistries;
+import net.minecraft.world.biome.Biome;
+import net.minecraft.world.gen.GenerationStage;
+import net.minecraft.world.gen.feature.ConfiguredFeature;
+import net.minecraft.world.gen.feature.Feature;
+import net.minecraft.world.gen.feature.IFeatureConfig;
+import net.minecraft.world.gen.feature.OreFeatureConfig;
+import net.minecraftforge.common.world.BiomeGenerationSettingsBuilder;
+import net.minecraftforge.event.world.BiomeLoadingEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
+import uk.co.shockwaveinteractive.init.BlockInit;
+import uk.co.shockwaveinteractive.util.Reference;
 
-import net.minecraft.block.state.pattern.BlockMatcher;
-import net.minecraft.init.Blocks;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
-import net.minecraft.world.chunk.IChunkProvider;
-import net.minecraft.world.gen.IChunkGenerator;
-import net.minecraft.world.gen.feature.WorldGenMinable;
-import net.minecraft.world.gen.feature.WorldGenerator;
-import net.minecraftforge.fml.common.IWorldGenerator;
-import uk.co.shockwaveInteractive.init.BlockInit;
-import uk.co.shockwaveInteractive.init.BlockOres;
-import uk.co.shockwaveInteractive.util.handlers.EnumHandler;
+import java.util.ArrayList;
 
-public class WorldGenCustomOres implements IWorldGenerator
+@Mod.EventBusSubscriber(modid = Reference.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
+public class WorldGenCustomOres
 {
-	private WorldGenerator ore_nether_shockmetal;
-	
-	private int ore_nether_shockmetal_chance = 5;
-	
-	public WorldGenCustomOres()
+//	public static OreFeatureConfig.FillerBlockType END_STONE = OreFeatureConfig.FillerBlockType.create("END_STONE", "end_stone", new BlockMatcher(Blocks.END_STONE));
+	private static final ArrayList<ConfiguredFeature<?, ?>> overworldOres = new ArrayList<ConfiguredFeature<?, ?>>();
+	private static final ArrayList<ConfiguredFeature<?, ?>> netherOres = new ArrayList<ConfiguredFeature<?, ?>>();
+	private static final ArrayList<ConfiguredFeature<?, ?>> endOres = new ArrayList<ConfiguredFeature<?, ?>>();
+
+	public static void initOres()
 	{
-		ore_nether_shockmetal = new WorldGenMinable(BlockInit.ORE_NETHER.getDefaultState().withProperty(BlockOres.VARIANT, EnumHandler.EnumType.SHOCKMETAL), 3, BlockMatcher.forBlock(Blocks.NETHERRACK));
+		netherOres.add(register(
+				"shockwave_nether_ore", Feature.ORE.withConfiguration(
+						new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NETHERRACK, BlockInit.SHOCKMETAL_NETHER_ORE_BLOCK.get().getDefaultState(), 4))
+				)
+				.range(20)
+				.func_242731_b(1) // chunk spawn frequency
+		);
 	}
 
-	public void runGenerator(WorldGenerator gen, World world, Random random, int chunkX, int chunkZ, int chance, int minHeight, int maxHeight)
-	{
-		if (minHeight > maxHeight || minHeight < 0 || maxHeight > 256)
-		{
-			throw new IllegalArgumentException("Ore generated out of bounds");
+	@SubscribeEvent(priority = EventPriority.HIGHEST)
+	public static void gen(BiomeLoadingEvent event) {
+		BiomeGenerationSettingsBuilder generation = event.getGeneration();
+		if(event.getCategory().equals(Biome.Category.NETHER)){
+			for(ConfiguredFeature<?, ?> ore : netherOres){
+				if (ore != null) generation.withFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ore);
+			}
 		}
-		
-		int heightDiff = maxHeight - minHeight + 1;
-		
-		for (int i = 0; i < chance; i++)
-		{
-			int x = chunkX * 16 + random.nextInt(16);
-			int y = minHeight + random.nextInt(heightDiff);
-			int z = chunkZ * 16 + random.nextInt(16);
-			
-			gen.generate(world, random, new BlockPos(x,y,z));
+		if(event.getCategory().equals(Biome.Category.THEEND)){
+			for(ConfiguredFeature<?, ?> ore : endOres){
+				if (ore != null) generation.withFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ore);
+			}
 		}
-	}
-	
-	@Override
-	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider)
-	{
-		switch(world.provider.getDimension())
-		{
-		case -1:
-			
-			runGenerator(ore_nether_shockmetal, world, random, chunkX, chunkZ, ore_nether_shockmetal_chance, 45, 80);
-			break;
-			
-		case 0:
-			break;
-			
-		case 1:
-			break;
+		for(ConfiguredFeature<?, ?> ore : overworldOres){
+			if (ore != null) generation.withFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ore);
 		}
 	}
-	
-	
+
+	private static <FC extends IFeatureConfig> ConfiguredFeature<FC, ?> register(String name, ConfiguredFeature<FC, ?> configuredFeature) {
+		return Registry.register(WorldGenRegistries.CONFIGURED_FEATURE, Reference.MODID + ":" + name, configuredFeature);
+	}
+
+//	@SubscribeEvent
+//	public static void runWorldGenOres(FMLLoadCompleteEvent event)
+//	{
+//		for (Biome biome : ForgeRegistries.BIOMES )
+//		{
+//			switch(biome.getCategory())
+//			{
+//				case Biome.Category.NETHER:
+//
+//					generateOre(biome, 5, 2, 5, 20, OreFeatureConfig.FillerBlockType.NETHERRACK, BlockInit.SHOCKMETAL_NETHER_ORE_BLOCK.get().getDefaultState(), 4);
+//					break;
+//
+//				case Biome.Category.THEEND:
+//					break;
+//			}
+//		}
+//	}
+
+//	private static void generateOre(Biome biome, int count, int bottomOffset, int topOffset, int max, OreFeatureConfig.FillerBlockType filler, BlockState defaultBlockstate, int size)
+//	{
+//		CountRangeConfig range = new CountRangeConfig(count, bottomOffset, topOffset, max);
+//		OreFeatureConfig feature = new OreFeatureConfig(filler, defaultBlockstate, size);
+//		ConfiguredPlacement config = Placement.COUNT_RANGE.configuration(range);
+//		biome.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.Ore.WithConfiguration(feature).withPlacement(config));
+//	}
 }

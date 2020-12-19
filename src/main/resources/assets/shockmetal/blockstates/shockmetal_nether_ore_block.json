@@ -1,0 +1,6 @@
+{
+    "variants":
+    {
+        "": { "model": "shockmetal:block/shockmetal_nether_ore_block" }
+    }
+}

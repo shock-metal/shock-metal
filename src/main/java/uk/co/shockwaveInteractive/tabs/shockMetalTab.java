@@ -1,19 +1,19 @@
-package uk.co.shockwaveInteractive.tabs;
+package uk.co.shockwaveinteractive.tabs;
 
-import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
-import uk.co.shockwaveInteractive.init.ItemInit;
+import uk.co.shockwaveinteractive.init.ItemInit;
 
-public class shockMetalTab extends CreativeTabs
+public class ShockMetalTab extends ItemGroup
 {
 
-	public shockMetalTab(String label) {
+	public ShockMetalTab(String label) {
 		super("shockmetaltab");		
 	}
 
 	@Override
 	public ItemStack createIcon() {
-		return new ItemStack(ItemInit.INGOT_SHOCKMETAL);
+		return new ItemStack(ItemInit.SHOCKMETAL_INGOT.get());
 	}
 	
 

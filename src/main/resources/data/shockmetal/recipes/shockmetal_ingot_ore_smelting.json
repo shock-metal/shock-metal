@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "shockmetal:shockmetal_ore_block"
+  },
+  "result": "shockmetal:shockmetal_ingot",
+  "experience": 3.0,
+  "cookingtime": 200
+}

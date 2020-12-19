@@ -1,0 +1,33 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        " I ",
+        " B ",
+        " G "
+    ],
+    
+    "key":
+    {
+        "I":
+        {
+            "item": "minecraft:iron_ingot"
+        },
+        
+        "B":
+        {
+            "item": "minecraft:book"
+        },
+        
+        "G":
+        {
+            "item": "minecraft:glowstone_dust"
+        }
+    },
+    
+    "result":
+    {
+        "item": "shockmetal:book_shockmetalmanual"
+    }
+}

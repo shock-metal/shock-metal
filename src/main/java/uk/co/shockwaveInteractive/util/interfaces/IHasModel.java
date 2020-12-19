@@ -1,4 +1,4 @@
-package uk.co.shockwaveInteractive.util.interfaces;
+package uk.co.shockwaveinteractive.util.interfaces;
 
 public interface IHasModel {
 

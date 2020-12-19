@@ -1,0 +1,43 @@
+{
+  "item.shockmetal.shockmetal_ingot" : "Shock Metal Ingot",
+  "item.shockmetal.shockmetal_dust" : "Pulvarised Shock Metal",
+  "item.shockmetal.book_shockmetalmanual" : "A guide on Shock Metal",
+  "item.shockmetal.frame_diamond" : "Frame: Diamond",
+
+  "item.shockmetal.shockmetal_axe" : "Shock Metal Axe",
+  "item.shockmetal.shockmetal_hoe" : "Shock Metal Hoe",
+  "item.shockmetal.shockmetal_pickaxe" : "Shock Metal Pickaxe",
+  "item.shockmetal.shockmetal_shovel" : "Shock Metal Shovel",
+  "item.shockmetal.shockmetal_sword" : "Shock Metal Sword",
+
+  "item.shockmetal.shockmetal_helmet" : "Shock Metal Helmet",
+  "item.shockmetal.shockmetal_chestplate" : "Shock Metal Chestplate",
+  "item.shockmetal.shockmetal_leggings" : "Shock Metal Leggings",
+  "item.shockmetal.shockmetal_boots" : "Shock Metal Boots",
+
+  "material.shockmetal.shockmetal" : "Shock Metal",
+
+  "message.shockmetal.mm.desc" : "Currently work in progress!!!",
+
+  "container.molecular_manipulator" : "Molecular Manipulator",
+
+  "block.shockmetal.shockmetal_block" : "Shock Metal Block",
+  "block.shockmetal.shockmetal_nether_ore_block" : "Shock Metal Ore",
+
+  "tile.molecular_manipulator" : "Molecular Manipulator",
+
+  "itemGroup.shockmetaltab" : "Shock Metal",
+
+  "gui.shockmetalconfiguration.mainTitle" : "Shock Metal Config",
+  "gui.shockmetalconfiguration.materialDamage" : "Shock Metal Damage Value",
+  "gui.shockmetalconfiguration.thermalExpansionIntegration" : "Enable Thermal Expansion Integration",
+  "gui.shockmetalconfiguration.tinkersIntegration" : "Enable Tinkers Construct Integration",
+  "gui.shockmetalconfiguration.swordLightning" : "Enable / Disable Shockmetal sword lightning ability",
+  "gui.shockmetalconfiguration.ctgy.general.tooltip" : "Configure General Settings",
+  "gui.shockmetalconfiguration.ctgy.integration.tooltip" : "Configure Mod Integration Settings",
+  "fluid.fluidshockmetal" : "Molten Shock Metal",
+  "fluid.fluidshockmetal.name" : "Molten Shock Metal",
+
+  "modifier.shockmetal.name" : "Atom Ripper",
+  "modifier.shockmetal.desc" : "Sets fire to the Un-dead, absorbing their matter to heal your wounds!"
+}

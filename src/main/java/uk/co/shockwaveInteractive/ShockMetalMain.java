@@ -1,86 +1,102 @@
-package uk.co.shockwaveInteractive;
+package uk.co.shockwaveinteractive;
 
+import net.minecraft.block.Block;
+import net.minecraft.item.ItemGroup;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.InterModComms;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
+import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
+import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.ItemStack;
-import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.Mod.EventHandler;
-import net.minecraftforge.fml.common.Mod.Instance;
-import net.minecraftforge.fml.common.SidedProxy;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
-import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.oredict.OreDictionary;
-import uk.co.shockwaveInteractive.init.BlockInit;
-import uk.co.shockwaveInteractive.init.ItemInit;
-import uk.co.shockwaveInteractive.integration.IntegrationHandler;
-import uk.co.shockwaveInteractive.integration.tconstruct.TConstructIntegration;
-import uk.co.shockwaveInteractive.integration.thermalexpansion.ThermalExpansionIntegration;
-import uk.co.shockwaveInteractive.proxy.CommonProxy;
-import uk.co.shockwaveInteractive.tabs.shockMetalTab;
-import uk.co.shockwaveInteractive.util.Reference;
-import uk.co.shockwaveInteractive.util.command.ShockMetalCommand;
-import uk.co.shockwaveInteractive.util.config.ShockMetalConfiguration;
-import uk.co.shockwaveInteractive.util.handlers.RegistryHandler;
+import uk.co.shockwaveinteractive.tabs.ShockMetalTab;
+import uk.co.shockwaveinteractive.util.Reference;
+import uk.co.shockwaveinteractive.util.handlers.RegistryHandler;
+import uk.co.shockwaveinteractive.world.gen.WorldGenCustomOres;
 
-@Mod(modid = Reference.MODID, name = Reference.NAME, dependencies = "after:tconstruct", version = Reference.VERSION, guiFactory = "uk.co.shockwaveInteractive.util.config.ConfigGuiFactory")
-public class ShockMetalMain 
+import java.util.Random;
+import java.util.stream.Collectors;
+//guiFactory = "uk.co.shockwaveinteractive.util.config.ConfigGuiFactory"
+@Mod(Reference.MODID)
+public class ShockMetalMain
 {
-	
-	public static Logger logger;
-	
-	public static FMLPreInitializationEvent preIntEvent;
+	// Directly reference a log4j logger.
+	private static final Logger LOGGER = LogManager.getLogger();
+	public static final ItemGroup SHOCKMETALTAB = new ShockMetalTab("shockmetaltab");
+	public static FMLCommonSetupEvent preIntEvent;
+	public static Random rnd;
 
-	@Instance
-	public static ShockMetalMain instance;
-	
-	public static final CreativeTabs shockmetaltab = new shockMetalTab("shockmetaltab");
-	
-	@SidedProxy(clientSide = Reference.CLIENT, serverSide = Reference.COMMON)
-	public static CommonProxy proxy;
-	
-	@EventHandler
-	public static void preInit(FMLPreInitializationEvent event)
+	public ShockMetalMain() {
+		// Register the setup method for modloading
+		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
+		// Register the enqueueIMC method for modloading
+		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::enqueueIMC);
+		// Register the processIMC method for modloading
+		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::processIMC);
+		// Register the doClientStuff method for modloading
+		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
+
+		RegistryHandler.init();
+
+		rnd = new Random();
+
+//		OreDictionary.registerOre("oreShockmetal", new ItemStack(BlockInit.ORE_NETHER ,1 ,0));
+//		OreDictionary.registerOre("ingotShockmetal", ItemInit.INGOT_SHOCKMETAL);
+//		OreDictionary.registerOre("dustShockmetal", ItemInit.DUST_SHOCKMETAL);
+//		OreDictionary.registerOre("blockShockmetal", BlockInit.BLOCK_SHOCKMETAL);
+
+//		IntegrationHandler.runInit();
+
+		// Register ourselves for server and other game events we are interested in
+		MinecraftForge.EVENT_BUS.register(this);
+	}
+
+	private void setup(final FMLCommonSetupEvent event)
 	{
+		// some preinit code
+//		LOGGER.info("HELLO FROM PREINIT");
+
 		preIntEvent = event;
-		
-		logger = event.getModLog();
-		RegistryHandler.otherRegistries();
-		ShockMetalConfiguration.preInit();	// Loads Config
-		proxy.preInit();
-		
-		
-		IntegrationHandler.checkInstalled();
-		IntegrationHandler.runPreInit();
+		WorldGenCustomOres.initOres();
+//		ShockMetalConfiguration.preInit();	// Loads Config
+
+//		IntegrationHandler.checkInstalled();
+//		IntegrationHandler.runPreInit();
 	}
-	
-	@EventHandler
-	public static void init(FMLInitializationEvent event)
-	{
-		RegistryHandler.initRegistries();
-		
-		OreDictionary.registerOre("oreShockmetal", new ItemStack(BlockInit.ORE_NETHER ,1 ,0));
-		OreDictionary.registerOre("ingotShockmetal", ItemInit.INGOT_SHOCKMETAL);
-		OreDictionary.registerOre("dustShockmetal", ItemInit.DUST_SHOCKMETAL);
-		OreDictionary.registerOre("blockShockmetal", BlockInit.BLOCK_SHOCKMETAL);
-		
-		IntegrationHandler.runInit();
+
+	private void doClientStuff(final FMLClientSetupEvent event) {
 	}
-	
-	@EventHandler
-	public static void postInit(FMLPostInitializationEvent event)
+
+	private void enqueueIMC(final InterModEnqueueEvent event)
 	{
-		
+		// some example code to dispatch IMC to another mod
+		InterModComms.sendTo("examplemod", "helloworld", () -> { LOGGER.info("Hello world from the MDK"); return "Hello world";});
 	}
-	
-	@EventHandler
-    public void serverStarting(FMLServerStartingEvent event) 
+
+	private void processIMC(final InterModProcessEvent event)
 	{
-        event.registerServerCommand(new ShockMetalCommand());
-    }
-	
+		// some example code to receive and process InterModComms from other mods
+		LOGGER.info("Got IMC {}", event.getIMCStream().
+				map(m->m.getMessageSupplier().get()).
+				collect(Collectors.toList()));
+	}
+	// You can use SubscribeEvent and let the Event Bus discover methods to call
+	@SubscribeEvent
+	public void onServerStarting(FMLServerStartingEvent event) {
+	}
+
+	// You can use EventBusSubscriber to automatically subscribe events on the contained class (this is subscribing to the MOD
+	// Event bus for receiving Registry Events)
+	@Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD)
+	public static class RegistryEvents {
+		@SubscribeEvent
+		public static void onBlocksRegistry(final RegistryEvent.Register<Block> blockRegistryEvent) {
+		}
+	}
 }

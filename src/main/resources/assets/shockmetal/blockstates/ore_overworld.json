@@ -1,0 +1,7 @@
+{
+    "variants":
+    {
+        "variant=aluminium": { "model": "tm:aluminium_overworld_ore" },
+        "variant=copper": { "model": "tm:copper_overworld_ore" }
+    }
+}

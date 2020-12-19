@@ -1,0 +1,13 @@
+{
+    "variants": 
+    {
+        "active=false,facing=north": { "model": "shockmetal:molecular_manipulator" },
+        "active=false,facing=east": { "model": "shockmetal:molecular_manipulator", "y": 90 },
+        "active=false,facing=south": { "model": "shockmetal:molecular_manipulator", "y": 180 },
+        "active=false,facing=west": { "model": "shockmetal:molecular_manipulator", "y": 270 },
+        "active=true,facing=north": { "model": "shockmetal:lit_molecular_manipulator" },
+        "active=true,facing=east": { "model": "shockmetal:lit_molecular_manipulator", "y": 90 },
+        "active=true,facing=south": { "model": "shockmetal:lit_molecular_manipulator", "y": 180 },
+        "active=true,facing=west": { "model": "shockmetal:lit_molecular_manipulator", "y":270  }
+    }
+}

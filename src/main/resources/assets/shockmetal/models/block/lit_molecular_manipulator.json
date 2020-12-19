@@ -1,0 +1,13 @@
+{
+    "parent": "block/orientable",
+    "textures": 
+    {
+        "particle": "shockmetal:blocks/molecular_manipulator_side",
+        "up": "shockmetal:blocks/molecular_manipulator_side",
+        "down": "shockmetal:blocks/molecular_manipulator_side",
+        "north": "shockmetal:blocks/molecular_manipulator_front_on",
+        "east": "shockmetal:blocks/molecular_manipulator_side",
+        "south": "shockmetal:blocks/molecular_manipulator_side",
+        "west": "shockmetal:blocks/molecular_manipulator_side"
+    }
+}

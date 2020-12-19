@@ -1,0 +1,7 @@
+{
+    "variants":
+    {
+        "variant=aluminium": { "model": "tm:aluminium_end_ore" },
+        "variant=copper": { "model": "tm:copper_end_ore" }
+    }
+}

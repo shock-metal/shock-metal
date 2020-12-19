@@ -1,50 +1,28 @@
-package uk.co.shockwaveInteractive.objects.items;
+package uk.co.shockwaveinteractive.objects.items;
 
-import java.util.List;
-
-import com.mojang.realmsclient.gui.ChatFormatting;
-
-import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.world.World;
-import uk.co.shockwaveInteractive.ShockMetalMain;
-import uk.co.shockwaveInteractive.init.ItemInit;
-import uk.co.shockwaveInteractive.util.interfaces.IHasModel;
+import uk.co.shockwaveinteractive.ShockMetalMain;
 
-public class ItemBase extends Item implements IHasModel
+public class ItemBase extends Item
 {
 	public boolean isRare;
-	
-	public ItemBase(String name, boolean isRare)
-	{
-		setTranslationKey(name);
-		setRegistryName(name);
-		setCreativeTab(ShockMetalMain.shockmetaltab);
+
+	public ItemBase(boolean isRare) {
+		super(new Item.Properties().group(ShockMetalMain.SHOCKMETALTAB));
 		this.isRare = isRare;
-		
-		ItemInit.ITEMS.add(this);
 	}
 
-	@Override
-	public void registerModels() {
-		
-		ShockMetalMain.proxy.registerItemRenderer(this, 0, "inventory");
-		
-	}
-	
-	@Override
-	public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
-		
-		if(this.getTranslationKey().equals("item.ingot_shockmetal"))
-		{
-			tooltip.add(ChatFormatting.DARK_PURPLE + "Shocking!");
-		}
-		
-		super.addInformation(stack, worldIn, tooltip, flagIn);
-	}
+//	@Override
+//	public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
+//
+//		if(this.getTranslationKey().equals("item.ingot_shockmetal"))
+//		{
+//			tooltip.add(ChatFormatting.DARK_PURPLE + "Shocking!");
+//		}
+//
+//		super.addInformation(stack, worldIn, tooltip, flagIn);
+//	}
 	
 	@Override
 	public boolean hasEffect(ItemStack stack) {
