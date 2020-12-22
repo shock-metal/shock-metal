@@ -1,5 +1,3 @@
-# I am currently busy at the moment, when I have some free time I will continue this mod and add support for other mod integrations, Thank you
-
 # ShockMetal - a minecraft mod
 <p align="center">
   <img src=https://img.shields.io/badge/Mod%20Version%20-1.1.0-blue.svg alt="Mod Version Badge" />
@@ -19,4 +17,4 @@ A small minecraft mod that adds a new tier of material above diamond with higher
 You have my permision to use my mod in mod packs
 
 License can be found in license.md file or at https://github.com/HarmanU/ShockMetal/blob/master/LICENSE.md
-©2018 Shockwave Interactive / Harman Uppal
+©2020 Shockwave Interactive / vNemesis_HD
