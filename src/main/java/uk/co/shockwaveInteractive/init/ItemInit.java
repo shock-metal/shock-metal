@@ -9,12 +9,11 @@ import net.minecraftforge.registries.ForgeRegistries;
 import uk.co.shockwaveinteractive.ShockMetalMain;
 import uk.co.shockwaveinteractive.objects.blocks.item.BlockItemBase;
 import uk.co.shockwaveinteractive.objects.items.ItemBase;
+import uk.co.shockwaveinteractive.objects.items.ItemRecipeTool;
+import uk.co.shockwaveinteractive.objects.items.resources.ItemIngotShockmetal;
 import uk.co.shockwaveinteractive.objects.materials.ShockmetalArmorMaterial;
 import uk.co.shockwaveinteractive.objects.tools.*;
 import uk.co.shockwaveinteractive.util.Reference;
-
-//import uk.co.shockwaveinteractive.objects.items.ItemShockMetalBook;
-
 
 /*
  * Initialises Items
@@ -29,10 +28,12 @@ public class ItemInit
 //	public static final ArmorMaterial ARMOUR_SHOCKMETAL = EnumHelper.addArmorMaterial("armour_shockmetal", Reference.MODID + ":shockmetal", 45, new int[]{5, 10, 16, 6}, 10, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.5f);
 	
 	//---------------------------- Items ----------------------------
-	public static final RegistryObject<Item> SHOCKMETAL_INGOT = ITEMS.register("shockmetal_ingot", () -> new ItemBase(true));
-	public static final RegistryObject<Item> SHOCKMETAL_DUST = ITEMS.register("shockmetal_dust", () -> new ItemBase(true));
-	//	public static final RegistryObject<Item> BOOK_SHOCKMETALMANUAL = ITEMS.register("book_shockmetalmanual", ItemShockMetalBook::new);
-	public static final RegistryObject<Item> FRAME_DIAMOND = ITEMS.register("frame_diamond", () -> new ItemBase(true));
+	public static final RegistryObject<Item> SHOCKMETAL_INGOT = ITEMS.register("shockmetal_ingot", ItemIngotShockmetal::new);
+	public static final RegistryObject<Item> SHOCKMETAL_DUST = ITEMS.register("shockmetal_dust", ItemBase::new);
+	public static final RegistryObject<Item> NETHERITE_DUST = ITEMS.register("netherite_dust", ItemBase::new);
+	public static final RegistryObject<Item> SHOCKRITE_DUST = ITEMS.register("shockrite_dust", ItemBase::new);
+	public static final RegistryObject<Item> ORE_GRINDER = ITEMS.register("ore_grinder", ItemRecipeTool::new);
+	public static final RegistryObject<Item> FRAME_DIAMOND = ITEMS.register("frame_diamond", ItemBase::new);
 
 	//---------------------------- Block Items ----------------------------
 	public static final RegistryObject<Item> SHOCKMETAL_BLOCK_ITEM = ITEMS.register("shockmetal_block", () -> new BlockItemBase(BlockInit.SHOCKMETAL_BLOCK.get()));

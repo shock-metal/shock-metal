@@ -1,5 +1,7 @@
 package uk.co.shockwaveinteractive.objects.tools;
 
+import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.CreatureAttribute;
 
 import net.minecraft.entity.LivingEntity;
@@ -9,9 +11,15 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.SwordItem;
 import net.minecraft.potion.Effect;
 import net.minecraft.potion.EffectInstance;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraft.world.World;
 import uk.co.shockwaveinteractive.ShockMetalMain;
 import uk.co.shockwaveinteractive.objects.materials.ShockmetalItemTier;
 
+import javax.annotation.Nullable;
+import java.util.List;
 import java.util.Random;
 //import uk.co.shockwaveinteractive.util.config.ShockMetalConfiguration;
 
@@ -25,20 +33,27 @@ public class ShockmetalToolSword extends SwordItem
 				-1.0f,
 				new Item.Properties()
 						.group(ShockMetalMain.SHOCKMETALTAB)
+						.isImmuneToFire()
 		);
 	}
 
-//	@Override
-//	public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
-//
-//		if(GuiScreen.isShiftKeyDown())
-//		{
-//			tooltip.add(ChatFormatting.WHITE + "The sword seems to rip the atoms of undead enenmies causing them to combust. It also seems to absorb the energy to help heal your wounds.");
-//		}
-//		else tooltip.add(ChatFormatting.DARK_PURPLE + "Press <<SHIFT>> for more Info");
-//
-//		super.addInformation(stack, worldIn, tooltip, flagIn);
-//	}
+	@Override
+	public int getItemEnchantability() {
+		return super.getItemEnchantability() - 4;
+	}
+
+	@Override
+	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
+		super.addInformation(stack, worldIn, tooltip, flagIn);
+
+		if(Screen.hasShiftDown())
+		{
+			tooltip.add(new TranslationTextComponent("info.shockwave.shockmetal.sword").mergeStyle(TextFormatting.WHITE));
+		}
+		else tooltip.add(new TranslationTextComponent("info.shockwave.gui.shift-info").mergeStyle(TextFormatting.GRAY));
+
+		super.addInformation(stack, worldIn, tooltip, flagIn);
+	}
 	
 	
 	@Override
@@ -82,17 +97,5 @@ public class ShockmetalToolSword extends SwordItem
 //		  
 //		 return new ActionResult<>(EnumActionResult.SUCCESS, itemStack);
 //	}
-	
-	// used to customise attributes
-//	public Multimap<String, AttributeModifier> getAttributeModifiers(EntityEquipmentSlot slot, ItemStack stack)
-//    {
-//        Multimap<String, AttributeModifier> multimap = super.getItemAttributeModifiers(slot);
-//        if (slot == EntityEquipmentSlot.MAINHAND)
-//        {
-//            multimap.removeAll(SharedMonsterAttributes.ATTACK_DAMAGE.getName());
-//            multimap.put(SharedMonsterAttributes.ATTACK_DAMAGE.getName(), new AttributeModifier(ATTACK_DAMAGE_MODIFIER, "Weapon modifier", ((float) ShockMetalConfiguration.materialDamage + 4.0f), 0));
-//        }
-//        return multimap;
-//    }
 
 }

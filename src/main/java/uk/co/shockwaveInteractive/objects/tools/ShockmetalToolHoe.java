@@ -15,6 +15,7 @@ public class ShockmetalToolHoe extends HoeItem {
 				-2.0f,
 				new Item.Properties()
 						.group(ShockMetalMain.SHOCKMETALTAB)
+						.isImmuneToFire()
 		);
 	}
 }

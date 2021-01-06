@@ -4,8 +4,8 @@
     "pattern":
     [
         " I ",
-        " B ",
-        " G "
+        "SFS",
+        "SSS"
     ],
     
     "key":
@@ -14,20 +14,18 @@
         {
             "item": "minecraft:iron_ingot"
         },
-        
-        "B":
+        "S":
         {
-            "item": "minecraft:book"
+            "item": "minecraft:stone"
         },
-        
-        "G":
+        "F":
         {
-            "item": "minecraft:glowstone_dust"
+            "item": "minecraft:flint"
         }
     },
     
     "result":
     {
-        "item": "shockmetal:book_shockmetalmanual"
+        "item": "shockmetal:ore_grinder"
     }
 }

@@ -7,11 +7,11 @@
     }
   ],
   "ingredient": {
-    "item": "shockmetal:shockmetal_nether_ore_block"
+    "item": "minecraft:netherite_ingot"
   },
   "result": [
     {
-      "item": "shockmetal:shockmetal_dust",
+      "tag": "forge:dusts/netherite_dust",
       "count": 2
     }
   ],

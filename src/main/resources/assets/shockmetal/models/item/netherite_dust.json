@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "shockmetal:items/book_shockmetalmanual"
+        "layer0": "shockmetal:items/netherite_dust"
     }
 }
