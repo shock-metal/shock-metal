@@ -1,6 +1,6 @@
 {
     "parent": "item/handheld",
     "textures": {
-        "layer0": "shockmetal:items/toolsshockmetal_axe"
+        "layer0": "shockmetal:items/tools/shockmetal_axe"
     }
 }

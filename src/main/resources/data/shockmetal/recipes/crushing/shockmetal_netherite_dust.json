@@ -1,17 +1,17 @@
 {
-  "type": "minecraft:crafting_shapeless",
+    "type": "minecraft:crafting_shapeless",
 
-  "ingredients": [
+    "ingredients": [
+      {
+        "item": "minecraft:netherite_ingot"
+      },
+      {
+        "item": "shockmetal:ore_grinder"
+      }
+    ],
+
+    "result":
     {
-      "item": "minecraft:netherite_ingot"
-    },
-    {
-      "item": "shockmetal:ore_grinder"
+      "item": "shockmetal:netherite_dust"
     }
-  ],
-
-  "result":
-  {
-    "tag": "forge:dusts/netherite"
-  }
 }

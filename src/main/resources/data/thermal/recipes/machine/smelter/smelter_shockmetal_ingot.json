@@ -1,0 +1,31 @@
+{
+  "type": "thermal:smelter",
+  "input": [
+    {
+      "value": [
+        {
+          "item": "shockmetal:shockmetal_nether_ore_block"
+        }
+      ],
+      "count": 1
+    },
+    {
+      "value": [
+        {
+          "item": "minecraft:netherite_ingot"
+        },
+        {
+          "tag": "forge:dusts/netherite"
+        }
+      ],
+      "count": 1
+    }
+  ],
+  "result": [
+    {
+      "item": "shockmetal:shockmetal_ingot",
+      "count": 2
+    }
+  ],
+  "energy": 4000
+}

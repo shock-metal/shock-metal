@@ -6,6 +6,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.InterModComms;
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
@@ -15,15 +16,19 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import net.minecraftforge.fml.common.Mod;
+import uk.co.shockwaveinteractive.init.Entities;
 import uk.co.shockwaveinteractive.tabs.ShockMetalTab;
-import uk.co.shockwaveinteractive.util.Reference;
+import uk.co.shockwaveinteractive.util.reference.MainReference;
 import uk.co.shockwaveinteractive.util.handlers.RegistryHandler;
+import uk.co.shockwaveinteractive.util.renderers.SpriteRendererShock;
 import uk.co.shockwaveinteractive.world.gen.WorldGenCustomOres;
 
 import java.util.Random;
 import java.util.stream.Collectors;
-//guiFactory = "uk.co.shockwaveinteractive.util.config.ConfigGuiFactory"
-@Mod(Reference.MODID)
+
+import static uk.co.shockwaveinteractive.init.Entities.SHOCK_GRENADE_ENTITY;
+
+@Mod(MainReference.MODID)
 public class ShockMetalMain
 {
 	// Directly reference a log4j logger.
@@ -46,11 +51,6 @@ public class ShockMetalMain
 
 		rnd = new Random();
 
-//		OreDictionary.registerOre("oreShockmetal", new ItemStack(BlockInit.ORE_NETHER ,1 ,0));
-//		OreDictionary.registerOre("ingotShockmetal", ItemInit.INGOT_SHOCKMETAL);
-//		OreDictionary.registerOre("dustShockmetal", ItemInit.DUST_SHOCKMETAL);
-//		OreDictionary.registerOre("blockShockmetal", BlockInit.BLOCK_SHOCKMETAL);
-
 //		IntegrationHandler.runInit();
 
 		// Register ourselves for server and other game events we are interested in
@@ -71,6 +71,7 @@ public class ShockMetalMain
 	}
 
 	private void doClientStuff(final FMLClientSetupEvent event) {
+		registerEntityRenderingHandlers();
 	}
 
 	private void enqueueIMC(final InterModEnqueueEvent event)
@@ -98,5 +99,9 @@ public class ShockMetalMain
 		@SubscribeEvent
 		public static void onBlocksRegistry(final RegistryEvent.Register<Block> blockRegistryEvent) {
 		}
+	}
+
+	private void registerEntityRenderingHandlers() {
+		RenderingRegistry.registerEntityRenderingHandler(SHOCK_GRENADE_ENTITY.get(), SpriteRendererShock::new);
 	}
 }

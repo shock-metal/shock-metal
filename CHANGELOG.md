@@ -5,33 +5,41 @@
 
 Note: This is an early version for 1.16.4. It's been a long time since I made this mod and quite a lot has changed.
 Some yet to be updated features include:
-- Configuration Screen
-- Intractable Blocks
-- Mod Integration (Mainly waiting for mods to be released for 1.16.4)
+- Configuration
 
 No server testing has been conducted so please report any issue you are having if you play multiplayer with this mod installed please :)
 
 ### Additions
 #### Mod Integration
 - Added Patchouli data for in-game documentation (Probably won't make a custom book for the documentation, this is much easier to maintain. I'll still update github wiki with information )
-
-#### Items
-- Added shockmetal blend
-- Added netherite dust
-- Added shockmetal ore dust
-
-
-### Modifications
-#### Mod Integration (Tetra)
 - Added compatibility with Tetra
 
+#### Items
+- Added shockrite dust
+- Added netherite dust
+- Added ore grinder (can turn items into there dust equivalents, based on tags so should work with other mods that add tagged dusts)
+
+#### Tools / Weapons
+- Added shock grenade
+
 #### Recipes
-- Ore now has to be crushed with manual grinder then combined with netherite dust to make shockmetal blend, this can then be smelted into ingot.
-- Shock metal ore produces 2 shockmetal ore dust
+- Added recipe for netherite dust
+- Added recipe for creating common dusts with ore grinder (Iron, Gold, Copper, Tin, Aluminium, Lead, Silver, Redstone, Coal, Diamond)
+
+### Modifications
+#### Recipes
+- Ore now has to be crushed with manual grinder and netherite dust to make 2 shockrite dust, this can then be smelted into shockmetal ingot.
+- shockmetal ore can no longer be smelted
+- shockmetal ingot made from smelting shockrite dust or shockmetal dust
 
 #### Tools / Weapons
 - All tools and armour immune to fire like netherite
 - Sword now has a decreased enchantability compared to other tools (It has a special effect anyways)
+- Sword can now preform AoE attack by sneaking and right clicking. Damage is based on a charge level. when you hit an entity the charge increase by 1.
+
+#### Textures
+- updated shockmetal ore texture with new netherack texture, also has new animated texture
+- shockmetal ingot has new animated texture, more inline with other ingots
 
 ---
 

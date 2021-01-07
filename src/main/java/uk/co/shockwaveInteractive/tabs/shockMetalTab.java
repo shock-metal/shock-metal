@@ -2,7 +2,7 @@ package uk.co.shockwaveinteractive.tabs;
 
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
-import uk.co.shockwaveinteractive.init.ItemInit;
+import uk.co.shockwaveinteractive.init.Items;
 
 public class ShockMetalTab extends ItemGroup
 {
@@ -13,7 +13,7 @@ public class ShockMetalTab extends ItemGroup
 
 	@Override
 	public ItemStack createIcon() {
-		return new ItemStack(ItemInit.SHOCKMETAL_INGOT.get());
+		return new ItemStack(Items.SHOCKMETAL_INGOT.get());
 	}
 	
 

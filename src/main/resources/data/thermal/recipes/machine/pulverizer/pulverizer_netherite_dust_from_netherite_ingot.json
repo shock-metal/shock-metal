@@ -11,8 +11,8 @@
   },
   "result": [
     {
-      "tag": "forge:dusts/netherite_dust",
-      "count": 2
+      "item": "shockmetal:netherite_dust",
+      "count": 1
     }
   ],
   "energy_mod": 0.5

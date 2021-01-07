@@ -7,14 +7,14 @@ import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import uk.co.shockwaveinteractive.init.ItemInit;
-import uk.co.shockwaveinteractive.util.Reference;
+import uk.co.shockwaveinteractive.init.Items;
+import uk.co.shockwaveinteractive.util.reference.MainReference;
 
 import java.util.function.Supplier;
 
 public enum ShockmetalArmorMaterial implements IArmorMaterial
 {
-    SHOCKMETAL(Reference.MODID + ":shockmetal", 45, new int[]{5, 10, 16, 6}, 16, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.5f, () -> { return Ingredient.fromItems(ItemInit.SHOCKMETAL_INGOT.get()); }, 1);
+    SHOCKMETAL(MainReference.MODID + ":shockmetal", 45, new int[]{5, 10, 16, 6}, 16, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.5f, () -> { return Ingredient.fromItems(Items.SHOCKMETAL_INGOT.get()); }, 1);
 
     private static final int[] MAX_DAMAGE_ARRAY = new int[] {11, 16, 15, 13};
     private final String name;

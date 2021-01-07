@@ -3,10 +3,7 @@
 
     "ingredients": [
         {
-            "tag": "forge:dusts/netherite"
-        },
-        {
-            "item": "shockmetal:shockmetal_nether_ore_block"
+            "item": "shockmetal:shockmetal_ingot"
         },
         {
             "item": "shockmetal:ore_grinder"
@@ -15,6 +12,7 @@
     
     "result":
     {
-        "item": "shockmetal:shockrite_dust"
+        "item": "shockmetal:shockmetal_dust",
+        "count": 2
     }
 }

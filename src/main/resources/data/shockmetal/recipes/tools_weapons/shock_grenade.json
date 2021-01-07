@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:crafting_shaped",
+
+  "pattern":
+  [
+    "III",
+    "ISI",
+    "IGI"
+  ],
+
+  "key":
+  {
+    "I":
+    {
+      "tag": "forge:ingots/iron"
+    },
+    "S":
+    {
+      "item": "shockmetal:shockmetal_dust"
+    },
+    "G":
+    {
+      "item": "minecraft:gunpowder"
+    }
+  },
+
+  "result":
+  {
+    "item": "shockmetal:shock_grenade",
+    "count": 16
+  }
+}

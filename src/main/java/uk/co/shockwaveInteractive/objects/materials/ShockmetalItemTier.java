@@ -2,8 +2,7 @@ package uk.co.shockwaveinteractive.objects.materials;
 
 import net.minecraft.item.IItemTier;
 import net.minecraft.item.crafting.Ingredient;
-import uk.co.shockwaveinteractive.init.ItemInit;
-import uk.co.shockwaveinteractive.util.handlers.RegistryHandler;
+import uk.co.shockwaveinteractive.init.Items;
 
 import java.util.function.Supplier;
 
@@ -11,7 +10,7 @@ public enum ShockmetalItemTier implements IItemTier {
 
     // String name, int harvestLevel, int maxUses, float efficiency, float damage, int enchantability
 //    (float) ShockMetalConfiguration.materialDamage
-    SHOCKMETAL(3, 2500, 8.0f, 5.0f, 16, () -> { return Ingredient.fromItems(ItemInit.SHOCKMETAL_INGOT.get()); });
+    SHOCKMETAL(3, 2500, 8.0f, 5.0f, 16, () -> { return Ingredient.fromItems(Items.SHOCKMETAL_INGOT.get()); });
 
     private final int harvestLevel;
     private final int maxUses;
