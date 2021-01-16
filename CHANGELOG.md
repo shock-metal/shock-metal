@@ -11,8 +11,8 @@ No server testing has been conducted so please report any issue you are having i
 
 ### Additions
 #### Mod Integration
-- Added Patchouli data for in-game documentation (Probably won't make a custom book for the documentation, this is much easier to maintain. I'll still update github wiki with information )
-- Added compatibility with Tetra
+- Added Patchouli data for in-game documentation WIP (Probably won't make a custom book for the documentation, this is much easier to maintain. I'll still update github wiki with information )
+- Added compatibility with Tetra (WIP)
 
 #### Items
 - Added shockrite dust
@@ -24,7 +24,8 @@ No server testing has been conducted so please report any issue you are having i
 
 #### Recipes
 - Added recipe for netherite dust
-- Added recipe for creating common dusts with ore grinder (Iron, Gold, Copper, Tin, Aluminium, Lead, Silver, Redstone, Coal, Diamond)
+
+[comment]: <0.4.0> (- Added recipe for creating common dusts with ore grinder &#40;Iron, Gold, Copper, Tin, Aluminium, Lead, Silver, Redstone, Coal, Diamond&#41;)
 
 ### Modifications
 #### Recipes

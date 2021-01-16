@@ -1,0 +1,11 @@
+{
+  "name": "WIP",
+  "icon": "minecraft:writable_book",
+  "category": "shockmetal:test_category",
+  "pages": [
+    {
+      "type": "spotlight",
+      "item": "minecraft:andesite"
+    }
+  ]
+}
