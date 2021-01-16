@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "shockmetal:items/shockmetal_dust"
+        "layer0": "shockmetal:items/dusts/shockmetal_dust"
     }
 }

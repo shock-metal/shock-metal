@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "shockmetal:shockrite_dust"
+  },
+  "result": "shockmetal:shockmetal_ingot",
+  "experience": 3.0,
+  "cookingtime": 200
+}

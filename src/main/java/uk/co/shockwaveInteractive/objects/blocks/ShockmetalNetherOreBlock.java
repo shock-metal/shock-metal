@@ -14,7 +14,7 @@ public class ShockmetalNetherOreBlock extends OreBlock {
                 .harvestLevel(3)
                 .harvestTool(ToolType.PICKAXE)
                 .sound(SoundType.STONE)
-                .setLightLevel(value -> 3)
+                .setLightLevel(value -> 15)
                 .setRequiresTool()
         );
     }

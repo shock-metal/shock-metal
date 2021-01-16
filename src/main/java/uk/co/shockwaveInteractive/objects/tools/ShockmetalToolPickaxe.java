@@ -14,6 +14,7 @@ public class ShockmetalToolPickaxe extends PickaxeItem
 				-2.0f,
 				new Item.Properties()
 						.group(ShockMetalMain.SHOCKMETALTAB)
+						.isImmuneToFire()
 		);
 	}
 }

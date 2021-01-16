@@ -14,7 +14,6 @@ public class ShockmetalBlock extends Block {
                 .harvestLevel(3)
                 .harvestTool(ToolType.PICKAXE)
                 .sound(SoundType.METAL)
-                .setLightLevel(value -> 3)
                 .setRequiresTool()
         );
     }

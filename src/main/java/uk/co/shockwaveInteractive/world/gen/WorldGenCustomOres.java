@@ -13,12 +13,12 @@ import net.minecraftforge.event.world.BiomeLoadingEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import uk.co.shockwaveinteractive.init.BlockInit;
-import uk.co.shockwaveinteractive.util.Reference;
+import uk.co.shockwaveinteractive.init.Blocks;
+import uk.co.shockwaveinteractive.util.reference.MainReference;
 
 import java.util.ArrayList;
 
-@Mod.EventBusSubscriber(modid = Reference.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
+@Mod.EventBusSubscriber(modid = MainReference.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class WorldGenCustomOres
 {
 //	public static OreFeatureConfig.FillerBlockType END_STONE = OreFeatureConfig.FillerBlockType.create("END_STONE", "end_stone", new BlockMatcher(Blocks.END_STONE));
@@ -30,7 +30,7 @@ public class WorldGenCustomOres
 	{
 		netherOres.add(register(
 				"shockwave_nether_ore", Feature.ORE.withConfiguration(
-						new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NETHERRACK, BlockInit.SHOCKMETAL_NETHER_ORE_BLOCK.get().getDefaultState(), 4))
+						new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NETHERRACK, Blocks.SHOCKMETAL_NETHER_ORE_BLOCK.get().getDefaultState(), 4))
 				)
 				.range(20)
 				.func_242731_b(1) // chunk spawn frequency
@@ -56,7 +56,7 @@ public class WorldGenCustomOres
 	}
 
 	private static <FC extends IFeatureConfig> ConfiguredFeature<FC, ?> register(String name, ConfiguredFeature<FC, ?> configuredFeature) {
-		return Registry.register(WorldGenRegistries.CONFIGURED_FEATURE, Reference.MODID + ":" + name, configuredFeature);
+		return Registry.register(WorldGenRegistries.CONFIGURED_FEATURE, MainReference.MODID + ":" + name, configuredFeature);
 	}
 
 //	@SubscribeEvent

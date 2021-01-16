@@ -16,6 +16,9 @@ public class ShockmetalToolAxe extends AxeItem
                 -2.0f,
                 new Item.Properties()
                         .group(ShockMetalMain.SHOCKMETALTAB)
+                .isImmuneToFire()
         );
+
+
     }
 }

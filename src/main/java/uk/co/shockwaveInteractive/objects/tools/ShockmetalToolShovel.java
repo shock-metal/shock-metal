@@ -16,6 +16,7 @@ public class ShockmetalToolShovel extends ShovelItem
 				-2.0f,
 				new Item.Properties()
 						.group(ShockMetalMain.SHOCKMETALTAB)
+						.isImmuneToFire()
 		);
 	}
 }

@@ -1,19 +1,20 @@
 {
   "item.shockmetal.shockmetal_ingot" : "Shock Metal Ingot",
-  "item.shockmetal.shockmetal_dust" : "Pulvarised Shock Metal",
-  "item.shockmetal.book_shockmetalmanual" : "A guide on Shock Metal",
+  "item.shockmetal.shockmetal_dust" : "Shock Metal Dust",
+  "item.shockmetal.shockrite_dust" : "Shockrite Dust",
+  "item.shockmetal.netherite_dust" : "Netherite Dust",
+  "item.shockmetal.ore_grinder" : "Manual Ore Grinder",
   "item.shockmetal.frame_diamond" : "Frame: Diamond",
-
   "item.shockmetal.shockmetal_axe" : "Shock Metal Axe",
   "item.shockmetal.shockmetal_hoe" : "Shock Metal Hoe",
   "item.shockmetal.shockmetal_pickaxe" : "Shock Metal Pickaxe",
   "item.shockmetal.shockmetal_shovel" : "Shock Metal Shovel",
   "item.shockmetal.shockmetal_sword" : "Shock Metal Sword",
-
   "item.shockmetal.shockmetal_helmet" : "Shock Metal Helmet",
   "item.shockmetal.shockmetal_chestplate" : "Shock Metal Chestplate",
   "item.shockmetal.shockmetal_leggings" : "Shock Metal Leggings",
   "item.shockmetal.shockmetal_boots" : "Shock Metal Boots",
+  "item.shockmetal.shock_grenade" : "Shock Grenade",
 
   "material.shockmetal.shockmetal" : "Shock Metal",
 
@@ -28,6 +29,12 @@
 
   "itemGroup.shockmetaltab" : "Shock Metal",
 
+  "info.shockwave.shockmetal.ingot": "Shocking!",
+  "info.shockwave.gui.shift-info": "Hold <<SHIFT>> for more info",
+
+  "info.shockwave.shockmetal.sword": "Right click whilst sneaking to use AoE attack",
+  "info.shockwave.shock_grenade": "Deals explosive damage and light undead on fire, emits electric energy to nearby mobs...",
+
   "gui.shockmetalconfiguration.mainTitle" : "Shock Metal Config",
   "gui.shockmetalconfiguration.materialDamage" : "Shock Metal Damage Value",
   "gui.shockmetalconfiguration.thermalExpansionIntegration" : "Enable Thermal Expansion Integration",
@@ -39,5 +46,9 @@
   "fluid.fluidshockmetal.name" : "Molten Shock Metal",
 
   "modifier.shockmetal.name" : "Atom Ripper",
-  "modifier.shockmetal.desc" : "Sets fire to the Un-dead, absorbing their matter to heal your wounds!"
+  "modifier.shockmetal.desc" : "Sets fire to the Un-dead, absorbing their matter to heal your wounds!",
+
+
+  "book.shockmetal.name": "Shockathon",
+  "book.shockmetal.landing-text": "WIP Here you will find all there is to know about shockmetal!"
 }
