@@ -40,6 +40,9 @@ import javax.annotation.Nullable;
 import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Random;
+
+import static uk.co.shockwaveinteractive.util.reference.MainReference.TRANSLATION_INFO_PREFIX;
+import static uk.co.shockwaveinteractive.util.reference.MainReference.TRANSLATION_SHIFT_INFO;
 //import uk.co.shockwaveinteractive.util.config.ShockMetalConfiguration;
 
 
@@ -72,9 +75,9 @@ public class ShockmetalToolSword extends SwordItem
 
 		if(Screen.hasShiftDown())
 		{
-			tooltip.add(new TranslationTextComponent("info.shockwave.shockmetal.sword").mergeStyle(TextFormatting.WHITE));
+			tooltip.add(new TranslationTextComponent(TRANSLATION_INFO_PREFIX + "shockmetal.sword").mergeStyle(TextFormatting.WHITE));
 		}
-		else tooltip.add(new TranslationTextComponent("info.shockwave.gui.shift-info").mergeStyle(TextFormatting.GRAY));
+		else tooltip.add(new TranslationTextComponent(TRANSLATION_SHIFT_INFO).mergeStyle(TextFormatting.GRAY));
 	}
 	
 	
@@ -150,34 +153,4 @@ public class ShockmetalToolSword extends SwordItem
 		}
 		return 1;
 	}
-
-	//	@Override
-//	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) 
-//	 {
-//		// Get the sword in his hand
-//		 ItemStack itemStack = playerIn.getHeldItem(handIn);
-//		 
-//		if (!playerIn.world.isRemote && ShockMetalConfiguration.swordLightning) 
-//		{
-//					
-//			Vec3d posVec = new Vec3d(playerIn.posX, playerIn.posY + playerIn.getEyeHeight(), playerIn.posZ);
-//	        Vec3d lookVec = playerIn.getLookVec();
-//	        
-//	        RayTraceResult trace = worldIn.rayTraceBlocks(posVec, posVec.add(lookVec));
-//	        
-//	        if(trace != null)
-//	        {
-//				itemStack.damageItem(80, playerIn);
-//		        BlockPos pos = trace.getBlockPos();
-//		        
-//		        double distance = posVec.distanceTo(new Vec3d(pos.getX(), pos.getY(), pos.getZ()));
-//		        
-//				EntityLightningBolt lightning = new EntityLightningBolt(playerIn.getEntityWorld(), pos.getX(), pos.getY(), pos.getZ(), false);
-//				playerIn.getEntityWorld().addWeatherEffect(lightning);
-//	        }
-//		}
-//		  
-//		 return new ActionResult<>(EnumActionResult.SUCCESS, itemStack);
-//	}
-
 }

@@ -17,6 +17,8 @@
   "item.shockmetal.shock_grenade" : "Shock Grenade",
 
   "material.shockmetal.shockmetal" : "Shock Metal",
+  "tetra.material.shockmetal": "Shockmetal",
+  "tetra.material.shockmetal.prefix": "Shockmetal",
 
   "message.shockmetal.mm.desc" : "Currently work in progress!!!",
 
@@ -29,11 +31,11 @@
 
   "itemGroup.shockmetaltab" : "Shock Metal",
 
-  "info.shockwave.shockmetal.ingot": "Shocking!",
-  "info.shockwave.gui.shift-info": "Hold <<SHIFT>> for more info",
+  "info.shockmetal.gui.shockmetal.ingot": "Shocking!",
+  "info.shockmetal.gui.shift-info": "Hold <<SHIFT>> for more info",
 
-  "info.shockwave.shockmetal.sword": "Right click whilst sneaking to use AoE attack",
-  "info.shockwave.shock_grenade": "Deals explosive damage and light undead on fire, emits electric energy to nearby mobs...",
+  "info.shockmetal.gui.shockmetal.sword": "Right click whilst sneaking to use AoE attack",
+  "info.shockmetal.gui.shock_grenade": "Deals explosive damage and light undead on fire, emits electric energy to nearby mobs...",
 
   "gui.shockmetalconfiguration.mainTitle" : "Shock Metal Config",
   "gui.shockmetalconfiguration.materialDamage" : "Shock Metal Damage Value",

@@ -1,5 +1,9 @@
 # Change Log
 
+## Version 1.16.4-0.3.1
+### Fixes
+- Fixed Issue with tetra language file
+
 ## Version 1.16.4-0.3.0
 **There are some recipe changes in this version, before updating please remove all ore and dusts from furnaces to avoid any issues**
 

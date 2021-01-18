@@ -24,6 +24,7 @@ import uk.co.shockwaveinteractive.objects.tools.*;
 import uk.co.shockwaveinteractive.util.reference.MainReference;
 
 import static uk.co.shockwaveinteractive.util.reference.IDReference.*;
+import static uk.co.shockwaveinteractive.util.reference.MainReference.TRANSLATION_INFO_PREFIX;
 
 /*
  * Initialises Items
@@ -58,7 +59,8 @@ public class Items
 				return new ShockGrenadeEntity(world, posX, posY, posZ);
 			}
 
-		}, new Item.Properties().group(ShockMetalMain.SHOCKMETALTAB).maxStackSize(16), "info.shockwave.shock_grenade"));
+
+		}, new Item.Properties().group(ShockMetalMain.SHOCKMETALTAB).maxStackSize(16), TRANSLATION_INFO_PREFIX +"shock_grenade"));
 
 	//---------------------------- Block Items ----------------------------
 	public static final RegistryObject<Item> SHOCKMETAL_BLOCK_ITEM = REGISTRY_ITEMS.register(ID_SHOCKMETAL_BLOCK_ITEM, () -> new BlockItemBase(Blocks.SHOCKMETAL_BLOCK.get()));
