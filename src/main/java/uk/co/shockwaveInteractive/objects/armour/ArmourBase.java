@@ -11,14 +11,3 @@ public class ArmourBase extends ArmorItem
 		super(materialIn, slot, builderIn);
 	}
 }
-
-//	public ArmourBase(String name, ArmorMaterial materialIn, int renderIndexIn, EntityEquipmentSlot equipmentSlotIn)
-//	{
-//		super(materialIn, renderIndexIn, equipmentSlotIn);
-//		setTranslationKey(name);
-//		setRegistryName(name);
-//		setCreativeTab(ShockMetalMain.SHOCKMETALTAB);
-//
-//		ItemInit.ITEMS.add(this);
-//	}
-//}

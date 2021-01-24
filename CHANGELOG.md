@@ -1,5 +1,18 @@
 # Change Log
 
+## Version 1.16.4-0.3.2
+### Fixes
+- Fixed Issue with incorrect and missing recipes for ore grinder
+- Fixed texture issues with armour models
+
+### Additions
+- Added Atom Ripper enchantment, this will provide the same effects as the sword but without the random aspect. when applied to the sword it removes the chance effect.
+- Added shockmetal improvement to tetra material, this will provide the same effects as the sword for all tetra tools.
+
+### Modifications
+- Ore grinder reduced to 50 uses
+
+
 ## Version 1.16.4-0.3.1
 ### Fixes
 - Fixed Issue with tetra language file

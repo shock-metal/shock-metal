@@ -2,44 +2,35 @@ package uk.co.shockwaveinteractive.objects.tools;
 
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.CreatureAttribute;
 
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 
-import net.minecraft.entity.monster.CreeperEntity;
-import net.minecraft.entity.monster.ZombifiedPiglinEntity;
-import net.minecraft.entity.passive.PigEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.SwordItem;
-import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.potion.Effect;
 import net.minecraft.potion.EffectInstance;
+import net.minecraft.potion.Effects;
 import net.minecraft.util.*;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
-import net.minecraft.world.Difficulty;
-import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import uk.co.shockwaveinteractive.ShockMetalMain;
+import uk.co.shockwaveinteractive.init.Enchantments;
 import uk.co.shockwaveinteractive.objects.materials.ShockmetalItemTier;
 import uk.co.shockwaveinteractive.util.Utility;
 
 import javax.annotation.Nullable;
-import java.lang.reflect.Field;
 import java.util.List;
-import java.util.Random;
 
 import static uk.co.shockwaveinteractive.util.reference.MainReference.TRANSLATION_INFO_PREFIX;
 import static uk.co.shockwaveinteractive.util.reference.MainReference.TRANSLATION_SHIFT_INFO;
@@ -84,11 +75,13 @@ public class ShockmetalToolSword extends SwordItem
 	@Override
 	public boolean hitEntity(ItemStack stack, LivingEntity target, LivingEntity attacker)
 	{
+		boolean hasAtomRipperEnchant = EnchantmentHelper.getEnchantmentLevel(Enchantments.ATOM_RIPPER.get(), stack) > 0;
+
 		// If target is undead, has 20% chance to catch fire and apply regen effect
-		if(target.getCreatureAttribute() == CreatureAttribute.UNDEAD && ShockMetalMain.rnd.nextInt(100) < 19)
+		if( !hasAtomRipperEnchant && target.getCreatureAttribute() == CreatureAttribute.UNDEAD && ShockMetalMain.rnd.nextInt(100) < 19)
 		{
 			target.setFire(5);
-			attacker.addPotionEffect(new EffectInstance(Effect.get(10), 100));
+			attacker.addPotionEffect(new EffectInstance(Effects.REGENERATION, 100));
 		}
 
 		if (target.isAlive() && charge < maxCharge) {

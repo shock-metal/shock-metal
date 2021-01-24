@@ -33,4 +33,9 @@ public class IDReference {
 //    region ENTITIES
     public static final String ID_SHOCK_GRENADE_ENTITY = "shock_grenade_entity";
     //    endregion
+
+//    region ENCHANTS
+    public static final String ID_ATOM_RIPPER_ENCHANT = "atom_ripper";
+    public static final String ID_SHOCK_METAL_ASPECT_ENCHANT = "shock_metal_aspect";
+//    endregion
 }

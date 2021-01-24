@@ -40,7 +40,7 @@ public class Items
 	public static final RegistryObject<Item> SHOCKMETAL_DUST = REGISTRY_ITEMS.register(ID_SHOCKMETAL_DUST, ItemBase::new);
 	public static final RegistryObject<Item> NETHERITE_DUST = REGISTRY_ITEMS.register(ID_NETHERITE_DUST, ItemBase::new);
 	public static final RegistryObject<Item> SHOCKRITE_DUST = REGISTRY_ITEMS.register(ID_SHOCKRITE_DUST, ItemBase::new);
-	public static final RegistryObject<Item> ORE_GRINDER = REGISTRY_ITEMS.register(ID_ORE_GRINDER, ItemRecipeTool::new);
+	public static final RegistryObject<Item> ORE_GRINDER = REGISTRY_ITEMS.register(ID_ORE_GRINDER, () -> new ItemRecipeTool(50));
 	public static final RegistryObject<Item> FRAME_DIAMOND = REGISTRY_ITEMS.register(ID_FRAME_DIAMOND, ItemBase::new);
 
 //	Projectiles

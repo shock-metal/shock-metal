@@ -14,10 +14,10 @@ import java.util.List;
 import java.util.Random;
 
 public class ItemRecipeTool extends ItemBase {
-    public ItemRecipeTool() {
+    public ItemRecipeTool(int maxUses) {
         super(new Item.Properties()
                 .group(ShockMetalMain.SHOCKMETALTAB)
-                .maxDamage(100)
+                .maxDamage(maxUses)
                 .setNoRepair()
         );
     }
@@ -37,7 +37,7 @@ public class ItemRecipeTool extends ItemBase {
     @Override
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         super.addInformation(stack, worldIn, tooltip, flagIn);
-        int damage = 100 - stack.getDamage();
+        int damage = stack.getMaxDamage() - stack.getDamage();
         tooltip.add(
                 new StringTextComponent(String.format("%s/%s", damage, stack.getMaxDamage()))
                 .mergeStyle(TextFormatting.GRAY));

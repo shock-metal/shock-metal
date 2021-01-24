@@ -10,8 +10,9 @@
   "magicCapacity": "250",
   "toolLevel": "5",
   "toolEfficiency": "10",
-  "tints": { "glyph": "3287fc", "texture": "3287fc" },
+  "tints": { "glyph": "5647A8", "texture": "5647A8" },
   "textures": ["shiny", "default"],
   "material": { "tag": "forge:ingots/shockmetal", "count": 1 },
-  "requiredTools": { "hammer": 4 }
+  "improvements": { "shockmetal_aspect": 1 },
+  "requiredTools": { "hammer": 5 }
 }

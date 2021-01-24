@@ -4,6 +4,7 @@ package uk.co.shockwaveinteractive.util.handlers;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 import static uk.co.shockwaveinteractive.init.Blocks.REGISTRY_BLOCKS;
+import static uk.co.shockwaveinteractive.init.Enchantments.REGISTRY_ENCHANTMENTS;
 import static uk.co.shockwaveinteractive.init.Entities.REGISTRY_ENTITIES;
 import static uk.co.shockwaveinteractive.init.Items.REGISTRY_ITEMS;
 
@@ -13,5 +14,6 @@ public class RegistryHandler
 		REGISTRY_ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
 		REGISTRY_BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
 		REGISTRY_ENTITIES.register(FMLJavaModLoadingContext.get().getModEventBus());
+		REGISTRY_ENCHANTMENTS.register(FMLJavaModLoadingContext.get().getModEventBus());
 	}
 }
