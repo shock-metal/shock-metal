@@ -116,22 +116,29 @@ dependencies {
     // compile "some.group:artifact:version"
 
     // compile against the JEI API but do not include it at runtime
-//    compileOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}:api")
+    compileOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}:api")
     // at runtime, use the full JEI jar
-//    runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}")
+    runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}")
 
 //    Tetra
-//    runtimeOnly fg.deobf("curse.maven:mgui-351914:3104239")
-//    runtimeOnly fg.deobf("curse.maven:tetra-289712:3147835")
+    runtimeOnly fg.deobf("curse.maven:mgui-351914:3104239")
+    runtimeOnly fg.deobf("curse.maven:tetra-289712:3147835")
 
 //    Thermal Series
-//    runtimeOnly fg.deobf("curse.maven:cofh-core-69162:3155824")
-//    runtimeOnly fg.deobf("curse.maven:thermal-foundation-222880:3155830")
-//    runtimeOnly fg.deobf("curse.maven:thermal-expansion-69163:3155832")
+    runtimeOnly fg.deobf("curse.maven:cofh-core-69162:3155824")
+    runtimeOnly fg.deobf("curse.maven:thermal-foundation-222880:3155830")
+    runtimeOnly fg.deobf("curse.maven:thermal-expansion-69163:3155832")
 
 //    Patchouli
-//    compileOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}:api")
-//    runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}")
+    compileOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}:api")
+    runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}")
+
+//    Mekanism
+        // If you want to test/use Mekanism & its modules during `runClient` invocation, use the following
+//        runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}")// core
+//        runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}:additions")// Mekanism: Additions
+//        runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}:generators")// Mekanism: Generators
+//        runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}:tools")// Mekanism: Tools
 
 //    Testing
 //    runtimeOnly fg.deobf("curse.maven:advanced-xray-256256:3105604")

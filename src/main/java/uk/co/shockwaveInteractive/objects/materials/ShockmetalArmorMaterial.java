@@ -14,7 +14,7 @@ import java.util.function.Supplier;
 
 public enum ShockmetalArmorMaterial implements IArmorMaterial
 {
-    SHOCKMETAL(MainReference.MODID + ":shockmetal", 45, new int[]{5, 10, 16, 6}, 16, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.5f, () -> { return Ingredient.fromItems(Items.SHOCKMETAL_INGOT.get()); }, 1);
+    SHOCKMETAL(MainReference.MODID + ":shockmetal", 45, new int[]{5, 10, 16, 6}, 16, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 3f, () -> { return Ingredient.fromItems(Items.SHOCKMETAL_INGOT.get()); }, 1);
 
     private static final int[] MAX_DAMAGE_ARRAY = new int[] {11, 16, 15, 13};
     private final String name;

@@ -87,13 +87,14 @@ public class ShockGrenadeEntity extends AbstractGrenadeEntity {
                                     creeper.getDataManager().set(powered, true);
                                 } catch (NoSuchFieldException | IllegalAccessException ignored) { }
                             }
+                            applyDamage(source, livingEntity);
 
                         } else if (livingEntity.getEntity() instanceof PigEntity) {
                             PigEntity piggu =  (PigEntity) livingEntity.getEntity();
                             if (worldAsServer.getDifficulty() != Difficulty.PEACEFUL) {
                                 ZombifiedPiglinEntity zombifiedpiglinentity = EntityType.ZOMBIFIED_PIGLIN.create(worldAsServer);
                                 zombifiedpiglinentity.setItemStackToSlot(EquipmentSlotType.MAINHAND, new ItemStack(net.minecraft.item.Items.GOLDEN_SWORD));
-                                zombifiedpiglinentity.setLocationAndAngles(this.getPosX(), this.getPosY(), this.getPosZ(), this.rotationYaw, this.rotationPitch);
+                                zombifiedpiglinentity.setLocationAndAngles(piggu.getPosX(), piggu.getPosY(), piggu.getPosZ(), this.rotationYaw, this.rotationPitch);
                                 zombifiedpiglinentity.setNoAI(piggu.isAIDisabled());
                                 zombifiedpiglinentity.setChild(piggu.isChild());
                                 if (this.hasCustomName()) {
@@ -106,7 +107,11 @@ public class ShockGrenadeEntity extends AbstractGrenadeEntity {
                                 piggu.remove();
                             }
                         }
-                        livingEntity.attackEntityFrom(DamageSource.causeExplosionDamage(source instanceof LivingEntity ? (LivingEntity) source : null), 15f);
+                        else
+                        {
+                            applyDamage(source, livingEntity);
+                        }
+
                     });
 
             world.createExplosion(this, this.getPosX(), this.getPosY(), this.getPosZ(), 1.8f, false, Explosion.Mode.NONE);
@@ -118,5 +123,9 @@ public class ShockGrenadeEntity extends AbstractGrenadeEntity {
         }
         this.world.addParticle(ParticleTypes.EXPLOSION, this.getPosX(), this.getPosY(), this.getPosZ(), 1.0D, 0.0D, 0.0D);
         this.world.playSound(this.getPosX(), this.getPosY(), this.getPosZ(), SoundEvents.ENTITY_LIGHTNING_BOLT_IMPACT, SoundCategory.BLOCKS, 0.5F, (1.0F + (this.world.rand.nextFloat() - this.world.rand.nextFloat()) * 0.2F) * 0.7F, false);
+    }
+
+    public void applyDamage(Entity source, LivingEntity livingEntity) {
+        livingEntity.attackEntityFrom(DamageSource.causeExplosionDamage(source instanceof LivingEntity ? (LivingEntity) source : null), 15f);
     }
 }

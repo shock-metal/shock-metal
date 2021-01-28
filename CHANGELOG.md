@@ -1,5 +1,16 @@
 # Change Log
 
+## Version 1.16.4-0.3.3
+### Modifications
+- Altered armour toughness from 2.5 to 3
+- Grenade does not apply damage to zombie pigmen when transforming pigs (explosive damage still applied though)
+
+### Fixes
+- Fixed missing shockmetal dust recipe with ore grinder
+
+### Additions
+- Added crushing recipe for shockmetal ingot to dust for Mekanism crusher
+
 ## Version 1.16.4-0.3.2
 ### Fixes
 - Fixed Issue with incorrect and missing recipes for ore grinder

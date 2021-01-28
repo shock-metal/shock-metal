@@ -14,7 +14,7 @@
     "0.3.2": "https://github.com/shock-metal/shock-metal/blob/master/changelog.md"
   },
   "promos": {
-    "1.16.4-latest": "0.3.2",
-    "1.16.4-recommended": "0.3.2"
+    "1.16.4-latest": "0.3.3",
+    "1.16.4-recommended": "0.3.4"
   }
 }
