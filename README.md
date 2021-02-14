@@ -9,7 +9,7 @@ A small minecraft mod that adds a new tier of material above diamond with higher
 **Download at: https://minecraft.curseforge.com/projects/shock-metal**
 
 ## Changelog
-License can be found in CHANGELOG.md file or at https://github.com/shock-metal/shock-metal/blob/master/CHANGELOG.md
+Changelog can be found in CHANGELOG.md file or at https://github.com/shock-metal/shock-metal/blob/master/CHANGELOG.md
 
 
 ## Mod Support
