@@ -12,18 +12,18 @@
     {
         "C": [
       {
-        "item": "minecraft:coal_block"
+        "tag": "forge:storage_blocks/coal"
       }
         ],
         
         "S":
         {
-            "item": "minecraft:stick"
+            "tag": "forge:rods/wooden"
         },
         
         "D":
         {
-            "item": "minecraft:diamond"
+            "tag": "forge:gems/diamond"
         }
     },
     
