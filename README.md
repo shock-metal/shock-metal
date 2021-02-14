@@ -1,7 +1,7 @@
 # ShockMetal - a minecraft mod
 <p align="center">
-  <img src=https://img.shields.io/badge/Mod%20Version%20-1.0.0-blue.svg alt="Mod Version Badge" />
-  <img src=https://img.shields.io/badge/Minecraft-1.16.4+-green.svg alt="MC version" />
+  <img src=https://img.shields.io/badge/Mod%20Version%20-1.1.0-blue.svg alt="Mod Version Badge" />
+  <img src=https://img.shields.io/badge/Minecraft-1.16.5-green.svg alt="MC version" />
 </p>
 
 A small minecraft mod that adds a new tier of material above diamond with higher statistics overall. More can be found on the wiki <a href=https://github.com/Shockwave-Interactive/ShockMetal/wiki > here </a>
