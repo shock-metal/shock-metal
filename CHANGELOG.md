@@ -1,5 +1,9 @@
 # Change Log
 
+## Version 1.16.4-1.0.1
+### Modifications
+- Recipe changes to use forge tags (Thanks ModernGamingWorld!)
+
 ## Version 1.16.4-1.0.0
 ### Additions
 - Added Vacuum Minecart (Chest minecart that will collect nearby items)
