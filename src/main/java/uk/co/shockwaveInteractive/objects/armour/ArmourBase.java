@@ -1,5 +1,6 @@
 package uk.co.shockwaveinteractive.objects.armour;
 
+import net.minecraft.entity.monster.piglin.PiglinEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ArmorItem;
@@ -19,10 +20,10 @@ public class ArmourBase extends ArmorItem
 
 	@Override
 	public void onArmorTick(ItemStack stack, World world, PlayerEntity player) {
-		if (player.inventory.armorItemInSlot(3).getItem() == Items.SHOCKMETAL_HELMET.get()
-				&& player.inventory.armorItemInSlot(2).getItem() == Items.SHOCKMETAL_CHESTPLATE.get()
-				&& player.inventory.armorItemInSlot(1).getItem() == Items.SHOCKMETAL_LEGGINGS.get()
-				&& player.inventory.armorItemInSlot(0).getItem() == Items.SHOCKMETAL_BOOTS.get()) {
+		if (player.inventory.armorInventory.get(3).getItem() == Items.SHOCKMETAL_HELMET.get()
+				&& player.inventory.armorInventory.get(2).getItem() == Items.SHOCKMETAL_CHESTPLATE.get()
+				&& player.inventory.armorInventory.get(1).getItem() == Items.SHOCKMETAL_LEGGINGS.get()
+				&& player.inventory.armorInventory.get(0).getItem() == Items.SHOCKMETAL_BOOTS.get()) {
 			try {
 				if(stack.getItem() == Items.SHOCKMETAL_CHESTPLATE.get())
 				{
