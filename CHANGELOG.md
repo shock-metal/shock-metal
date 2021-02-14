@@ -1,5 +1,8 @@
 # Change Log
 
+## Version 1.16.5-1.1.0
+- Bump to version 1.16.5
+
 ## Version 1.16.4-1.0.2
 ### Fixes
 - Fixed server crash when wearing full armour set
