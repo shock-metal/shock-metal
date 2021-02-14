@@ -123,7 +123,7 @@ public class ShockmetalToolSword extends SwordItem
 
 				worldAsServer.addParticle(ParticleTypes.EXPLOSION, playerIn.getPosX(), playerIn.getPosY(), playerIn.getPosZ(), 1.0D, 0.0D, 0.0D);
 				worldAsServer.playSound(playerIn.getPosX(), playerIn.getPosY(), playerIn.getPosZ(),
-						SoundEvents.ENTITY_CREEPER_PRIMED,
+						SoundEvents.ENTITY_LIGHTNING_BOLT_IMPACT,
 						SoundCategory.BLOCKS,
 						0.5F,
 						(1.0F + (worldIn.rand.nextFloat() - worldIn.rand.nextFloat()) * 0.2F) * 0.7F,

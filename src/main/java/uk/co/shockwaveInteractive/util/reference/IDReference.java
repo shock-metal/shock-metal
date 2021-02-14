@@ -22,6 +22,7 @@ public class IDReference {
     public static final String ID_SHOCKMETAL_CHESTPLATE = "shockmetal_chestplate";
     public static final String ID_SHOCKMETAL_LEGGINGS = "shockmetal_leggings";
     public static final String ID_SHOCKMETAL_BOOTS = "shockmetal_boots";
+    public static final String ID_VACUUM_MINECART = "vacuum_minecart";
 //    endregion
 
 //    region BLOCKS
@@ -32,6 +33,7 @@ public class IDReference {
 
 //    region ENTITIES
     public static final String ID_SHOCK_GRENADE_ENTITY = "shock_grenade_entity";
+    public static final String ID_VACUUM_MINECART_ENTITY = "vacuum_minecart_entity";
     //    endregion
 
 //    region ENCHANTS

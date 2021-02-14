@@ -10,6 +10,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Effect;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
+import uk.co.shockwaveinteractive.config.MainConfig;
 
 public class AtomRipperEnchantment extends Enchantment {
 
@@ -39,7 +40,7 @@ public class AtomRipperEnchantment extends Enchantment {
 
     @Override
     public boolean isTreasureEnchantment() {
-        return true;
+        return !MainConfig.disableAtomRipper;
     }
 
     @Override

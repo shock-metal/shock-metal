@@ -1,0 +1,11 @@
+{
+  "name": "Machines (Coming soon...)",
+  "icon": "shockmetal:shockmetal_ingot",
+  "category": "shockmetal:shock_metal",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Coming soon..."
+    }
+  ]
+}

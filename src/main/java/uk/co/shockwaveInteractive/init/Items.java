@@ -1,22 +1,22 @@
 package uk.co.shockwaveinteractive.init;
 
 
-import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.*;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import uk.co.shockwaveinteractive.ShockMetalMain;
+import uk.co.shockwaveinteractive.config.MainConfig;
 import uk.co.shockwaveinteractive.entity.projectile.AbstractGrenadeEntity;
 import uk.co.shockwaveinteractive.entity.projectile.ShockGrenadeEntity;
+import uk.co.shockwaveinteractive.objects.armour.ArmourBase;
 import uk.co.shockwaveinteractive.objects.blocks.item.BlockItemBase;
 import uk.co.shockwaveinteractive.objects.items.ItemBase;
 import uk.co.shockwaveinteractive.objects.items.ItemRecipeTool;
+import uk.co.shockwaveinteractive.objects.items.ItemVacuumMinecart;
 import uk.co.shockwaveinteractive.objects.items.resources.ItemIngotShockmetal;
 import uk.co.shockwaveinteractive.objects.items.throwables.ItemGrenadeBase;
 import uk.co.shockwaveinteractive.objects.materials.ShockmetalArmorMaterial;
@@ -37,10 +37,10 @@ public class Items
 
 	//---------------------------- Items ----------------------------
 	public static final RegistryObject<Item> SHOCKMETAL_INGOT = REGISTRY_ITEMS.register(ID_SHOCKMETAL_INGOT, ItemIngotShockmetal::new);
-	public static final RegistryObject<Item> SHOCKMETAL_DUST = REGISTRY_ITEMS.register(ID_SHOCKMETAL_DUST, ItemBase::new);
-	public static final RegistryObject<Item> NETHERITE_DUST = REGISTRY_ITEMS.register(ID_NETHERITE_DUST, ItemBase::new);
-	public static final RegistryObject<Item> SHOCKRITE_DUST = REGISTRY_ITEMS.register(ID_SHOCKRITE_DUST, ItemBase::new);
-	public static final RegistryObject<Item> ORE_GRINDER = REGISTRY_ITEMS.register(ID_ORE_GRINDER, () -> new ItemRecipeTool(50));
+	public static final RegistryObject<Item> SHOCKMETAL_DUST = REGISTRY_ITEMS.register(ID_SHOCKMETAL_DUST, () -> new ItemBase(new Item.Properties().group(ShockMetalMain.SHOCKMETALTAB).isImmuneToFire()));
+	public static final RegistryObject<Item> NETHERITE_DUST = REGISTRY_ITEMS.register(ID_NETHERITE_DUST, () -> new ItemBase(new Item.Properties().group(ShockMetalMain.SHOCKMETALTAB).isImmuneToFire()));
+	public static final RegistryObject<Item> SHOCKRITE_DUST = REGISTRY_ITEMS.register(ID_SHOCKRITE_DUST, () -> new ItemBase(new Item.Properties().group(ShockMetalMain.SHOCKMETALTAB).isImmuneToFire()));
+	public static final RegistryObject<Item> ORE_GRINDER = REGISTRY_ITEMS.register(ID_ORE_GRINDER, () -> new ItemRecipeTool(MainConfig.oreGrinderUses));
 	public static final RegistryObject<Item> FRAME_DIAMOND = REGISTRY_ITEMS.register(ID_FRAME_DIAMOND, ItemBase::new);
 
 //	Projectiles
@@ -62,6 +62,9 @@ public class Items
 
 		}, new Item.Properties().group(ShockMetalMain.SHOCKMETALTAB).maxStackSize(16), TRANSLATION_INFO_PREFIX +"shock_grenade"));
 
+	//	Projectiles
+	public static final RegistryObject<Item> VACUUM_MINECART_ITEM = REGISTRY_ITEMS.register(ID_VACUUM_MINECART, ItemVacuumMinecart::new);
+
 	//---------------------------- Block Items ----------------------------
 	public static final RegistryObject<Item> SHOCKMETAL_BLOCK_ITEM = REGISTRY_ITEMS.register(ID_SHOCKMETAL_BLOCK_ITEM, () -> new BlockItemBase(Blocks.SHOCKMETAL_BLOCK.get()));
 	public static final RegistryObject<Item> SHOCKMETAL_NETHER_ORE_BLOCK_ITEM = REGISTRY_ITEMS.register(ID_SHOCKMETAL_NETHER_ORE_BLOCK_ITEM, () -> new BlockItemBase(Blocks.SHOCKMETAL_NETHER_ORE_BLOCK.get()));
@@ -74,8 +77,8 @@ public class Items
 	public static final RegistryObject<HoeItem> SHOCKMETAL_HOE = REGISTRY_ITEMS.register(ID_SHOCKMETAL_HOE, ShockmetalToolHoe::new);
 	
 	//---------------------------- Armour ----------------------------
-	public static final RegistryObject<ArmorItem> SHOCKMETAL_HELMET = REGISTRY_ITEMS.register(ID_SHOCKMETAL_HELMET, () -> new ArmorItem(ShockmetalArmorMaterial.SHOCKMETAL, EquipmentSlotType.HEAD, new Item.Properties().group(ShockMetalMain.SHOCKMETALTAB)));
-	public static final RegistryObject<ArmorItem> SHOCKMETAL_CHESTPLATE = REGISTRY_ITEMS.register(ID_SHOCKMETAL_CHESTPLATE, () -> new ArmorItem(ShockmetalArmorMaterial.SHOCKMETAL, EquipmentSlotType.CHEST, new Item.Properties().group(ShockMetalMain.SHOCKMETALTAB)));
-	public static final RegistryObject<ArmorItem> SHOCKMETAL_LEGGINGS = REGISTRY_ITEMS.register(ID_SHOCKMETAL_LEGGINGS, () -> new ArmorItem(ShockmetalArmorMaterial.SHOCKMETAL, EquipmentSlotType.LEGS, new Item.Properties().group(ShockMetalMain.SHOCKMETALTAB)));
-	public static final RegistryObject<ArmorItem> SHOCKMETAL_BOOTS = REGISTRY_ITEMS.register(ID_SHOCKMETAL_BOOTS, () -> new ArmorItem(ShockmetalArmorMaterial.SHOCKMETAL, EquipmentSlotType.FEET, new Item.Properties().group(ShockMetalMain.SHOCKMETALTAB)));
+	public static final RegistryObject<ArmorItem> SHOCKMETAL_HELMET = REGISTRY_ITEMS.register(ID_SHOCKMETAL_HELMET, () -> new ArmourBase(ShockmetalArmorMaterial.SHOCKMETAL, EquipmentSlotType.HEAD, new Item.Properties().group(ShockMetalMain.SHOCKMETALTAB)));
+	public static final RegistryObject<ArmorItem> SHOCKMETAL_CHESTPLATE = REGISTRY_ITEMS.register(ID_SHOCKMETAL_CHESTPLATE, () -> new ArmourBase(ShockmetalArmorMaterial.SHOCKMETAL, EquipmentSlotType.CHEST, new Item.Properties().group(ShockMetalMain.SHOCKMETALTAB)));
+	public static final RegistryObject<ArmorItem> SHOCKMETAL_LEGGINGS = REGISTRY_ITEMS.register(ID_SHOCKMETAL_LEGGINGS, () -> new ArmourBase(ShockmetalArmorMaterial.SHOCKMETAL, EquipmentSlotType.LEGS, new Item.Properties().group(ShockMetalMain.SHOCKMETALTAB)));
+	public static final RegistryObject<ArmorItem> SHOCKMETAL_BOOTS = REGISTRY_ITEMS.register(ID_SHOCKMETAL_BOOTS, () -> new ArmourBase(ShockmetalArmorMaterial.SHOCKMETAL, EquipmentSlotType.FEET, new Item.Properties().group(ShockMetalMain.SHOCKMETALTAB)));
 }

@@ -1,0 +1,26 @@
+{
+  "name": "Shockmetal Weapons",
+  "icon": "shockmetal:shockmetal_sword",
+  "category": "shockmetal:tools_weapons",
+  "pages": [
+    {
+      "type": "text",
+      "text": "A sword made from Shockmetal has increase abilities on top of its improvements over netherite. $(br) The sword will apply a short regen effect when attacking un-dead and also cause them to burst into flames! this effect however does not happen everytime..."
+    },
+    {
+      "type": "spotlight",
+      "item": "shockmetal:shockmetal_sword",
+      "text": "The sword also has a charge level that increases everytime an entity is killed with the sword and can be used in an AOE attack around the player by Shift + Right clicking after gaining 5 levels. $(br) A multiplier is applied after 10 levels and a max multiplier if 20 charges are stored."
+    },
+    {
+      "type": "crafting",
+      "recipe": "shockmetal:tools_weapons/shock_grenade",
+      "text": "A Shockmetal grenade can be thrown to deliver explosive damage. The grenade applies the same effects as the sword to un-dead causing them to burst into flames. It also appears to have the same effect as lighting on other mobs..."
+    },
+    {
+      "type": "spotlight",
+      "item": "shockmetal:shockmetal_chestplate",
+      "text": "A full armour set can be crafted from shockmetal ingots providing a slight increase in protection over netherite but with a much greater knockback resistance. The armour also protects the user from fire damage if a full set is worn."
+    }
+  ]
+}

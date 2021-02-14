@@ -77,7 +77,7 @@ public class ShockGrenadeEntity extends AbstractGrenadeEntity {
                         if(livingEntity.getEntity() instanceof CreeperEntity) {
                             CreeperEntity creeper =  (CreeperEntity) livingEntity.getEntity();
 
-                            if(!creeper.isCharged() && ShockMetalMain.rnd.nextInt(100) < 19) {
+                            if(!creeper.isCharged() && ShockMetalMain.rnd.nextInt(100) < 39) {
                                 try
                                 {
                                     Field field;
@@ -126,6 +126,6 @@ public class ShockGrenadeEntity extends AbstractGrenadeEntity {
     }
 
     public void applyDamage(Entity source, LivingEntity livingEntity) {
-        livingEntity.attackEntityFrom(DamageSource.causeExplosionDamage(source instanceof LivingEntity ? (LivingEntity) source : null), 15f);
+        livingEntity.attackEntityFrom(DamageSource.causeExplosionDamage(source instanceof LivingEntity ? (LivingEntity) source : null), 20f);
     }
 }

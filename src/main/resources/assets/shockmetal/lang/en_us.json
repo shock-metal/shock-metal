@@ -15,6 +15,7 @@
   "item.shockmetal.shockmetal_leggings" : "Shock Metal Leggings",
   "item.shockmetal.shockmetal_boots" : "Shock Metal Boots",
   "item.shockmetal.shock_grenade" : "Shock Grenade",
+  "item.shockmetal.vacuum_minecart" : "Vacuum Minecart",
 
   "material.shockmetal.shockmetal" : "Shock Metal",
   "tetra.material.shockmetal": "Shockmetal",
@@ -29,6 +30,8 @@
   "block.shockmetal.shockmetal_nether_ore_block" : "Shock Metal Ore",
 
   "tile.molecular_manipulator" : "Molecular Manipulator",
+
+  "entity.shockmetal.vacuum_minecart_entity": "Vacuum Minecart",
 
   "itemGroup.shockmetaltab" : "Shock Metal",
 

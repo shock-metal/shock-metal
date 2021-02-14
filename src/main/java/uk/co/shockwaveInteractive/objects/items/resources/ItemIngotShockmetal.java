@@ -1,9 +1,11 @@
 package uk.co.shockwaveinteractive.objects.items.resources;
 
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.*;
 import net.minecraft.world.World;
+import uk.co.shockwaveinteractive.ShockMetalMain;
 import uk.co.shockwaveinteractive.objects.items.ItemBase;
 
 import javax.annotation.Nullable;
@@ -14,7 +16,7 @@ import static uk.co.shockwaveinteractive.util.reference.MainReference.TRANSLATIO
 public class ItemIngotShockmetal extends ItemBase {
 
     public ItemIngotShockmetal() {
-        super();
+        super(new Item.Properties().group(ShockMetalMain.SHOCKMETALTAB).isImmuneToFire());
     }
 
     @Override

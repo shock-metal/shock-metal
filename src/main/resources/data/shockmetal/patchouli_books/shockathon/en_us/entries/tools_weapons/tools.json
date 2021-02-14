@@ -1,0 +1,16 @@
+{
+  "name": "Shockmetal Tools",
+  "icon": "shockmetal:shockmetal_pickaxe",
+  "category": "shockmetal:tools_weapons",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Shockmetal can be used to craft all basic tools providing a slight durability increase over netherite. These tools are immune to fire damage and will float if they fall into lava."
+    },
+    {
+      "type": "crafting",
+      "recipe": "shockmetal:shockmetal_pickaxe",
+      "recipe2": "shockmetal:shockmetal_axe"
+    }
+  ]
+}

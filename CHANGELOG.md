@@ -1,5 +1,17 @@
 # Change Log
 
+## Version 1.16.5-1.0.0
+### Additions
+- Added Vacuum Minecart (Chest minecart that will collect nearby items)
+- Server-side configuration for enchant, ore grinder uses and vacuum minecart radius
+
+### Modifications
+- Armour now provides Fire Resistance if full set is worn
+- Any item made from shockmetal now immune to fire damage
+- Patchouli book now has entries for most items / blocks (WIP)
+- Patchouli book now used Ore grinder in recipe
+- Grenade damage increased slightly
+
 ## Version 1.16.4-0.3.3
 ### Modifications
 - Altered armour toughness from 2.5 to 3

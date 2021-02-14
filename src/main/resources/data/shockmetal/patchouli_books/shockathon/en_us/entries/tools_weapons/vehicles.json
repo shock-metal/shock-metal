@@ -1,0 +1,16 @@
+{
+  "name": "Shockmetal Vehicles",
+  "icon": "shockmetal:vacuum_minecart",
+  "category": "shockmetal:tools_weapons",
+  "pages": [
+    {
+      "type": "spotlight",
+      "item": "shockmetal:vacuum_minecart",
+      "text": "The Vacuum Minecart can be used to collect items off the ground. It will draw nearby items towards it and store them. Other than this the cart is functionally the same as a Chest Minecart"
+    },
+    {
+      "type": "crafting",
+      "recipe": "shockmetal:vacuum_minecart"
+    }
+  ]
+}

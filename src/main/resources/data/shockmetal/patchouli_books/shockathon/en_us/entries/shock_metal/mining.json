@@ -1,0 +1,17 @@
+{
+  "name": "Mining",
+  "icon": "shockmetal:shockmetal_nether_ore_block",
+  "category": "shockmetal:shock_metal",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Shockmetal ore can be found at around the same level as Ancient debris and equally as rare. It requires a diamond level pickaxe to mine."
+    },
+    {
+      "type": "image",
+      "images": [
+        "shockmetal:textures/gui/manual/shockmetal_ore.png"
+      ]
+    }
+  ]
+}

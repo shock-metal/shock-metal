@@ -1,0 +1,33 @@
+{
+  "name": "Processing",
+  "icon": "shockmetal:ore_grinder",
+  "category": "shockmetal:shock_metal",
+  "pages": [
+    {
+      "type": "crafting",
+      "recipe": "shockmetal:ore_grinder",
+      "text": "To get Shockmetal ingots the first step is to craft an Ore Grinder. This will allow the blending of ingredients to form ore blends."
+    },
+    {
+      "type": "crafting",
+      "recipe": "shockmetal:crushing/netherite_dust",
+      "text": "Netherite can be crushed into it's dust form by crafting an ingot with the ore grinder. The dust can also be smelted back into its ingot form."
+    },
+    {
+      "type": "crafting",
+      "recipe": "shockmetal:crushing/shockmetal_shockrite_dust",
+      "text": "By combining Shockmetal ore with netherite, you get shockrite dust which can be smelted into Shockmetal ingots."
+    },
+    {
+      "type": "smelting",
+      "recipe": "shockmetal:smelting/shockmetal_ingot_from_dust_shockrite",
+      "recipe2": "shockmetal:smelting/shockmetal_ingot_from_dust_shockmetal",
+      "text": "Shockmetal ingots can be smelted from either shockrite or shockmetal dust."
+    },
+    {
+      "type": "crafting",
+      "recipe": "shockmetal:crushing/shockmetal_dust",
+      "text": "Shockmetal ingots can be crushed into shockmetal dust which can be used in other crafting recipes."
+    }
+  ]
+}

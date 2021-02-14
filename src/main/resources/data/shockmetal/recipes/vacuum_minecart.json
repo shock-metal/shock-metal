@@ -1,0 +1,32 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        " D ",
+        " H ",
+        " C "
+    ],
+    
+    "key":
+    {
+        "D":
+        {
+            "item": "shockmetal:shockmetal_dust"
+        },
+        "H":
+        {
+            "item": "minecraft:hopper"
+        },
+        "C":
+        {
+            "item": "minecraft:chest_minecart"
+        }
+    },
+    
+    "result":
+    {
+        "item": "shockmetal:vacuum_minecart",
+        "count": 1
+    }
+}

@@ -128,6 +128,7 @@ dependencies {
     runtimeOnly fg.deobf("curse.maven:cofh-core-69162:3155824")
     runtimeOnly fg.deobf("curse.maven:thermal-foundation-222880:3155830")
     runtimeOnly fg.deobf("curse.maven:thermal-expansion-69163:3155832")
+    runtimeOnly fg.deobf("curse.maven:thermal-locomotion-406959:3155835")
 
 //    Patchouli
     compileOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}:api")
@@ -135,10 +136,10 @@ dependencies {
 
 //    Mekanism
         // If you want to test/use Mekanism & its modules during `runClient` invocation, use the following
-//        runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}")// core
-//        runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}:additions")// Mekanism: Additions
-//        runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}:generators")// Mekanism: Generators
-//        runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}:tools")// Mekanism: Tools
+        runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}")// core
+        runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}:additions")// Mekanism: Additions
+        runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}:generators")// Mekanism: Generators
+        runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}:tools")// Mekanism: Tools
 
 //    Testing
 //    runtimeOnly fg.deobf("curse.maven:advanced-xray-256256:3105604")
