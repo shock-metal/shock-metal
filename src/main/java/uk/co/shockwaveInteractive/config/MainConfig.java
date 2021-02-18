@@ -57,7 +57,7 @@ public class MainConfig {
 
         serverVacuumMinecartRange = SERVER_CONFIG
                 .comment("This option sets the range of the vacuum minecart")
-                .defineInRange("Fishing Exhaustion Amount", vacuumMinecartRange, 2.0F, 8.0F);
+                .defineInRange("Vacuum Minecraft Range", vacuumMinecartRange, 2.0F, 8.0F);
 
         SERVER_CONFIG.pop();
 
@@ -65,7 +65,7 @@ public class MainConfig {
 
         serverOreGrinderUses = SERVER_CONFIG
                 .comment("This option sets the number of uses for the ore grinder")
-                .defineInRange("Fishing Exhaustion Amount", oreGrinderUses, 1, 100);
+                .defineInRange("Ore Grinder Uses", oreGrinderUses, 1, 100);
 
         SERVER_CONFIG.pop();
 
