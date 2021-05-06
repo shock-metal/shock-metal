@@ -63,7 +63,7 @@ public class ShockGrenadeEntity extends AbstractGrenadeEntity {
         if (Utility.isServerWorld(world)) {
 
             BlockPos pos = this.getPosition();
-            @Nullable Entity source = func_234616_v_();
+            @Nullable Entity source = getEntity();
             ServerWorld worldAsServer = (ServerWorld) world;
 
             AxisAlignedBB area = new AxisAlignedBB(pos.add(-radius, -radius, -radius), pos.add(1 + radius, 1 + radius, 1 + radius));

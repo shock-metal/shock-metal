@@ -1,0 +1,16 @@
+{
+  "craftable": true,
+  "tier": 4,
+  "sortOrder": 0,
+  "textColor": "#5647A8",
+  "traits": [
+    {
+      "name": "tconstruct:maintained",
+      "level": 1
+    },
+	{
+      "name": "tconstruct:lightweight",
+      "level": 1
+    }
+  ]
+}

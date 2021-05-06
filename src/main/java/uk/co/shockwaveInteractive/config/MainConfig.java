@@ -69,6 +69,14 @@ public class MainConfig {
 
         SERVER_CONFIG.pop();
 
+        SERVER_CONFIG.push("Compat");
+
+        serverDisableAtomRipperTrait = SERVER_CONFIG
+                .comment("Enable shockmetal trait on tinker tools")
+                .define("Disable Atom Ripper Trait", disableAtomRipperTrait);
+
+        SERVER_CONFIG.pop();
+
         serverSpec = SERVER_CONFIG.build();
 
         refreshServerConfig();
@@ -85,6 +93,7 @@ public class MainConfig {
         disableAtomRipper = serverDisableAtomRipper.get();
         oreGrinderUses = serverOreGrinderUses.get();
         vacuumMinecartRange = serverVacuumMinecartRange.get().floatValue();
+        disableAtomRipperTrait = serverDisableAtomRipperTrait.get();
     }
 
     private static void refreshClientConfig() {
@@ -94,13 +103,13 @@ public class MainConfig {
 
     // region VARIABLES
     public static boolean disableAtomRipper = false;
-
     public static float vacuumMinecartRange = 5F;
-
     public static int oreGrinderUses = 50;
+    public static boolean disableAtomRipperTrait = false;
 
 
     private static BooleanValue serverDisableAtomRipper;
+    private static BooleanValue serverDisableAtomRipperTrait;
     private static DoubleValue serverVacuumMinecartRange;
     private static IntValue serverOreGrinderUses;
     // endregion

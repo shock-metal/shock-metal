@@ -33,7 +33,7 @@ public class WorldGenCustomOres
 						new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NETHERRACK, Blocks.SHOCKMETAL_NETHER_ORE_BLOCK.get().getDefaultState(), 4))
 				)
 				.range(20)
-				.func_242731_b(1) // chunk spawn frequency
+				.count(1) // chunk spawn frequency
 		);
 	}
 

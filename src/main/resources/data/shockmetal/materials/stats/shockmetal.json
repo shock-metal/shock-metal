@@ -1,0 +1,26 @@
+{
+  "materialId": "shockmetal:shockmetal_ingot",
+  "stats": [
+    {
+          "id": "tconstruct:head",
+          "durability": 2500,
+          "miningSpeed": 8.0,
+          "harvestLevel": 3,
+          "attack": 5.0
+    },
+    {
+          "id": "tconstruct:handle",
+          "durability": 1.2,
+          "miningSpeed": 1.1,
+          "attackSpeed": 1.05,
+          "attackDamage": 1
+    },
+    {
+        "id": "tconstruct:extra",
+        "durability": 1.05,
+        "miningSpeed": 1,
+        "attackSpeed": 1.1,
+        "attackDamage": 1
+    }
+  ]
+}

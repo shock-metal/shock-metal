@@ -16,6 +16,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import net.minecraftforge.fml.common.Mod;
 import uk.co.shockwaveinteractive.config.MainConfig;
+import uk.co.shockwaveinteractive.integration.IntegrationHandler;
 import uk.co.shockwaveinteractive.tabs.ShockMetalTab;
 import uk.co.shockwaveinteractive.util.reference.MainReference;
 import uk.co.shockwaveinteractive.util.handlers.RegistryHandler;
@@ -32,7 +33,7 @@ import static uk.co.shockwaveinteractive.init.Entities.VACUUM_MINECART_ENTITY;
 public class ShockMetalMain
 {
 	// Directly reference a log4j logger.
-	private static final Logger LOGGER = LogManager.getLogger();
+	public static final Logger LOGGER = LogManager.getLogger();
 	public static final ItemGroup SHOCKMETALTAB = new ShockMetalTab("shockmetaltab");
 	public static FMLCommonSetupEvent preIntEvent;
 	public static Random rnd;
@@ -53,27 +54,21 @@ public class ShockMetalMain
 
 		rnd = new Random();
 
-//		IntegrationHandler.runInit();
-
 		// Register ourselves for server and other game events we are interested in
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 
 	private void setup(final FMLCommonSetupEvent event)
 	{
-		// some preinit code
-//		LOGGER.info("HELLO FROM PREINIT");
-
 		preIntEvent = event;
 		WorldGenCustomOres.initOres();
-//		ShockMetalConfiguration.preInit();	// Loads Config
-
-//		IntegrationHandler.checkInstalled();
-//		IntegrationHandler.runPreInit();
+		IntegrationHandler.checkInstalled();
+		IntegrationHandler.runPreInit();
 	}
 
 	private void doClientStuff(final FMLClientSetupEvent event) {
 		registerEntityRenderingHandlers();
+		IntegrationHandler.runInit();
 	}
 
 	private void enqueueIMC(final InterModEnqueueEvent event)

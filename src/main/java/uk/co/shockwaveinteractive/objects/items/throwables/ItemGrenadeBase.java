@@ -9,6 +9,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.SnowballItem;
 import net.minecraft.stats.Stats;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
@@ -82,7 +83,7 @@ public class ItemGrenadeBase extends ItemBase {
         throwStack.setDamage(1);
         grenade.setItem(throwStack);
         grenade.setRadius(1 + radius);
-        grenade.func_234612_a_(player, player.rotationPitch, player.rotationYaw, 0.0F, 1.5F, 0.5F);
+        grenade.setDirectionAndMovement(player, player.rotationPitch, player.rotationYaw, 0.0F, 1.5F, 0.5F);
         world.addEntity(grenade);
     }
 

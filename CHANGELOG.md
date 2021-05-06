@@ -1,5 +1,9 @@
 # Change Log
 
+## Version 1.16.5-1.2.0
+- Updated forge minimum to recommended 36.1.0
+- Removed some dependency info, this should solve the start up issue with incompatible versions
+
 ## Version 1.16.5-1.1.1
 - Fixed error in config names (only affects servers, only a name change should not affect anything but refresh the config file just incase)
 - set base forge version to 34 so mod can be used on 1.16.3 (Mod version will still be 1.16.5 but should now work on 1.16.3 as well)

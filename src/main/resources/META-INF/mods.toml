@@ -28,21 +28,3 @@ issueTrackerURL="https://github.com/shock-metal/shock-metal/issues"
     versionRange="${mc_version}"
     ordering="NONE"
     side="BOTH"
-
-[[dependencies.shockmetal]]
-    modId="tetra"
-    mandatory=false
-    ordering="BEFORE"
-    side="BOTH"
-
-[[dependencies.shockmetal]]
-    modId="patchouli"
-    mandatory=false
-    ordering="BEFORE"
-    side="BOTH"
-
-[[dependencies.shockmetal]]
-    modId="thermal"
-    mandatory=false
-    ordering="BEFORE"
-    side="BOTH"
