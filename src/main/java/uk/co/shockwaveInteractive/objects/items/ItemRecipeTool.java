@@ -1,7 +1,7 @@
 package uk.co.shockwaveinteractive.objects.items;
 
 import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.item.Item;
+import net.minecraft.world.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
@@ -16,8 +16,8 @@ import java.util.Random;
 public class ItemRecipeTool extends ItemBase {
     public ItemRecipeTool(int maxUses) {
         super(new Item.Properties()
-                .group(ShockMetalMain.SHOCKMETALTAB)
-                .maxDamage(maxUses)
+                .tab(ShockMetalMain.SHOCKMETALTAB)
+                .durability(maxUses)
                 .setNoRepair()
         );
     }
@@ -25,8 +25,8 @@ public class ItemRecipeTool extends ItemBase {
     @Override
     public ItemStack getContainerItem(ItemStack itemStack) {
         ItemStack damagedItem = new ItemStack(itemStack.getItem(), itemStack.getMaxStackSize(), null);
-        damagedItem.attemptDamageItem(itemStack.getDamage() + 1, new Random(), null);
-        return damagedItem.getDamage() >= itemStack.getMaxDamage() ? ItemStack.EMPTY : damagedItem;
+        damagedItem.hurt(itemStack.getDamageValue() + 1, new Random(), null);
+        return damagedItem.getDamageValue() >= itemStack.getMaxDamage() ? ItemStack.EMPTY : damagedItem;
     }
 
     @Override
@@ -35,11 +35,11 @@ public class ItemRecipeTool extends ItemBase {
     }
 
     @Override
-    public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        super.addInformation(stack, worldIn, tooltip, flagIn);
-        int damage = stack.getMaxDamage() - stack.getDamage();
+    public void appendHoverText(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
+        super.appendHoverText(stack, worldIn, tooltip, flagIn);
+        int damage = stack.getMaxDamage() - stack.getDamageValue();
         tooltip.add(
                 new StringTextComponent(String.format("%s/%s", damage, stack.getMaxDamage()))
-                .mergeStyle(TextFormatting.GRAY));
+                .withStyle(TextFormatting.GRAY));
     }
 }

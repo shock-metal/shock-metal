@@ -4,8 +4,8 @@ import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.WorldGenRegistries;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.GenerationStage;
-import net.minecraft.world.gen.feature.ConfiguredFeature;
-import net.minecraft.world.gen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
+import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.gen.feature.IFeatureConfig;
 import net.minecraft.world.gen.feature.OreFeatureConfig;
 import net.minecraftforge.common.world.BiomeGenerationSettingsBuilder;
@@ -29,8 +29,8 @@ public class WorldGenCustomOres
 	public static void initOres()
 	{
 		netherOres.add(register(
-				"shockwave_nether_ore", Feature.ORE.withConfiguration(
-						new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NETHERRACK, Blocks.SHOCKMETAL_NETHER_ORE_BLOCK.get().getDefaultState(), 4))
+				"shockwave_nether_ore", Feature.ORE.configured(
+						new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NETHERRACK, Blocks.SHOCKMETAL_NETHER_ORE_BLOCK.get().defaultBlockState(), 4))
 				)
 				.range(20)
 				.count(1) // chunk spawn frequency
@@ -42,16 +42,16 @@ public class WorldGenCustomOres
 		BiomeGenerationSettingsBuilder generation = event.getGeneration();
 		if(event.getCategory().equals(Biome.Category.NETHER)){
 			for(ConfiguredFeature<?, ?> ore : netherOres){
-				if (ore != null) generation.withFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ore);
+				if (ore != null) generation.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ore);
 			}
 		}
 		if(event.getCategory().equals(Biome.Category.THEEND)){
 			for(ConfiguredFeature<?, ?> ore : endOres){
-				if (ore != null) generation.withFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ore);
+				if (ore != null) generation.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ore);
 			}
 		}
 		for(ConfiguredFeature<?, ?> ore : overworldOres){
-			if (ore != null) generation.withFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ore);
+			if (ore != null) generation.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ore);
 		}
 	}
 
