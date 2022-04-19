@@ -1,28 +1,28 @@
 package uk.co.shockwaveinteractive;
 
-import net.minecraft.block.Block;
-import net.minecraft.item.ItemGroup;
+import net.minecraft.client.model.geom.ModelLayers;
+import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.client.registry.RenderingRegistry;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
-import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import net.minecraftforge.fml.common.Mod;
 import uk.co.shockwaveinteractive.config.MainConfig;
 import uk.co.shockwaveinteractive.integration.IntegrationHandler;
 import uk.co.shockwaveinteractive.tabs.ShockMetalTab;
-import uk.co.shockwaveinteractive.util.reference.MainReference;
 import uk.co.shockwaveinteractive.util.handlers.RegistryHandler;
+import uk.co.shockwaveinteractive.util.reference.MainReference;
 import uk.co.shockwaveinteractive.util.renderers.SpriteRendererShock;
 import uk.co.shockwaveinteractive.util.renderers.VacuumMinecartRenderer;
-import uk.co.shockwaveinteractive.world.gen.WorldGenCustomOres;
 
 import java.util.Random;
 
@@ -34,7 +34,7 @@ public class ShockMetalMain
 {
 	// Directly reference a log4j logger.
 	public static final Logger LOGGER = LogManager.getLogger();
-	public static final ItemGroup SHOCKMETALTAB = new ShockMetalTab("shockmetaltab");
+	public static final CreativeModeTab SHOCKMETALTAB = new ShockMetalTab("shockmetaltab");
 	public static FMLCommonSetupEvent preIntEvent;
 	public static Random rnd;
 
@@ -61,7 +61,6 @@ public class ShockMetalMain
 	private void setup(final FMLCommonSetupEvent event)
 	{
 		preIntEvent = event;
-		WorldGenCustomOres.initOres();
 		IntegrationHandler.checkInstalled();
 		IntegrationHandler.runPreInit();
 	}
@@ -86,7 +85,7 @@ public class ShockMetalMain
 	}
 	// You can use SubscribeEvent and let the Event Bus discover methods to call
 	@SubscribeEvent
-	public void onServerStarting(FMLServerStartingEvent event) {
+	public void onServerStarting(ServerStartingEvent event) {
 	}
 
 	// You can use EventBusSubscriber to automatically subscribe events on the contained class (this is subscribing to the MOD
@@ -99,7 +98,7 @@ public class ShockMetalMain
 	}
 
 	private void registerEntityRenderingHandlers() {
-		RenderingRegistry.registerEntityRenderingHandler(SHOCK_GRENADE_ENTITY.get(), SpriteRendererShock::new);
-		RenderingRegistry.registerEntityRenderingHandler(VACUUM_MINECART_ENTITY.get(), VacuumMinecartRenderer::new);
+		EntityRenderers.register(SHOCK_GRENADE_ENTITY.get(), SpriteRendererShock::new);
+		EntityRenderers.register(VACUUM_MINECART_ENTITY.get(), (context) -> { return new VacuumMinecartRenderer<>(context, ModelLayers.CHEST_MINECART); });
 	}
 }

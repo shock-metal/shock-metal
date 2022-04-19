@@ -1,43 +1,37 @@
 package uk.co.shockwaveinteractive.entity.projectile;
 
-import net.minecraft.entity.CreatureAttribute;
-import net.minecraft.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.entity.monster.CreeperEntity;
-import net.minecraft.entity.monster.ZombifiedPiglinEntity;
-import net.minecraft.entity.passive.PigEntity;
-import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
-import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.world.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.network.datasync.DataParameter;
-import net.minecraft.particles.ParticleTypes;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.EntityPredicates;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvents;
-import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.phys.HitResult;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Difficulty;
-import net.minecraft.world.Explosion;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.animal.Pig;
+import net.minecraft.world.entity.monster.Creeper;
+import net.minecraft.world.entity.monster.ZombifiedPiglin;
+import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.server.ServerWorld;
+import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.HitResult;
 import uk.co.shockwaveinteractive.ShockMetalMain;
 import uk.co.shockwaveinteractive.init.Items;
 import uk.co.shockwaveinteractive.util.Utility;
 
 import javax.annotation.Nullable;
-
 import java.lang.reflect.Field;
+import java.util.List;
 
 import static uk.co.shockwaveinteractive.init.Entities.SHOCK_GRENADE_ENTITY;
 
 public class ShockGrenadeEntity extends AbstractGrenadeEntity {
 
     public ShockGrenadeEntity(EntityType<? extends ThrowableItemProjectile> type, Level worldIn) {
-
         super(type, worldIn);
     }
 
@@ -53,76 +47,76 @@ public class ShockGrenadeEntity extends AbstractGrenadeEntity {
 
     @Override
     protected Item getDefaultItem() {
-
         return Items.SHOCK_GRENADE_ITEM.get();
     }
+
 
     @Override
     protected void onHit(HitResult result) {
 
-        if (Utility.isServerWorld(level)) {
+        if (Utility.isServerLevel(level)) {
 
             BlockPos pos = this.blockPosition();
-            @Nullable Entity source = getEntity();
-            ServerWorld worldAsServer = (ServerWorld) level;
+            @Nullable Entity source = this;
+            ServerLevel levelAsServer = (ServerLevel) level;
 
-            AxisAlignedBB area = new AxisAlignedBB(pos.offset(-radius, -radius, -radius), pos.offset(1 + radius, 1 + radius, 1 + radius));
-            level.getEntitiesOfClass(LivingEntity.class, area, EntityPredicates.ENTITY_STILL_ALIVE)
-                    .forEach(livingEntity -> {
-                        if(livingEntity.getMobType() == CreatureAttribute.UNDEAD && !livingEntity.fireImmune())
+            AABB aabb = source.getBoundingBox().inflate(radius, radius, radius);
+            List<LivingEntity> list = levelAsServer.getEntitiesOfClass(LivingEntity.class, aabb);
+            list.forEach(livingEntity -> {
+                if(livingEntity.getMobType() == MobType.UNDEAD && !livingEntity.fireImmune())
+                {
+                    livingEntity.setSecondsOnFire(5);
+                }
+
+                if(livingEntity instanceof Creeper) {
+                    Creeper creeper =  (Creeper) livingEntity;
+
+                    if(!creeper.isPowered() && ShockMetalMain.rnd.nextInt(100) < 39) {
+                        try
                         {
-                            livingEntity.setSecondsOnFire(5);
+                            Field field;
+                            field = creeper.getClass().getDeclaredField("POWERED");
+                            field.setAccessible(true);
+                            EntityDataAccessor<Boolean> powered = (EntityDataAccessor<Boolean>) field.get(creeper);
+                            creeper.getEntityData().set(powered, true);
+                        } catch (NoSuchFieldException | IllegalAccessException ignored) { }
+                    }
+                    applyDamage(source, livingEntity);
+
+                } else if (livingEntity instanceof Pig) {
+                    Pig piggu = (Pig) livingEntity;
+                    if (levelAsServer.getDifficulty() != Difficulty.PEACEFUL) {
+                        ZombifiedPiglin zombifiedpiglin = EntityType.ZOMBIFIED_PIGLIN.create(levelAsServer);
+                        zombifiedpiglin.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(net.minecraft.world.item.Items.GOLDEN_SWORD));
+                        zombifiedpiglin.moveTo(piggu.getX(), piggu.getY(), piggu.getZ(), this.getYRot(), this.getXRot());
+                        zombifiedpiglin.setNoAi(piggu.isNoAi());
+                        zombifiedpiglin.setBaby(piggu.isBaby());
+                        if (this.hasCustomName()) {
+                            zombifiedpiglin.setCustomName(this.getCustomName());
+                            zombifiedpiglin.setCustomNameVisible(this.isCustomNameVisible());
                         }
 
-                        if(livingEntity.getEntity() instanceof CreeperEntity) {
-                            CreeperEntity creeper =  (CreeperEntity) livingEntity.getEntity();
+                        zombifiedpiglin.setPersistenceRequired();
+                        levelAsServer.addFreshEntity(zombifiedpiglin);
+                        piggu.remove(RemovalReason.KILLED);
+                    }
+                }
+                else
+                {
+                    applyDamage(source, livingEntity);
+                }
 
-                            if(!creeper.isPowered() && ShockMetalMain.rnd.nextInt(100) < 39) {
-                                try
-                                {
-                                    Field field;
-                                    field = creeper.getClass().getDeclaredField("POWERED");
-                                    field.setAccessible(true);
-                                    DataParameter<Boolean> powered = (DataParameter<Boolean>) field.get(creeper);
-                                    creeper.getEntityData().set(powered, true);
-                                } catch (NoSuchFieldException | IllegalAccessException ignored) { }
-                            }
-                            applyDamage(source, livingEntity);
+            });
 
-                        } else if (livingEntity.getEntity() instanceof PigEntity) {
-                            PigEntity piggu =  (PigEntity) livingEntity.getEntity();
-                            if (worldAsServer.getDifficulty() != Difficulty.PEACEFUL) {
-                                ZombifiedPiglinEntity zombifiedpiglinentity = EntityType.ZOMBIFIED_PIGLIN.create(worldAsServer);
-                                zombifiedpiglinentity.setItemSlot(EquipmentSlotType.MAINHAND, new ItemStack(net.minecraft.item.Items.GOLDEN_SWORD));
-                                zombifiedpiglinentity.moveTo(piggu.getX(), piggu.getY(), piggu.getZ(), this.yRot, this.xRot);
-                                zombifiedpiglinentity.setNoAi(piggu.isNoAi());
-                                zombifiedpiglinentity.setBaby(piggu.isBaby());
-                                if (this.hasCustomName()) {
-                                    zombifiedpiglinentity.setCustomName(this.getCustomName());
-                                    zombifiedpiglinentity.setCustomNameVisible(this.isCustomNameVisible());
-                                }
-
-                                zombifiedpiglinentity.setPersistenceRequired();
-                                worldAsServer.addFreshEntity(zombifiedpiglinentity);
-                                piggu.remove();
-                            }
-                        }
-                        else
-                        {
-                            applyDamage(source, livingEntity);
-                        }
-
-                    });
-
-            level.explode(this, this.getX(), this.getY(), this.getZ(), 1.8f, false, Explosion.Mode.NONE);
+            level.explode(this, this.getX(), this.getY(), this.getZ(), 1.8f, false, Explosion.BlockInteraction.NONE);
             this.level.broadcastEntityEvent(this, (byte) 3);
-            this.remove();
+            this.remove(RemovalReason.KILLED);
         }
-        if (result.getType() == RayTraceResult.Type.ENTITY && this.tickCount < 10) {
+        if (result.getType() == HitResult.Type.ENTITY && this.tickCount < 10) {
             return;
         }
         this.level.addParticle(ParticleTypes.EXPLOSION, this.getX(), this.getY(), this.getZ(), 1.0D, 0.0D, 0.0D);
-        this.level.playLocalSound(this.getX(), this.getY(), this.getZ(), SoundEvents.LIGHTNING_BOLT_IMPACT, SoundCategory.BLOCKS, 0.5F, (1.0F + (this.level.random.nextFloat() - this.level.random.nextFloat()) * 0.2F) * 0.7F, false);
+        this.level.playLocalSound(this.getX(), this.getY(), this.getZ(), SoundEvents.LIGHTNING_BOLT_IMPACT, SoundSource.BLOCKS, 0.5F, (1.0F + (this.level.random.nextFloat() - this.level.random.nextFloat()) * 0.2F) * 0.7F, false);
     }
 
     public void applyDamage(Entity source, LivingEntity livingEntity) {

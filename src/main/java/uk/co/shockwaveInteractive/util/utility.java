@@ -1,6 +1,6 @@
 package uk.co.shockwaveinteractive.util;
 
-import net.minecraft.world.World;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.fml.ModList;
 
 public class Utility {
@@ -10,14 +10,14 @@ public class Utility {
         return ModList.get().isLoaded(modid);
     }
 
-    public static boolean isClientWorld(World world) {
+    public static boolean isClientLevel(Level level) {
 
-        return world.isRemote;
+        return level.isClientSide();
     }
 
-    public static boolean isServerWorld(World world) {
+    public static boolean isServerLevel(Level level) {
 
-        return !world.isRemote;
+        return !level.isClientSide();
     }
 
 }

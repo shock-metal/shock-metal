@@ -1,29 +1,27 @@
 package uk.co.shockwaveinteractive.entity.transport;
 
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.ChestBlock;
-import net.minecraft.entity.item.ItemEntity;
-import net.minecraft.entity.item.minecart.AbstractMinecartEntity.Type;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.container.ChestContainer;
-import net.minecraft.inventory.container.Container;
-import net.minecraft.item.ItemStack;
-import net.minecraft.network.IPacket;
-import net.minecraft.particles.ParticleTypes;
-import net.minecraft.tileentity.HopperTileEntity;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.Direction;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.vector.Vector3d;
-import net.minecraft.world.GameRules;
-import net.minecraft.world.World;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.vehicle.AbstractMinecartContainer;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.ChestMenu;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.ChestBlock;
 import net.minecraft.world.level.block.entity.Hopper;
-import net.minecraftforge.fml.network.NetworkHooks;
+import net.minecraft.world.level.block.entity.HopperBlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.network.NetworkHooks;
 import uk.co.shockwaveinteractive.config.MainConfig;
 import uk.co.shockwaveinteractive.init.Items;
 import uk.co.shockwaveinteractive.util.Utility;
@@ -33,7 +31,6 @@ import java.util.List;
 import java.util.function.Predicate;
 
 import static uk.co.shockwaveinteractive.init.Entities.VACUUM_MINECART_ENTITY;
-import static uk.co.shockwaveinteractive.init.Items.VACUUM_MINECART_ITEM;
 
 public class VacuumMinecartEntity extends AbstractMinecartContainer implements Hopper {
 
@@ -41,7 +38,7 @@ public class VacuumMinecartEntity extends AbstractMinecartContainer implements H
         super(type, world);
     }
 
-    public VacuumMinecartEntity(Level worldIn, double x, double y, double z) {
+    public VacuumMinecartEntity(double x, double y, double z, Level worldIn) {
         super(VACUUM_MINECART_ENTITY.get(), x, y, z, worldIn);
     }
 
@@ -49,7 +46,7 @@ public class VacuumMinecartEntity extends AbstractMinecartContainer implements H
         if (!level.isClientSide) {
             if (entity instanceof ItemEntity && entity.isAlive()) {
                 final ItemEntity item = (ItemEntity) entity;
-                HopperTileEntity.addItem(this, item);
+                HopperBlockEntity.addItem(this, item);
             }
         }
     }
@@ -88,9 +85,9 @@ public class VacuumMinecartEntity extends AbstractMinecartContainer implements H
 
                 if (var11 > 0.0D) {
                     var11 *= var11;
-                    entity.setDeltaMovement(new Vector3d(dx / distance * var11 * 0.05, dy / distance * var11 * 0.2, dz / distance * var11 * 0.05));
+                    entity.setDeltaMovement(new Vec3(dx / distance * var11 * 0.05, dy / distance * var11 * 0.2, dz / distance * var11 * 0.05));
 
-                    if (!Utility.isServerWorld(level) && tickCounter > 10) {
+                    if (!Utility.isServerLevel(level) && tickCounter > 10) {
                         this.level.addParticle(ParticleTypes.PORTAL, entity.getX(), entity.getY() - 0.2, entity.getZ(), 0, 0, 0);
                     }
                 }
@@ -105,7 +102,7 @@ public class VacuumMinecartEntity extends AbstractMinecartContainer implements H
 
     @Nullable
     @Override
-    public World getLevel() {
+    public Level getLevel() {
         return this.level;
     }
 
@@ -163,20 +160,19 @@ public class VacuumMinecartEntity extends AbstractMinecartContainer implements H
         return 8;
     }
 
-    public Container createMenu(int id, PlayerInventory playerInventoryIn) {
-        return ChestContainer.threeRows(id, playerInventoryIn, this);
+    @Override
+    protected AbstractContainerMenu createMenu(int id, Inventory playerInventoryIn) {
+        return ChestMenu.threeRows(id, playerInventoryIn, this);
     }
 
     @Override
-    public ItemStack getCartItem() {
-
-        return new ItemStack(VACUUM_MINECART_ITEM.get());
+    public ItemStack getPickResult() {
+        return new ItemStack(Items.VACUUM_MINECART_ITEM.get());
     }
 
     @Override
-    public IPacket<?> getAddEntityPacket() {
+    public Packet<?> getAddEntityPacket() {
 
         return NetworkHooks.getEntitySpawningPacket(this);
     }
-
 }

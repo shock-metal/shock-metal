@@ -1,14 +1,15 @@
 package uk.co.shockwaveinteractive.init;
 
-import net.minecraft.block.Block;
-import net.minecraftforge.fml.RegistryObject;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 import uk.co.shockwaveinteractive.objects.blocks.ShockmetalBlock;
 import uk.co.shockwaveinteractive.objects.blocks.ShockmetalNetherOreBlock;
 import uk.co.shockwaveinteractive.util.reference.MainReference;
 
-import static uk.co.shockwaveinteractive.util.reference.IDReference.*;
+import static uk.co.shockwaveinteractive.util.reference.IDReference.ID_SHOCKMETAL_BLOCK;
+import static uk.co.shockwaveinteractive.util.reference.IDReference.ID_SHOCKMETAL_NETHER_ORE_BLOCK;
 
 /*
   * Initialises Blocks

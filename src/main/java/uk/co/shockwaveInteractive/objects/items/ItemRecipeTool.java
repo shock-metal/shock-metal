@@ -1,12 +1,12 @@
 package uk.co.shockwaveinteractive.objects.items;
 
-import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TextComponent;
 import net.minecraft.world.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.StringTextComponent;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraft.world.World;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.Level;
 import uk.co.shockwaveinteractive.ShockMetalMain;
 
 import javax.annotation.Nullable;
@@ -35,11 +35,11 @@ public class ItemRecipeTool extends ItemBase {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
+    public void appendHoverText(ItemStack stack, @Nullable Level worldIn, List<Component> tooltip, TooltipFlag flagIn) {
         super.appendHoverText(stack, worldIn, tooltip, flagIn);
         int damage = stack.getMaxDamage() - stack.getDamageValue();
         tooltip.add(
-                new StringTextComponent(String.format("%s/%s", damage, stack.getMaxDamage()))
-                .withStyle(TextFormatting.GRAY));
+                new TextComponent(String.format("%s/%s", damage, stack.getMaxDamage()))
+                .withStyle(ChatFormatting.GRAY));
     }
 }

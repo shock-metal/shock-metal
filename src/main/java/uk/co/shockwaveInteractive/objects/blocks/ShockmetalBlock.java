@@ -1,20 +1,16 @@
 package uk.co.shockwaveinteractive.objects.blocks;
 
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
-import net.minecraftforge.common.ToolType;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.material.Material;
 
 public class ShockmetalBlock extends Block {
 
     public ShockmetalBlock() {
-        super(AbstractBlock.Properties.create(Material.IRON)
-                .hardnessAndResistance(10, 12)
-                .harvestLevel(3)
-                .harvestTool(ToolType.PICKAXE)
+        super(Block.Properties.of(Material.METAL)
+                .strength(10, 12)
                 .sound(SoundType.METAL)
-                .setRequiresTool()
+                .requiresCorrectToolForDrops()
         );
     }
 

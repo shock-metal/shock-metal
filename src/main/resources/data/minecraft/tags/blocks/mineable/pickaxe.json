@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "shockmetal:shockmetal_nether_ore_block",
+    "shockmetal:shockmetal_block"
+  ]
+}

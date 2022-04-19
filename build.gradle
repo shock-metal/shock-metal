@@ -3,9 +3,14 @@ buildscript {
         maven { url = 'https://maven.minecraftforge.net' }
         jcenter()
         mavenCentral()
+        maven {
+            name "Parchment"
+            url "https://maven.parchmentmc.org"
+        }
     }
     dependencies {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
+        classpath 'org.parchmentmc:librarian:1.+'
     }
 }
 plugins {
@@ -13,7 +18,7 @@ plugins {
     id 'maven-publish'
 }
 apply plugin: 'net.minecraftforge.gradle'
-apply from: 'https://raw.githubusercontent.com/SizableShrimp/Forge-Class-Remapper/main/classremapper.gradle'
+apply plugin: 'org.parchmentmc.librarian.forgegradle'
 
 version = "${mc_version}-${mod_version}"
 group = "uk.co.shockwaveinteractive" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
@@ -196,8 +201,8 @@ dependencies {
     runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}")
 
 //    Tetra
-    runtimeOnly fg.deobf("curse.maven:mgui-351914:${mgui_fileid}")
-    runtimeOnly fg.deobf("curse.maven:tetra-289712:${tetra_fileid}")
+//    runtimeOnly fg.deobf("curse.maven:mgui-351914:${mgui_fileid}")
+//    runtimeOnly fg.deobf("curse.maven:tetra-289712:${tetra_fileid}")
 
 //    Thermal Series
     //runtimeOnly fg.deobf("curse.maven:cofh-core-69162:3155824")
@@ -206,8 +211,8 @@ dependencies {
     //runtimeOnly fg.deobf("curse.maven:thermal-locomotion-406959:3155835")
 
 //    Patchouli
-    compileOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}:api")
-    runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}")
+//    compileOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}:api")
+//    runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}")
 
 //    Mekanism
     // If you want to test/use Mekanism & its modules during `runClient` invocation, use the following
@@ -217,11 +222,7 @@ dependencies {
     runtimeOnly fg.deobf("mekanism:Mekanism:${mc_version}-${mekanism_version}:tools")// Mekanism: Tools
 
 //    Testing
-//    runtimeOnly fg.deobf("curse.maven:advanced-xray-256256:3105604")
-
-    // Real examples
-    // compile 'com.mod-buildcraft:buildcraft:6.0.8:dev'  // adds buildcraft to the dev env
-    // compile 'com.googlecode.efficient-java-matrix-library:ejml:0.24' // adds ejml to the dev env
+    runtimeOnly fg.deobf("curse.maven:advanced-xray-256256:3712732")
 
     // The 'provided' configuration is for optional dependencies that exist at compile-time but might not at runtime.
     // provided 'com.mod-buildcraft:buildcraft:6.0.8:dev'
@@ -239,22 +240,47 @@ dependencies {
 
 def version_props = ["version": mod_version, "mc_version": minecraft_version_range, "forge_version": forge_version_range, "loader_version": loader_version_range]
 
-processResources {
-    // This will ensure that this task is redone when the versions change.
-    inputs.property 'version', project.version
-
-    // Replace stuff in mods.toml, nothing else
-    from(sourceSets.main.resources.srcDirs) {
+// process mods.toml to inject variables
+def modsTomlSpec = copySpec{
+    from(sourceSets.main.resources) {
         include 'META-INF/mods.toml'
-
-        // Replace version
-        expand version_props
+        expand 'version': mod_version,
+                'loader_version': loader_version_range,
+                'mc_version': minecraft_version_range,
+                'forge_version': forge_version_range
     }
+}
+// need to copy into each build directory, unfortunately does not seem easy to do this automatically
+def buildPaths = [
+        "$rootDir/out/production/resources", // IDEA
+        "$rootDir/bin", // Eclipse
+]
 
-    // Copy everything else except the mods.toml
-    from(sourceSets.main.resources.srcDirs) {
-        exclude 'META-INF/mods.toml'
+// task to add mods.toml to all relevant folders
+task replaceResources {
+    // ensure directory exists, first build likes to fail
+    new File("${processResources.destinationDir}/META-INF").mkdirs()
+    // copy for gradle
+    copy {
+        outputs.upToDateWhen { false }
+        with modsTomlSpec
+        into processResources.destinationDir
     }
+    // copy for IDEs
+    buildPaths.each { path ->
+        if (new File(path).exists()) {
+            copy {
+                outputs.upToDateWhen { false }
+                with modsTomlSpec
+                into path
+            }
+        }
+    }
+}
+
+processResources {
+    exclude 'META-INF/mods.toml'
+    finalizedBy replaceResources
 }
 
 // Example for how to get properties into the manifest for reading by the runtime..

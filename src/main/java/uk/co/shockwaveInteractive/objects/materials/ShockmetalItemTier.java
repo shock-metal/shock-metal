@@ -1,16 +1,17 @@
 package uk.co.shockwaveinteractive.objects.materials;
 
-import net.minecraft.item.IItemTier;
-import net.minecraft.item.crafting.Ingredient;
+
+import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.crafting.Ingredient;
 import uk.co.shockwaveinteractive.init.Items;
 
 import java.util.function.Supplier;
 
-public enum ShockmetalItemTier implements IItemTier {
+public enum ShockmetalItemTier implements Tier {
 
     // String name, int harvestLevel, int maxUses, float efficiency, float damage, int enchantability
 //    (float) ShockMetalConfiguration.materialDamage
-    SHOCKMETAL(3, 2500, 8.0f, 5.0f, 16, () -> { return Ingredient.fromItems(Items.SHOCKMETAL_INGOT.get()); });
+    SHOCKMETAL(3, 2500, 8.0f, 5.0f, 16, () -> { return Ingredient.of(Items.SHOCKMETAL_INGOT.get()); });
 
     private final int harvestLevel;
     private final int maxUses;
@@ -31,32 +32,32 @@ public enum ShockmetalItemTier implements IItemTier {
 
 
     @Override
-    public int getMaxUses() {
+    public int getUses() {
         return this.maxUses;
     }
 
     @Override
-    public float getEfficiency() {
+    public float getSpeed() {
         return this.efficiency;
     }
 
     @Override
-    public float getAttackDamage() {
+    public float getAttackDamageBonus() {
         return this.attackDamage;
     }
 
     @Override
-    public int getHarvestLevel() {
+    public int getLevel() {
         return this.harvestLevel;
     }
 
     @Override
-    public int getEnchantability() {
+    public int getEnchantmentValue() {
         return this.enchantability;
     }
 
     @Override
-    public Ingredient getRepairMaterial() {
+    public Ingredient getRepairIngredient() {
         return this.shockmetal_repair_material.get();
     }
 }

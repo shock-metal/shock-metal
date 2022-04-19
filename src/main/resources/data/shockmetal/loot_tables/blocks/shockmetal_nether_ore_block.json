@@ -8,6 +8,11 @@
           "type": "minecraft:item",
           "name": "shockmetal:shockmetal_nether_ore_block"
         }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
       ]
     }
   ]

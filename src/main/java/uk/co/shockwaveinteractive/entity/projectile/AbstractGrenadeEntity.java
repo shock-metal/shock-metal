@@ -4,12 +4,14 @@ package uk.co.shockwaveinteractive.entity.projectile;
 *       Derived from CoFH team implementation
 * */
 
+import net.minecraft.network.protocol.Packet;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
-import net.minecraft.network.protocol.Packet;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.fml.network.NetworkHooks;
+import net.minecraftforge.network.NetworkHooks;
+
+import javax.annotation.Nonnull;
 
 public abstract class AbstractGrenadeEntity extends ThrowableItemProjectile {
 
@@ -26,12 +28,12 @@ public abstract class AbstractGrenadeEntity extends ThrowableItemProjectile {
     public AbstractGrenadeEntity(EntityType<? extends ThrowableItemProjectile> type, LivingEntity livingEntityIn, Level worldIn) {
         super(type, livingEntityIn, worldIn);
     }
-
     public AbstractGrenadeEntity setRadius(int radius) {
         this.radius = radius;
         return this;
     }
 
+    @Nonnull
     @Override
     public Packet<?> getAddEntityPacket() {
         return NetworkHooks.getEntitySpawningPacket(this);
