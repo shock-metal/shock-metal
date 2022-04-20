@@ -28,7 +28,7 @@ import net.minecraft.world.phys.AABB;
 import uk.co.shockwaveinteractive.ShockMetalMain;
 import uk.co.shockwaveinteractive.init.Enchantments;
 import uk.co.shockwaveinteractive.objects.materials.ShockmetalItemTier;
-import uk.co.shockwaveinteractive.util.Utility;
+import uk.co.shockwaveinteractive.util.GeneralUtilities;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -97,7 +97,7 @@ public class ShockmetalToolSword extends SwordItem
 	@Override
 	public InteractionResultHolder<ItemStack> use(Level worldIn, Player playerIn, InteractionHand handIn) {
 
-			if (Utility.isServerLevel(worldIn) && playerIn.isCrouching() && charge >= 5) {
+			if (GeneralUtilities.isServerLevel(worldIn) && playerIn.isCrouching() && charge >= 5) {
 
 				int baseRadius = 2;
 

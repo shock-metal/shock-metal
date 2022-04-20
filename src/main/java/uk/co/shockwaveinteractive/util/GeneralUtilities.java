@@ -3,7 +3,7 @@ package uk.co.shockwaveinteractive.util;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.fml.ModList;
 
-public class Utility {
+public class GeneralUtilities {
 
     public static boolean isModLoaded(String modid) {
 

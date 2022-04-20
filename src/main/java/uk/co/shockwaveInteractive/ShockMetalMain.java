@@ -18,7 +18,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import uk.co.shockwaveinteractive.config.MainConfig;
 import uk.co.shockwaveinteractive.integration.IntegrationHandler;
-import uk.co.shockwaveinteractive.tabs.ShockMetalTab;
+import uk.co.shockwaveinteractive.tabs.ShockMetalCreativeTab;
 import uk.co.shockwaveinteractive.util.handlers.RegistryHandler;
 import uk.co.shockwaveinteractive.util.reference.MainReference;
 import uk.co.shockwaveinteractive.util.renderers.SpriteRendererShock;
@@ -34,7 +34,7 @@ public class ShockMetalMain
 {
 	// Directly reference a log4j logger.
 	public static final Logger LOGGER = LogManager.getLogger();
-	public static final CreativeModeTab SHOCKMETALTAB = new ShockMetalTab("shockmetaltab");
+	public static final CreativeModeTab SHOCKMETALTAB = new ShockMetalCreativeTab("shockmetaltab");
 	public static FMLCommonSetupEvent preIntEvent;
 	public static Random rnd;
 
