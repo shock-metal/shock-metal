@@ -28,7 +28,7 @@ import net.minecraft.world.phys.AABB;
 import uk.co.shockwaveinteractive.ShockMetalMain;
 import uk.co.shockwaveinteractive.init.Enchantments;
 import uk.co.shockwaveinteractive.objects.materials.ShockmetalItemTier;
-import uk.co.shockwaveinteractive.util.Utility;
+import uk.co.shockwaveinteractive.util.Utilities;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -97,7 +97,7 @@ public class ShockmetalToolSword extends SwordItem
 	@Override
 	public InteractionResultHolder<ItemStack> use(Level worldIn, Player playerIn, InteractionHand handIn) {
 
-			if (Utility.isServerLevel(worldIn) && playerIn.isCrouching() && charge >= 5) {
+			if (Utilities.isServerLevel(worldIn) && playerIn.isCrouching() && charge >= 5) {
 
 				int baseRadius = 2;
 
@@ -144,7 +144,7 @@ public class ShockmetalToolSword extends SwordItem
 
 	@Override
 	public boolean isFoil(ItemStack stack) {
-		return charge == maxCharge;
+		return stack.isEnchanted() || charge == maxCharge;
 	}
 
 	private int getMultiplier() {
