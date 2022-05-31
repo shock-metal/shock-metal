@@ -24,7 +24,7 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.network.NetworkHooks;
 import uk.co.shockwaveinteractive.config.MainConfig;
 import uk.co.shockwaveinteractive.init.Items;
-import uk.co.shockwaveinteractive.util.Utility;
+import uk.co.shockwaveinteractive.util.Utilities;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -87,7 +87,7 @@ public class VacuumMinecartEntity extends AbstractMinecartContainer implements H
                     var11 *= var11;
                     entity.setDeltaMovement(new Vec3(dx / distance * var11 * 0.05, dy / distance * var11 * 0.2, dz / distance * var11 * 0.05));
 
-                    if (!Utility.isServerLevel(level) && tickCounter > 10) {
+                    if (!Utilities.isServerLevel(level) && tickCounter > 10) {
                         this.level.addParticle(ParticleTypes.PORTAL, entity.getX(), entity.getY() - 0.2, entity.getZ(), 0, 0, 0);
                     }
                 }

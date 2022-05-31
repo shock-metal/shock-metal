@@ -21,7 +21,7 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.HitResult;
 import uk.co.shockwaveinteractive.ShockMetalMain;
 import uk.co.shockwaveinteractive.init.Items;
-import uk.co.shockwaveinteractive.util.Utility;
+import uk.co.shockwaveinteractive.util.Utilities;
 
 import javax.annotation.Nullable;
 import java.lang.reflect.Field;
@@ -54,7 +54,7 @@ public class ShockGrenadeEntity extends AbstractGrenadeEntity {
     @Override
     protected void onHit(HitResult result) {
 
-        if (Utility.isServerLevel(level)) {
+        if (Utilities.isServerLevel(level)) {
 
             BlockPos pos = this.blockPosition();
             @Nullable Entity source = this;
