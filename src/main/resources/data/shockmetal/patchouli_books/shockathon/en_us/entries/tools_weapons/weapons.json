@@ -20,7 +20,11 @@
     {
       "type": "spotlight",
       "item": "shockmetal:shockmetal_chestplate",
-      "text": "A full armour set can be crafted from shockmetal ingots providing a slight increase in protection over netherite but with a much greater knockback resistance. The armour also protects the user from fire damage if a full set is worn."
+      "text": "A full armour set can be crafted from shockmetal ingots providing a slight increase in protection over netherite but with a much greater knockback resistance."
+    },
+    {
+      "type": "text",
+      "text": "When a full set is worn, the user is protected from all forms of Fire damage and gains the Armour Burst ability. This ability allows the user to absorb energy when taking damage and release it when hit while sneaking. This pushes enemies away and deals damage."
     }
   ]
 }

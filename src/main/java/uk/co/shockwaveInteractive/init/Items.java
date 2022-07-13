@@ -13,6 +13,7 @@ import uk.co.shockwaveinteractive.config.MainConfig;
 import uk.co.shockwaveinteractive.entity.projectile.AbstractGrenadeEntity;
 import uk.co.shockwaveinteractive.entity.projectile.ShockGrenadeEntity;
 import uk.co.shockwaveinteractive.objects.armour.ArmourBase;
+import uk.co.shockwaveinteractive.objects.armour.ShockMetalArmour;
 import uk.co.shockwaveinteractive.objects.blocks.item.BlockItemBase;
 import uk.co.shockwaveinteractive.objects.items.ItemBase;
 import uk.co.shockwaveinteractive.objects.items.ItemRecipeTool;
@@ -77,8 +78,8 @@ public class Items
 	public static final RegistryObject<HoeItem> SHOCKMETAL_HOE = REGISTRY_ITEMS.register(ID_SHOCKMETAL_HOE, ShockmetalToolHoe::new);
 	
 	//---------------------------- Armour ----------------------------
-	public static final RegistryObject<ArmorItem> SHOCKMETAL_HELMET = REGISTRY_ITEMS.register(ID_SHOCKMETAL_HELMET, () -> new ArmourBase(ShockmetalArmorMaterial.SHOCKMETAL, EquipmentSlotType.HEAD, new Item.Properties().group(ShockMetalMain.SHOCKMETALTAB)));
-	public static final RegistryObject<ArmorItem> SHOCKMETAL_CHESTPLATE = REGISTRY_ITEMS.register(ID_SHOCKMETAL_CHESTPLATE, () -> new ArmourBase(ShockmetalArmorMaterial.SHOCKMETAL, EquipmentSlotType.CHEST, new Item.Properties().group(ShockMetalMain.SHOCKMETALTAB)));
-	public static final RegistryObject<ArmorItem> SHOCKMETAL_LEGGINGS = REGISTRY_ITEMS.register(ID_SHOCKMETAL_LEGGINGS, () -> new ArmourBase(ShockmetalArmorMaterial.SHOCKMETAL, EquipmentSlotType.LEGS, new Item.Properties().group(ShockMetalMain.SHOCKMETALTAB)));
-	public static final RegistryObject<ArmorItem> SHOCKMETAL_BOOTS = REGISTRY_ITEMS.register(ID_SHOCKMETAL_BOOTS, () -> new ArmourBase(ShockmetalArmorMaterial.SHOCKMETAL, EquipmentSlotType.FEET, new Item.Properties().group(ShockMetalMain.SHOCKMETALTAB)));
+	public static final RegistryObject<ArmorItem> SHOCKMETAL_HELMET = REGISTRY_ITEMS.register(ID_SHOCKMETAL_HELMET, () -> new ShockMetalArmour(ShockmetalArmorMaterial.SHOCKMETAL, EquipmentSlotType.HEAD, new Item.Properties().group(ShockMetalMain.SHOCKMETALTAB)));
+	public static final RegistryObject<ArmorItem> SHOCKMETAL_CHESTPLATE = REGISTRY_ITEMS.register(ID_SHOCKMETAL_CHESTPLATE, () -> new ShockMetalArmour(ShockmetalArmorMaterial.SHOCKMETAL, EquipmentSlotType.CHEST, new Item.Properties().group(ShockMetalMain.SHOCKMETALTAB)));
+	public static final RegistryObject<ArmorItem> SHOCKMETAL_LEGGINGS = REGISTRY_ITEMS.register(ID_SHOCKMETAL_LEGGINGS, () -> new ShockMetalArmour(ShockmetalArmorMaterial.SHOCKMETAL, EquipmentSlotType.LEGS, new Item.Properties().group(ShockMetalMain.SHOCKMETALTAB)));
+	public static final RegistryObject<ArmorItem> SHOCKMETAL_BOOTS = REGISTRY_ITEMS.register(ID_SHOCKMETAL_BOOTS, () -> new ShockMetalArmour(ShockmetalArmorMaterial.SHOCKMETAL, EquipmentSlotType.FEET, new Item.Properties().group(ShockMetalMain.SHOCKMETALTAB)));
 }

@@ -50,6 +50,10 @@ public class MainConfig {
                 .comment("If TRUE, Atom Ripper enchantment will be unavailable via normal means.")
                 .define("Disable Atom Ripper Enchantment", disableAtomRipper);
 
+        serverArmourBurstAbility = SERVER_CONFIG
+                .comment("If TRUE, enables the 'Armour Burst' ability when wearing a full set of Shockmetal Armour")
+                .define("Armour Burst Ability", armourBurstAbility);
+
 
         SERVER_CONFIG.pop();
 
@@ -94,6 +98,7 @@ public class MainConfig {
         oreGrinderUses = serverOreGrinderUses.get();
         vacuumMinecartRange = serverVacuumMinecartRange.get().floatValue();
         disableAtomRipperTrait = serverDisableAtomRipperTrait.get();
+        armourBurstAbility = serverArmourBurstAbility.get();
     }
 
     private static void refreshClientConfig() {
@@ -106,12 +111,14 @@ public class MainConfig {
     public static float vacuumMinecartRange = 5F;
     public static int oreGrinderUses = 50;
     public static boolean disableAtomRipperTrait = false;
+    public static boolean armourBurstAbility = true;
 
 
     private static BooleanValue serverDisableAtomRipper;
     private static BooleanValue serverDisableAtomRipperTrait;
     private static DoubleValue serverVacuumMinecartRange;
     private static IntValue serverOreGrinderUses;
+    private static BooleanValue serverArmourBurstAbility;
     // endregion
 
     // region CONFIGURATION
