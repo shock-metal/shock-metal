@@ -12,7 +12,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.SwordItem;
 import net.minecraft.particles.ParticleTypes;
-import net.minecraft.potion.Effect;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraft.util.*;
@@ -27,7 +26,6 @@ import net.minecraft.world.server.ServerWorld;
 import uk.co.shockwaveinteractive.ShockMetalMain;
 import uk.co.shockwaveinteractive.init.Enchantments;
 import uk.co.shockwaveinteractive.objects.materials.ShockmetalItemTier;
-import uk.co.shockwaveinteractive.util.Utility;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -94,7 +92,7 @@ public class ShockmetalToolSword extends SwordItem
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
 
-			if (Utility.isServerWorld(worldIn) && playerIn.isSneaking() && charge >= 5) {
+			if (uk.co.shockwaveinteractive.util.Utilities.isServerWorld(worldIn) && playerIn.isSneaking() && charge >= 5) {
 
 				int baseRadius = 2;
 

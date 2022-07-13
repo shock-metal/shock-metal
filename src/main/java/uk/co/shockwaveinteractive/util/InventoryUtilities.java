@@ -6,7 +6,7 @@ import net.minecraftforge.items.ItemHandlerHelper;
 
 import javax.annotation.Nonnull;
 
-public class InvUtil {
+public class InventoryUtilities {
     public static boolean canInsertStack(IItemHandler handler, @Nonnull ItemStack stack) {
         final ItemStack toInsert = ItemHandlerHelper.insertItemStacked(handler, stack, true);
         return toInsert.getCount() < stack.getCount();
