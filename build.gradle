@@ -123,26 +123,26 @@ dependencies {
     // at runtime, use the full JEI jar
     runtimeOnly fg.deobf("mezz.jei:jei-1.16.4:${jei_version}")
 
-//    Tetra
-    runtimeOnly fg.deobf("curse.maven:mgui-351914:3291267")
-    runtimeOnly fg.deobf("curse.maven:tetra-289712:3297566")
-
-//    Thermal Series
-    runtimeOnly fg.deobf("curse.maven:cofh-core-69162:3155824")
-    runtimeOnly fg.deobf("curse.maven:thermal-foundation-222880:3155830")
-    runtimeOnly fg.deobf("curse.maven:thermal-expansion-69163:3155832")
-    runtimeOnly fg.deobf("curse.maven:thermal-locomotion-406959:3155835")
-
-//    Patchouli
-    compileOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}:api")
-    runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}")
-
-//    Mekanism
-    // If you want to test/use Mekanism & its modules during `runClient` invocation, use the following
-    runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}")// core
-    runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}:additions")// Mekanism: Additions
-    runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}:generators")// Mekanism: Generators
-    runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}:tools")// Mekanism: Tools
+////    Tetra
+//    runtimeOnly fg.deobf("curse.maven:mgui-351914:3291267")
+//    runtimeOnly fg.deobf("curse.maven:tetra-289712:3297566")
+//
+////    Thermal Series
+//    runtimeOnly fg.deobf("curse.maven:cofh-core-69162:3155824")
+//    runtimeOnly fg.deobf("curse.maven:thermal-foundation-222880:3155830")
+//    runtimeOnly fg.deobf("curse.maven:thermal-expansion-69163:3155832")
+//    runtimeOnly fg.deobf("curse.maven:thermal-locomotion-406959:3155835")
+//
+////    Patchouli
+//    compileOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}:api")
+//    runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}")
+//
+////    Mekanism
+//    // If you want to test/use Mekanism & its modules during `runClient` invocation, use the following
+//    runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}")// core
+//    runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}:additions")// Mekanism: Additions
+//    runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}:generators")// Mekanism: Generators
+//    runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}:tools")// Mekanism: Tools
 
 //    Testing
 //    runtimeOnly fg.deobf("curse.maven:advanced-xray-256256:3105604")

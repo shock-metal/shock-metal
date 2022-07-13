@@ -45,7 +45,7 @@ public class AtomRipperEnchantment extends Enchantment {
 
     @Override
     public void onEntityDamaged(LivingEntity user, Entity target, int level) {
-        if(target.isLiving() && ((LivingEntity)target).getCreatureAttribute() == CreatureAttribute.UNDEAD)
+        if(((LivingEntity)target).getCreatureAttribute() == CreatureAttribute.UNDEAD)
         {
             target.setFire(5);
             user.addPotionEffect(new EffectInstance(Effects.REGENERATION, 100));

@@ -24,7 +24,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
 import uk.co.shockwaveinteractive.config.MainConfig;
 import uk.co.shockwaveinteractive.init.Items;
-import uk.co.shockwaveinteractive.util.Utility;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -88,7 +87,7 @@ public class VacuumMinecartEntity extends ContainerMinecartEntity implements IHo
                     var11 *= var11;
                     entity.setMotion(new Vector3d(dx / distance * var11 * 0.05, dy / distance * var11 * 0.2, dz / distance * var11 * 0.05));
 
-                    if (!Utility.isServerWorld(world) && tickCounter > 10) {
+                    if (!uk.co.shockwaveinteractive.util.Utilities.isServerWorld(world) && tickCounter > 10) {
                         this.world.addParticle(ParticleTypes.PORTAL, entity.getPosX(), entity.getPosY() - 0.2, entity.getPosZ(), 0, 0, 0);
                     }
                 }

@@ -7,7 +7,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.Effect;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import uk.co.shockwaveinteractive.ShockMetalMain;
@@ -48,7 +47,7 @@ public class ShockMetalAspectEnchantment extends Enchantment {
 
     @Override
     public void onEntityDamaged(LivingEntity user, Entity target, int level) {
-        if(target.isLiving() && ((LivingEntity)target).getCreatureAttribute() == CreatureAttribute.UNDEAD && ShockMetalMain.rnd.nextInt(100) < 19)
+        if(((LivingEntity)target).getCreatureAttribute() == CreatureAttribute.UNDEAD && ShockMetalMain.rnd.nextInt(100) < 19)
         {
             target.setFire(5);
             user.addPotionEffect(new EffectInstance(Effects.REGENERATION, 100));

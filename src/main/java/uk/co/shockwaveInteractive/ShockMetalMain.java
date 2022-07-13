@@ -17,7 +17,6 @@ import org.apache.logging.log4j.Logger;
 import net.minecraftforge.fml.common.Mod;
 import uk.co.shockwaveinteractive.config.MainConfig;
 import uk.co.shockwaveinteractive.integration.IntegrationHandler;
-import uk.co.shockwaveinteractive.tabs.ShockMetalTab;
 import uk.co.shockwaveinteractive.util.reference.MainReference;
 import uk.co.shockwaveinteractive.util.handlers.RegistryHandler;
 import uk.co.shockwaveinteractive.util.renderers.SpriteRendererShock;
@@ -34,7 +33,7 @@ public class ShockMetalMain
 {
 	// Directly reference a log4j logger.
 	public static final Logger LOGGER = LogManager.getLogger();
-	public static final ItemGroup SHOCKMETALTAB = new ShockMetalTab("shockmetaltab");
+	public static final ItemGroup SHOCKMETALTAB = new uk.co.shockwaveinteractive.tabs.ShockMetalModTab("shockmetaltab");
 	public static FMLCommonSetupEvent preIntEvent;
 	public static Random rnd;
 
@@ -56,6 +55,7 @@ public class ShockMetalMain
 
 		// Register ourselves for server and other game events we are interested in
 		MinecraftForge.EVENT_BUS.register(this);
+		MinecraftForge.EVENT_BUS.register(new PlayerTickHandler());
 	}
 
 	private void setup(final FMLCommonSetupEvent event)
