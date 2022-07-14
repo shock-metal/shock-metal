@@ -55,7 +55,7 @@ public class ShockMetalMain
 
 		// Register ourselves for server and other game events we are interested in
 		MinecraftForge.EVENT_BUS.register(this);
-		MinecraftForge.EVENT_BUS.register(new PlayerTickHandler());
+//		MinecraftForge.EVENT_BUS.register(new PlayerTickHandler());
 	}
 
 	private void setup(final FMLCommonSetupEvent event)

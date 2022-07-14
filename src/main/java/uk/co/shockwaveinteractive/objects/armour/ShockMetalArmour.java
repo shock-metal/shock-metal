@@ -53,7 +53,7 @@ public class ShockMetalArmour extends ArmourBase {
 
     public boolean canUseArmourBurst()
     {
-        return powerLevel >= 3 && MainConfig.armourBurstAbility;
+        return powerLevel >= 3;
     }
 
     public int getMultiplier() {

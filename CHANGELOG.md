@@ -1,13 +1,16 @@
 # Change Log
 
-## Version 1.16.5-1.3.0
+## Version 1.16.5-1.3.0.1
+- Temp disabled Armour Burst due to server issue
+
+## Version 1.16.5-1.3.0.0
 - Updated forge minimum to recommended 36.2.31
 - Fixed bug with Tetra enchantment causing crash on a server
 - Added AoE defense to full set of armour (Armour Burst)
 
 ## Version 1.16.5-1.2.0
 - Updated forge minimum to recommended 36.1.0
-- Removed some dependency info, this should solve the start up issue with incompatible versions
+- Removed some dependency info, this should solve the start-up issue with incompatible versions
 
 ## Version 1.16.5-1.1.1
 - Fixed error in config names (only affects servers, only a name change should not affect anything but refresh the config file just incase)
