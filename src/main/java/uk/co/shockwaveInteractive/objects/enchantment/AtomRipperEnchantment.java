@@ -39,7 +39,7 @@ public class AtomRipperEnchantment extends Enchantment {
 
     @Override
     public void doPostHurt(LivingEntity user, Entity target, int level) {
-        if(target.isAlive() && ((LivingEntity)target).getMobType() == MobType.UNDEAD)
+        if(((LivingEntity)target).getMobType() == MobType.UNDEAD)
         {
             target.setSecondsOnFire(5);
             user.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 100, 1));

@@ -216,13 +216,13 @@ dependencies {
 
 //    Mekanism
     // If you want to test/use Mekanism & its modules during `runClient` invocation, use the following
-    runtimeOnly fg.deobf("mekanism:Mekanism:${mc_version}-${mekanism_version}")// core
-    runtimeOnly fg.deobf("mekanism:Mekanism:${mc_version}-${mekanism_version}:additions")// Mekanism: Additions
-    runtimeOnly fg.deobf("mekanism:Mekanism:${mc_version}-${mekanism_version}:generators")// Mekanism: Generators
-    runtimeOnly fg.deobf("mekanism:Mekanism:${mc_version}-${mekanism_version}:tools")// Mekanism: Tools
-
-//    Testing
-    runtimeOnly fg.deobf("curse.maven:advanced-xray-256256:3712732")
+//    runtimeOnly fg.deobf("mekanism:Mekanism:${mc_version}-${mekanism_version}")// core
+//    runtimeOnly fg.deobf("mekanism:Mekanism:${mc_version}-${mekanism_version}:additions")// Mekanism: Additions
+//    runtimeOnly fg.deobf("mekanism:Mekanism:${mc_version}-${mekanism_version}:generators")// Mekanism: Generators
+//    runtimeOnly fg.deobf("mekanism:Mekanism:${mc_version}-${mekanism_version}:tools")// Mekanism: Tools
+//
+////    Testing
+//    runtimeOnly fg.deobf("curse.maven:advanced-xray-256256:3712732")
 
     // The 'provided' configuration is for optional dependencies that exist at compile-time but might not at runtime.
     // provided 'com.mod-buildcraft:buildcraft:6.0.8:dev'
