@@ -1,5 +1,8 @@
 # Changelog - 1.18.x
 
+## Version 1.18.2-2.0.0.2
+- Fixed server crash where mod tried to load EntityRenderer on the server
+
 ## Version 1.18.2-2.0.0.1
 - Fixed server crash when using tools with shock metal enchantments
 

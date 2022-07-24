@@ -1,7 +1,5 @@
 package uk.co.shockwaveinteractive;
 
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.MinecraftForge;
@@ -21,13 +19,8 @@ import uk.co.shockwaveinteractive.integration.IntegrationHandler;
 import uk.co.shockwaveinteractive.tabs.ShockMetalModTab;
 import uk.co.shockwaveinteractive.util.handlers.RegistryHandler;
 import uk.co.shockwaveinteractive.util.reference.MainReference;
-import uk.co.shockwaveinteractive.util.renderers.SpriteRendererShock;
-import uk.co.shockwaveinteractive.util.renderers.VacuumMinecartRenderer;
 
 import java.util.Random;
-
-import static uk.co.shockwaveinteractive.init.Entities.SHOCK_GRENADE_ENTITY;
-import static uk.co.shockwaveinteractive.init.Entities.VACUUM_MINECART_ENTITY;
 
 @Mod(MainReference.MODID)
 public class ShockMetalMain
@@ -66,7 +59,6 @@ public class ShockMetalMain
 	}
 
 	private void doClientStuff(final FMLClientSetupEvent event) {
-		registerEntityRenderingHandlers();
 		IntegrationHandler.runInit();
 	}
 
@@ -95,10 +87,5 @@ public class ShockMetalMain
 		@SubscribeEvent
 		public static void onBlocksRegistry(final RegistryEvent.Register<Block> blockRegistryEvent) {
 		}
-	}
-
-	private void registerEntityRenderingHandlers() {
-		EntityRenderers.register(SHOCK_GRENADE_ENTITY.get(), SpriteRendererShock::new);
-		EntityRenderers.register(VACUUM_MINECART_ENTITY.get(), (context) -> { return new VacuumMinecartRenderer<>(context, ModelLayers.CHEST_MINECART); });
 	}
 }
