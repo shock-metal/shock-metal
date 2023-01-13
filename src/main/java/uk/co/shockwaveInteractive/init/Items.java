@@ -8,7 +8,6 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import uk.co.shockwaveinteractive.ShockMetalMain;
-import uk.co.shockwaveinteractive.config.MainConfig;
 import uk.co.shockwaveinteractive.entity.projectile.AbstractGrenadeEntity;
 import uk.co.shockwaveinteractive.entity.projectile.ShockGrenadeEntity;
 import uk.co.shockwaveinteractive.objects.armour.ArmourBase;
@@ -39,7 +38,7 @@ public class Items
 	public static final RegistryObject<Item> SHOCKMETAL_DUST = REGISTRY_ITEMS.register(ID_SHOCKMETAL_DUST, () -> new ItemBase(new Item.Properties().tab(ShockMetalMain.SHOCKMETALTAB).fireResistant()));
 	public static final RegistryObject<Item> NETHERITE_DUST = REGISTRY_ITEMS.register(ID_NETHERITE_DUST, () -> new ItemBase(new Item.Properties().tab(ShockMetalMain.SHOCKMETALTAB).fireResistant()));
 	public static final RegistryObject<Item> SHOCKRITE_DUST = REGISTRY_ITEMS.register(ID_SHOCKRITE_DUST, () -> new ItemBase(new Item.Properties().tab(ShockMetalMain.SHOCKMETALTAB).fireResistant()));
-	public static final RegistryObject<Item> ORE_GRINDER = REGISTRY_ITEMS.register(ID_ORE_GRINDER, () -> new ItemRecipeTool(MainConfig.oreGrinderUses));
+	public static final RegistryObject<Item> ORE_GRINDER = REGISTRY_ITEMS.register(ID_ORE_GRINDER, () -> new ItemRecipeTool(50));
 	public static final RegistryObject<Item> FRAME_DIAMOND = REGISTRY_ITEMS.register(ID_FRAME_DIAMOND, ItemBase::new);
 
 //	Projectiles

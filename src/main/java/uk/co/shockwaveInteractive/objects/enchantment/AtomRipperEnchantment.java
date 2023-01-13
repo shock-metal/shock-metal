@@ -9,7 +9,7 @@ import net.minecraft.world.entity.MobType;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
-import uk.co.shockwaveinteractive.config.MainConfig;
+import uk.co.shockwaveinteractive.config.CommonConfig;
 
 public class AtomRipperEnchantment extends Enchantment {
 
@@ -34,7 +34,7 @@ public class AtomRipperEnchantment extends Enchantment {
 
     @Override
     public boolean isDiscoverable() {
-        return !MainConfig.disableAtomRipper;
+        return !CommonConfig.DISABLED_ATOM_RIPPER.get();
     }
 
     @Override

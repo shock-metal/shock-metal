@@ -19,7 +19,6 @@ import static uk.co.shockwaveinteractive.util.reference.IDReference.ID_SHOCKMETA
  public class Blocks
  {
      public static final DeferredRegister<Block> REGISTRY_BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MainReference.MODID);
-
      public static final RegistryObject<Block> SHOCKMETAL_BLOCK = REGISTRY_BLOCKS.register(ID_SHOCKMETAL_BLOCK, ShockmetalBlock::new);
      public static final RegistryObject<Block> SHOCKMETAL_NETHER_ORE_BLOCK = REGISTRY_BLOCKS.register(ID_SHOCKMETAL_NETHER_ORE_BLOCK, ShockmetalNetherOreBlock::new);
  }

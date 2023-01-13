@@ -14,7 +14,7 @@ import static uk.co.shockwaveinteractive.util.reference.IDReference.ID_VACUUM_MI
 
 public class Entities {
 
-    public static final DeferredRegister<EntityType<?>> REGISTRY_ENTITIES = DeferredRegister.create(ForgeRegistries.ENTITIES, MainReference.MODID);
+    public static final DeferredRegister<EntityType<?>> REGISTRY_ENTITIES = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, MainReference.MODID);
 
     public static final RegistryObject<EntityType<ShockGrenadeEntity>> SHOCK_GRENADE_ENTITY = REGISTRY_ENTITIES.register(ID_SHOCK_GRENADE_ENTITY,
             () -> EntityType.Builder.<ShockGrenadeEntity>of(ShockGrenadeEntity::new, MobCategory.MISC).sized(0.25F, 0.25F).build(ID_SHOCK_GRENADE_ENTITY));

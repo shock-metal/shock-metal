@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map.Entry;
 
 import uk.co.shockwaveinteractive.ShockMetalMain;
-import uk.co.shockwaveinteractive.config.MainConfig;
 //import uk.co.shockwaveinteractive.integration.tconstruct.TConConnector;
 //import uk.co.shockwaveinteractive.integration.tconstruct.TConstructIntegration;
 

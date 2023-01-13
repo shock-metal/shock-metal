@@ -5,8 +5,6 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TextComponent;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -54,26 +52,22 @@ public class ShockmetalToolSword extends SwordItem
 		);
 
 	}
-
 	@Override
-	public int getItemEnchantability(ItemStack stack) {
-		return super.getItemEnchantability(stack) - 4;
+	public int getEnchantmentValue(ItemStack stack) {
+		return super.getEnchantmentValue(stack) - 4;
 	}
-
 	@Override
 	public void appendHoverText(ItemStack stack, @Nullable Level worldIn, List<Component> tooltip, TooltipFlag flagIn) {
 		super.appendHoverText(stack, worldIn, tooltip, flagIn);
 
-		tooltip.add(new TextComponent(String.format("Charge: %s/%s (%sx)", charge, maxCharge, getMultiplier())).withStyle(DARK_PURPLE));
+		tooltip.add(Component.literal(String.format("Charge: %s/%s (%sx)", charge, maxCharge, getMultiplier())).withStyle(DARK_PURPLE));
 
 		if(Screen.hasShiftDown())
 		{
-			tooltip.add(new TranslatableComponent(TRANSLATION_INFO_PREFIX + "shockmetal.sword").withStyle(ChatFormatting.WHITE));
+			tooltip.add(Component.translatable(TRANSLATION_INFO_PREFIX + "shockmetal.sword").withStyle(ChatFormatting.WHITE));
 		}
-		else tooltip.add(new TranslatableComponent(TRANSLATION_SHIFT_INFO).withStyle(ChatFormatting.GRAY));
+		else tooltip.add(Component.translatable(TRANSLATION_SHIFT_INFO).withStyle(ChatFormatting.GRAY));
 	}
-	
-	
 	@Override
 	public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker)
 	{
@@ -92,8 +86,6 @@ public class ShockmetalToolSword extends SwordItem
 		
 		return super.hurtEnemy(stack, target, attacker);
 	}
-
-
 	@Override
 	public InteractionResultHolder<ItemStack> use(Level worldIn, Player playerIn, InteractionHand handIn) {
 
@@ -141,12 +133,10 @@ public class ShockmetalToolSword extends SwordItem
 
 		return super.use(worldIn, playerIn, handIn);
 	}
-
 	@Override
 	public boolean isFoil(ItemStack stack) {
 		return stack.isEnchanted() || charge == maxCharge;
 	}
-
 	private int getMultiplier() {
 		if(charge == 20) {
 			return 3;
