@@ -12,6 +12,7 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.vehicle.AbstractMinecartContainer;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ChestMenu;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
@@ -22,7 +23,7 @@ import net.minecraft.world.level.block.entity.HopperBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.network.NetworkHooks;
-import uk.co.shockwaveinteractive.config.MainConfig;
+import uk.co.shockwaveinteractive.config.CommonConfig;
 import uk.co.shockwaveinteractive.init.Items;
 import uk.co.shockwaveinteractive.util.Utilities;
 
@@ -68,7 +69,7 @@ public class VacuumMinecartEntity extends AbstractMinecartContainer implements H
         super.tick();
 
         BlockPos pos = this.blockPosition();
-        float radius = MainConfig.vacuumMinecartRange;
+        Double radius = CommonConfig.VACUUM_MINECART_RANGE.get();
 
         List<Entity> nearbyItems = level.getEntitiesOfClass(Entity.class, getBoundingBox().inflate(radius), entitySelector);
 
@@ -141,6 +142,11 @@ public class VacuumMinecartEntity extends AbstractMinecartContainer implements H
 
     }
 
+    @Override
+    protected Item getDropItem() {
+        return null;
+    }
+
     /**
      * Returns the number of slots in the inventory.
      */
@@ -175,4 +181,5 @@ public class VacuumMinecartEntity extends AbstractMinecartContainer implements H
 
         return NetworkHooks.getEntitySpawningPacket(this);
     }
+
 }

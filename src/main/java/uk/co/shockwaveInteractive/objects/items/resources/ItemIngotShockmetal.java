@@ -3,7 +3,6 @@ package uk.co.shockwaveinteractive.objects.items.resources;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -26,7 +25,7 @@ public class ItemIngotShockmetal extends ItemBase {
     public void appendHoverText(ItemStack stack, @Nullable Level worldIn, List<Component> tooltip, TooltipFlag flagIn) {
         super.appendHoverText(stack, worldIn, tooltip, flagIn);
 
-        tooltip.add(new TranslatableComponent(TRANSLATION_INFO_PREFIX + "shockmetal.ingot").withStyle(ChatFormatting.DARK_PURPLE));
+        tooltip.add(Component.translatable(TRANSLATION_INFO_PREFIX + "shockmetal.ingot").withStyle(ChatFormatting.DARK_PURPLE));
     }
 
 }

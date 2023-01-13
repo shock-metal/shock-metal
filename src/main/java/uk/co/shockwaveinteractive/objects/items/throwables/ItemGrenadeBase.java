@@ -5,7 +5,6 @@ import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.Position;
 import net.minecraft.core.dispenser.AbstractProjectileDispenseBehavior;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
@@ -54,9 +53,9 @@ public class ItemGrenadeBase extends ItemBase {
         if(infoString != null) {
             if(Screen.hasShiftDown())
             {
-                tooltip.add(new TranslatableComponent(infoString).withStyle(ChatFormatting.WHITE));
+                tooltip.add(Component.translatable(infoString).withStyle(ChatFormatting.WHITE));
             }
-            else tooltip.add(new TranslatableComponent(TRANSLATION_SHIFT_INFO).withStyle(ChatFormatting.GRAY));
+            else tooltip.add(Component.translatable(TRANSLATION_SHIFT_INFO).withStyle(ChatFormatting.GRAY));
         }
     }
 

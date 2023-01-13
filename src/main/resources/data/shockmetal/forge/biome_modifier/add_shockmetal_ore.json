@@ -1,0 +1,5 @@
+{
+  "type": "shockmetal:ores",
+  "biomes": "#minecraft:is_nether",
+  "feature": "shockmetal:shockmatel_ore_placed"
+}

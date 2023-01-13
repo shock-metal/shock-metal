@@ -9,7 +9,7 @@ import net.minecraft.world.entity.MobType;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
-import uk.co.shockwaveinteractive.config.MainConfig;
+import uk.co.shockwaveinteractive.config.CommonConfig;
 
 /*
 * Pretty much only used for tetra to apply shockmetal effects to tools using metal. if they want the effect all the time they can apply the atom ripper enchant
@@ -37,7 +37,7 @@ public class ShockMetalAspectEnchantment extends Enchantment {
 
     @Override
     public boolean isDiscoverable() {
-        return !MainConfig.disableAtomRipper;
+        return !CommonConfig.DISABLED_ATOM_RIPPER.get();
     }
 
     @Override
