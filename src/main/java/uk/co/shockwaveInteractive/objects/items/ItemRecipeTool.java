@@ -1,45 +1,44 @@
 package uk.co.shockwaveinteractive.objects.items;
 
-import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.StringTextComponent;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraft.world.World;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.Level;
 import uk.co.shockwaveinteractive.ShockMetalMain;
 
 import javax.annotation.Nullable;
 import java.util.List;
-import java.util.Random;
 
 public class ItemRecipeTool extends ItemBase {
     public ItemRecipeTool(int maxUses) {
         super(new Item.Properties()
-                .group(ShockMetalMain.SHOCKMETALTAB)
-                .maxDamage(maxUses)
+                .tab(ShockMetalMain.SHOCKMETALTAB)
+                .durability(maxUses)
                 .setNoRepair()
         );
     }
 
     @Override
-    public ItemStack getContainerItem(ItemStack itemStack) {
+    public ItemStack getCraftingRemainingItem(ItemStack itemStack) {
         ItemStack damagedItem = new ItemStack(itemStack.getItem(), itemStack.getMaxStackSize(), null);
-        damagedItem.attemptDamageItem(itemStack.getDamage() + 1, new Random(), null);
-        return damagedItem.getDamage() >= itemStack.getMaxDamage() ? ItemStack.EMPTY : damagedItem;
+        damagedItem.hurt(itemStack.getDamageValue() + 1, RandomSource.create(), null);
+        return damagedItem.getDamageValue() >= itemStack.getMaxDamage() ? ItemStack.EMPTY : damagedItem;
     }
 
     @Override
-    public boolean hasContainerItem(ItemStack stack) {
+    public boolean hasCraftingRemainingItem(ItemStack stack) {
         return true;
     }
 
     @Override
-    public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        super.addInformation(stack, worldIn, tooltip, flagIn);
-        int damage = stack.getMaxDamage() - stack.getDamage();
+    public void appendHoverText(ItemStack stack, @Nullable Level worldIn, List<Component> tooltip, TooltipFlag flagIn) {
+        super.appendHoverText(stack, worldIn, tooltip, flagIn);
+        int damage = stack.getMaxDamage() - stack.getDamageValue();
         tooltip.add(
-                new StringTextComponent(String.format("%s/%s", damage, stack.getMaxDamage()))
-                .mergeStyle(TextFormatting.GRAY));
+                Component.literal(String.format("%s/%s", damage, stack.getMaxDamage()))
+                .withStyle(ChatFormatting.GRAY));
     }
 }

@@ -1,9 +1,10 @@
 package uk.co.shockwaveinteractive.init;
 
-import net.minecraft.enchantment.Enchantment;
-import net.minecraftforge.fml.RegistryObject;
+
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 import uk.co.shockwaveinteractive.objects.enchantment.AtomRipperEnchantment;
 import uk.co.shockwaveinteractive.objects.enchantment.ShockMetalAspectEnchantment;
 import uk.co.shockwaveinteractive.util.reference.MainReference;

@@ -1,7 +1,8 @@
 package uk.co.shockwaveinteractive.objects.tools;
 
-import net.minecraft.item.Item;
-import net.minecraft.item.ShovelItem;
+
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ShovelItem;
 import uk.co.shockwaveinteractive.ShockMetalMain;
 import uk.co.shockwaveinteractive.objects.materials.ShockmetalItemTier;
 
@@ -15,8 +16,8 @@ public class ShockmetalToolShovel extends ShovelItem
 				0,
 				-2.0f,
 				new Item.Properties()
-						.group(ShockMetalMain.SHOCKMETALTAB)
-						.isImmuneToFire()
+						.tab(ShockMetalMain.SHOCKMETALTAB)
+						.fireResistant()
 		);
 	}
 }

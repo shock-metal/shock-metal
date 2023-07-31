@@ -1,16 +1,16 @@
 package uk.co.shockwaveinteractive.util.renderers;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.entity.EntityRendererManager;
-import net.minecraft.client.renderer.entity.SpriteRenderer;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.IRendersAsItem;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.client.renderer.entity.ThrownItemRenderer;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.projectile.ItemSupplier;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
-public class SpriteRendererShock<T extends Entity & IRendersAsItem> extends SpriteRenderer<T> {
-
-    public SpriteRendererShock(EntityRendererManager renderManagerIn) {
-
-        super(renderManagerIn, Minecraft.getInstance().getItemRenderer());
+@OnlyIn(Dist.CLIENT)
+public class SpriteRendererShock<T extends Entity & ItemSupplier> extends ThrownItemRenderer<T> {
+    public SpriteRendererShock(EntityRendererProvider.Context context) {
+        super(context);
     }
 }
 

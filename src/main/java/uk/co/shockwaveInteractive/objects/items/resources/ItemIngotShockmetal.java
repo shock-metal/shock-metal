@@ -1,10 +1,12 @@
 package uk.co.shockwaveinteractive.objects.items.resources;
 
-import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.text.*;
-import net.minecraft.world.World;
+
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.Level;
 import uk.co.shockwaveinteractive.ShockMetalMain;
 import uk.co.shockwaveinteractive.objects.items.ItemBase;
 
@@ -16,14 +18,14 @@ import static uk.co.shockwaveinteractive.util.reference.MainReference.TRANSLATIO
 public class ItemIngotShockmetal extends ItemBase {
 
     public ItemIngotShockmetal() {
-        super(new Item.Properties().group(ShockMetalMain.SHOCKMETALTAB).isImmuneToFire());
+        super(new Item.Properties().tab(ShockMetalMain.SHOCKMETALTAB).fireResistant());
     }
 
     @Override
-    public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        super.addInformation(stack, worldIn, tooltip, flagIn);
+    public void appendHoverText(ItemStack stack, @Nullable Level worldIn, List<Component> tooltip, TooltipFlag flagIn) {
+        super.appendHoverText(stack, worldIn, tooltip, flagIn);
 
-        tooltip.add(new TranslationTextComponent(TRANSLATION_INFO_PREFIX + "shockmetal.ingot").mergeStyle(TextFormatting.DARK_PURPLE));
+        tooltip.add(Component.translatable(TRANSLATION_INFO_PREFIX + "shockmetal.ingot").withStyle(ChatFormatting.DARK_PURPLE));
     }
 
 }

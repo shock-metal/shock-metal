@@ -1,10 +1,11 @@
 package uk.co.shockwaveinteractive.objects.materials;
 
-import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.IArmorMaterial;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.util.SoundEvent;
-import net.minecraft.util.SoundEvents;
+
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.ArmorMaterial;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import uk.co.shockwaveinteractive.init.Items;
@@ -12,9 +13,14 @@ import uk.co.shockwaveinteractive.util.reference.MainReference;
 
 import java.util.function.Supplier;
 
-public enum ShockmetalArmorMaterial implements IArmorMaterial
+public enum ShockmetalArmorMaterial implements ArmorMaterial
 {
-    SHOCKMETAL(MainReference.MODID + ":shockmetal", 45, new int[]{5, 10, 16, 6}, 16, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 3f, () -> { return Ingredient.fromItems(Items.SHOCKMETAL_INGOT.get()); }, 1);
+    SHOCKMETAL(
+            MainReference.MODID + ":shockmetal",
+            45, new int[]{5, 10, 16, 6},
+            16, SoundEvents.ARMOR_EQUIP_DIAMOND,
+            3f,
+            () -> { return Ingredient.of(Items.SHOCKMETAL_INGOT.get()); }, 1);
 
     private static final int[] MAX_DAMAGE_ARRAY = new int[] {11, 16, 15, 13};
     private final String name;
@@ -37,28 +43,29 @@ public enum ShockmetalArmorMaterial implements IArmorMaterial
         this.knockbackResistance = knockbackResistance;
     }
 
+
     @Override
-    public int getDurability(EquipmentSlotType slotIn) {
+    public int getDurabilityForSlot(EquipmentSlot slotIn) {
         return MAX_DAMAGE_ARRAY[slotIn.getIndex()] * this.maxDamageFactor;
     }
 
     @Override
-    public int getDamageReductionAmount(EquipmentSlotType slotIn) {
+    public int getDefenseForSlot(EquipmentSlot slotIn) {
         return this.damageReductionAmountArray[slotIn.getIndex()];
     }
 
     @Override
-    public int getEnchantability() {
+    public int getEnchantmentValue() {
         return this.enchantability;
     }
 
     @Override
-    public SoundEvent getSoundEvent() {
+    public net.minecraft.sounds.SoundEvent getEquipSound() {
         return this.soundEvent;
     }
 
     @Override
-    public Ingredient getRepairMaterial() {
+    public Ingredient getRepairIngredient() {
         return this.shockmetal_repair_material.get();
     }
 

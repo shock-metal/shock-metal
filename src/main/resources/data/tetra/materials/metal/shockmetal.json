@@ -4,15 +4,19 @@
   "primary": "10",
   "secondary": "8",
   "tertiary": "4",
-  "durability": "2500",
+  "durability": "2200",
   "integrityCost": "2",
   "integrityGain": "8",
-  "magicCapacity": "250",
-  "toolLevel": "5",
+  "magicCapacity": "200",
+  "toolLevel": "minecraft:diamond",
   "toolEfficiency": "10",
   "tints": { "glyph": "5647A8", "texture": "5647A8" },
   "textures": ["shiny", "default"],
-  "material": { "tag": "forge:ingots/shockmetal", "count": 1 },
+  "material": {
+    "items": [ "shockmetal:shockmetal_ingot" ]
+  },
   "improvements": { "shockmetal_aspect": 1 },
-  "requiredTools": { "hammer": 5 }
+  "requiredTools": {
+    "hammer_dig": "minecraft:gold"
+  }
 }

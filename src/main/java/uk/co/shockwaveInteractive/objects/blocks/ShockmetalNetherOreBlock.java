@@ -1,26 +1,27 @@
 package uk.co.shockwaveinteractive.objects.blocks;
 
-import net.minecraft.block.*;
-import net.minecraft.block.material.Material;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IWorldReader;
-import net.minecraftforge.common.ToolType;
 
-public class ShockmetalNetherOreBlock extends OreBlock {
+import net.minecraft.core.BlockPos;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.block.DropExperienceBlock;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.Material;
+
+public class ShockmetalNetherOreBlock extends DropExperienceBlock {
 
     public ShockmetalNetherOreBlock() {
-        super(AbstractBlock.Properties.create(Material.IRON)
-                .hardnessAndResistance(8, 10)
-                .harvestLevel(3)
-                .harvestTool(ToolType.PICKAXE)
+        super(DropExperienceBlock.Properties.of(Material.METAL)
+                .strength(8, 10)
                 .sound(SoundType.STONE)
-                .setLightLevel(value -> 15)
-                .setRequiresTool()
+                .lightLevel(value -> 15)
+                .requiresCorrectToolForDrops()
         );
     }
 
     @Override
-    public int getExpDrop(BlockState state, IWorldReader reader, BlockPos pos, int fortune, int silktouch) {
-        return 1;
+    public int getExpDrop(BlockState state, LevelReader level, RandomSource randomSource, BlockPos pos, int fortuneLevel, int silkTouchLevel) {
+        return 2 * fortuneLevel;
     }
 }

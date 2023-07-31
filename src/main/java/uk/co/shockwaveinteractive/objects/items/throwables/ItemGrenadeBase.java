@@ -1,24 +1,23 @@
 package uk.co.shockwaveinteractive.objects.items.throwables;
 
-import net.minecraft.block.DispenserBlock;
-import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.dispenser.IPosition;
-import net.minecraft.dispenser.ProjectileDispenseBehavior;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.projectile.ProjectileEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.SnowballItem;
+import net.minecraft.ChatFormatting;
+import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.core.Position;
+import net.minecraft.core.dispenser.AbstractProjectileDispenseBehavior;
+import net.minecraft.network.chat.Component;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.Hand;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvents;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.TranslationTextComponent;
-import net.minecraft.world.World;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.DispenserBlock;
+import uk.co.shockwaveinteractive.ShockMetalMain;
 import uk.co.shockwaveinteractive.entity.projectile.AbstractGrenadeEntity;
 import uk.co.shockwaveinteractive.objects.items.ItemBase;
 import uk.co.shockwaveinteractive.util.Helpers;
@@ -44,76 +43,76 @@ public class ItemGrenadeBase extends ItemBase {
         super(builder);
         this.factory = factory;
         this.infoString = infoString;
-        DispenserBlock.registerDispenseBehavior(this, DISPENSER_BEHAVIOR);
+        DispenserBlock.registerBehavior(this, DISPENSER_BEHAVIOR);
     }
 
     @Override
-    public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        super.addInformation(stack, worldIn, tooltip, flagIn);
+    public void appendHoverText(ItemStack stack, @Nullable Level worldIn, List<Component> tooltip, TooltipFlag flagIn) {
+        super.appendHoverText(stack, worldIn, tooltip, flagIn);
 
         if(infoString != null) {
             if(Screen.hasShiftDown())
             {
-                tooltip.add(new TranslationTextComponent(infoString).mergeStyle(TextFormatting.WHITE));
+                tooltip.add(Component.translatable(infoString).withStyle(ChatFormatting.WHITE));
             }
-            else tooltip.add(new TranslationTextComponent(TRANSLATION_SHIFT_INFO).mergeStyle(TextFormatting.GRAY));
+            else tooltip.add(Component.translatable(TRANSLATION_SHIFT_INFO).withStyle(ChatFormatting.GRAY));
         }
     }
 
     @Override
-    public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
+    public InteractionResultHolder<ItemStack> use(Level worldIn, Player playerIn, InteractionHand handIn) {
 
-        ItemStack stack = playerIn.getHeldItem(handIn);
-        worldIn.playSound(null, playerIn.getPosX(), playerIn.getPosY(), playerIn.getPosZ(), SoundEvents.ENTITY_SNOWBALL_THROW, SoundCategory.NEUTRAL, 0.5F, 0.4F / (random.nextFloat() * 0.4F + 0.8F));
-        playerIn.getCooldownTracker().setCooldown(this, cooldown);
-        if (!worldIn.isRemote) {
+        ItemStack stack = playerIn.getItemInHand(handIn);
+        worldIn.playSound(null, playerIn.getX(), playerIn.getY(), playerIn.getZ(), SoundEvents.SNOWBALL_THROW, SoundSource.NEUTRAL, 0.5F, 0.4F / (ShockMetalMain.rnd.nextFloat() * 0.4F + 0.8F));
+        playerIn.getCooldowns().addCooldown(this, cooldown);
+        if (!worldIn.isClientSide) {
             createGrenade(stack, worldIn, playerIn);
         }
-        playerIn.addStat(Stats.ITEM_USED.get(this));
-        if (!playerIn.abilities.isCreativeMode) {
+        playerIn.awardStat(Stats.ITEM_USED.get(this));
+        if (!playerIn.getAbilities().instabuild) {
             stack.shrink(1);
         }
-        return ActionResult.resultSuccess(stack);
+        return InteractionResultHolder.success(stack);
     }
 
-    protected void createGrenade(ItemStack stack, World world, PlayerEntity player) {
+    protected void createGrenade(ItemStack stack, Level level, Player player) {
 
-        AbstractGrenadeEntity grenade = factory.createGrenade(world, player);
+        AbstractGrenadeEntity grenade = factory.createGrenade(level, player);
         ItemStack throwStack = Helpers.cloneStack(stack, 1);
-        throwStack.setDamage(1);
+        throwStack.setDamageValue(1);
         grenade.setItem(throwStack);
         grenade.setRadius(1 + radius);
-        grenade.setDirectionAndMovement(player, player.rotationPitch, player.rotationYaw, 0.0F, 1.5F, 0.5F);
-        world.addEntity(grenade);
+        grenade.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 1.5F, 0.5F);
+        level.addFreshEntity(grenade);
     }
 
     // region FACTORY
     public interface IGrenadeFactory<T extends AbstractGrenadeEntity> {
 
-        T createGrenade(World world, LivingEntity living);
+        T createGrenade(Level level, LivingEntity living);
 
-        T createGrenade(World world, double posX, double posY, double posZ);
+        T createGrenade(Level level, double posX, double posY, double posZ);
 
     }
     // endregion
 
     // region DISPENSER BEHAVIOR
-    private static final ProjectileDispenseBehavior DISPENSER_BEHAVIOR = new ProjectileDispenseBehavior() {
+    private static final AbstractProjectileDispenseBehavior DISPENSER_BEHAVIOR = new AbstractProjectileDispenseBehavior() {
 
         @Override
-        protected ProjectileEntity getProjectileEntity(World worldIn, IPosition position, ItemStack stackIn) {
+        protected ThrowableItemProjectile getProjectile(Level worldIn, Position position, ItemStack stackIn) {
 
             ItemGrenadeBase grenadeItem = ((ItemGrenadeBase) stackIn.getItem());
-            AbstractGrenadeEntity grenade = grenadeItem.factory.createGrenade(worldIn, position.getX(), position.getY(), position.getZ());
+            AbstractGrenadeEntity grenade = grenadeItem.factory.createGrenade(worldIn, position.x(), position.y(), position.z());
             ItemStack throwStack = Helpers.cloneStack(stackIn, 1);
-            throwStack.setDamage(1);
+            throwStack.setDamageValue(1);
             grenade.setItem(throwStack);
             grenade.setRadius(1 + grenadeItem.radius);
             return grenade;
         }
 
         @Override
-        protected float getProjectileInaccuracy() {
+        protected float getUncertainty() {
 
             return 3.0F;
         }

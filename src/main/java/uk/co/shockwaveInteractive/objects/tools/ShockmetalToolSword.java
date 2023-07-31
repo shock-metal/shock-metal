@@ -1,40 +1,39 @@
 package uk.co.shockwaveinteractive.objects.tools;
 
-import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.entity.CreatureAttribute;
 
-import net.minecraft.entity.LivingEntity;
-
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.SwordItem;
-import net.minecraft.particles.ParticleTypes;
-import net.minecraft.potion.Effect;
-import net.minecraft.potion.EffectInstance;
-import net.minecraft.potion.Effects;
-import net.minecraft.util.*;
-import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.StringTextComponent;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.TranslationTextComponent;
-import net.minecraft.world.World;
-import net.minecraft.world.server.ServerWorld;
+import net.minecraft.ChatFormatting;
+import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.MobType;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.SwordItem;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.AABB;
 import uk.co.shockwaveinteractive.ShockMetalMain;
 import uk.co.shockwaveinteractive.init.Enchantments;
 import uk.co.shockwaveinteractive.objects.materials.ShockmetalItemTier;
-import uk.co.shockwaveinteractive.util.Utility;
+import uk.co.shockwaveinteractive.util.Utilities;
 
 import javax.annotation.Nullable;
 import java.util.List;
 
+import static net.minecraft.ChatFormatting.DARK_PURPLE;
 import static uk.co.shockwaveinteractive.util.reference.MainReference.TRANSLATION_INFO_PREFIX;
 import static uk.co.shockwaveinteractive.util.reference.MainReference.TRANSLATION_SHIFT_INFO;
-//import uk.co.shockwaveinteractive.util.config.ShockMetalConfiguration;
 
 
 public class ShockmetalToolSword extends SwordItem
@@ -48,53 +47,49 @@ public class ShockmetalToolSword extends SwordItem
 				3,
 				-1.0f,
 				new Item.Properties()
-						.group(ShockMetalMain.SHOCKMETALTAB)
-						.isImmuneToFire()
+						.tab(ShockMetalMain.SHOCKMETALTAB)
+						.fireResistant()
 		);
+
 	}
-
 	@Override
-	public int getItemEnchantability() {
-		return super.getItemEnchantability() - 4;
+	public int getEnchantmentValue(ItemStack stack) {
+		return super.getEnchantmentValue(stack) - 4;
 	}
-
 	@Override
-	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-		super.addInformation(stack, worldIn, tooltip, flagIn);
+	public void appendHoverText(ItemStack stack, @Nullable Level worldIn, List<Component> tooltip, TooltipFlag flagIn) {
+		super.appendHoverText(stack, worldIn, tooltip, flagIn);
 
-		tooltip.add(new StringTextComponent(String.format("Charge: %s/%s (%sx)", charge, maxCharge, getMultiplier())).mergeStyle(TextFormatting.DARK_PURPLE));
+		tooltip.add(Component.literal(String.format("Charge: %s/%s (%sx)", charge, maxCharge, getMultiplier())).withStyle(DARK_PURPLE));
 
 		if(Screen.hasShiftDown())
 		{
-			tooltip.add(new TranslationTextComponent(TRANSLATION_INFO_PREFIX + "shockmetal.sword").mergeStyle(TextFormatting.WHITE));
+			tooltip.add(Component.translatable(TRANSLATION_INFO_PREFIX + "shockmetal.sword").withStyle(ChatFormatting.WHITE));
 		}
-		else tooltip.add(new TranslationTextComponent(TRANSLATION_SHIFT_INFO).mergeStyle(TextFormatting.GRAY));
+		else tooltip.add(Component.translatable(TRANSLATION_SHIFT_INFO).withStyle(ChatFormatting.GRAY));
 	}
-	
-	
 	@Override
-	public boolean hitEntity(ItemStack stack, LivingEntity target, LivingEntity attacker)
+	public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker)
 	{
-		boolean hasAtomRipperEnchant = EnchantmentHelper.getEnchantmentLevel(Enchantments.ATOM_RIPPER.get(), stack) > 0;
+		boolean hasAtomRipperEnchant = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.ATOM_RIPPER.get(), stack) > 0;
 
 		// If target is undead, has 20% chance to catch fire and apply regen effect
-		if( !hasAtomRipperEnchant && target.getCreatureAttribute() == CreatureAttribute.UNDEAD && ShockMetalMain.rnd.nextInt(100) < 19)
+		if( !hasAtomRipperEnchant && (target).getMobType() == MobType.UNDEAD && ShockMetalMain.rnd.nextInt(100) < 19)
 		{
-			target.setFire(5);
-			attacker.addPotionEffect(new EffectInstance(Effects.REGENERATION, 100));
+			target.setSecondsOnFire(5);
+			attacker.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 100, 1));
 		}
 
 		if (target.isAlive() && charge < maxCharge) {
 			charge++;
 		}
 		
-		return super.hitEntity(stack, target, attacker);
+		return super.hurtEnemy(stack, target, attacker);
 	}
-
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
+	public InteractionResultHolder<ItemStack> use(Level worldIn, Player playerIn, InteractionHand handIn) {
 
-			if (Utility.isServerWorld(worldIn) && playerIn.isSneaking() && charge >= 5) {
+			if (Utilities.isServerLevel(worldIn) && playerIn.isCrouching() && charge >= 5) {
 
 				int baseRadius = 2;
 
@@ -108,36 +103,40 @@ public class ShockmetalToolSword extends SwordItem
 
 				int radius = baseRadius * getMultiplier();
 
-				BlockPos pos =  playerIn.getPosition();
-				ServerWorld worldAsServer = (ServerWorld) worldIn;
-				AxisAlignedBB area = new AxisAlignedBB(pos.add(-radius, -radius, -radius), pos.add(1 + radius, 1 + radius, 1 + radius));
+				ServerLevel levelAsServer = (ServerLevel) worldIn;
+				AABB aabb = playerIn.getBoundingBox().inflate(radius, radius, radius);
+				List<LivingEntity> list = levelAsServer.getEntitiesOfClass(LivingEntity.class, aabb);
 
-				worldIn.getEntitiesWithinAABB(LivingEntity.class, area, EntityPredicates.IS_ALIVE)
-						.forEach(livingEntity -> {
-							if(livingEntity.getCreatureAttribute() == CreatureAttribute.UNDEAD && !livingEntity.isImmuneToFire())
-							{
-								livingEntity.setFire(5);
-							}
-							livingEntity.attackEntityFrom(DamageSource.causeExplosionDamage(playerIn), (6.0f * getMultiplier()));
-						});
+				if(!list.isEmpty())
+				{
+					list.forEach(livingEntity -> {
+						if(livingEntity.getMobType() == MobType.UNDEAD && !livingEntity.fireImmune())
+						{
+							livingEntity.setSecondsOnFire(5);
+						}
+						livingEntity.hurt(DamageSource.explosion(playerIn), (6.0f * getMultiplier()));
+					});
+				}
 
-				worldAsServer.addParticle(ParticleTypes.EXPLOSION, playerIn.getPosX(), playerIn.getPosY(), playerIn.getPosZ(), 1.0D, 0.0D, 0.0D);
-				worldAsServer.playSound(playerIn.getPosX(), playerIn.getPosY(), playerIn.getPosZ(),
-						SoundEvents.ENTITY_LIGHTNING_BOLT_IMPACT,
-						SoundCategory.BLOCKS,
-						0.5F,
-						(1.0F + (worldIn.rand.nextFloat() - worldIn.rand.nextFloat()) * 0.2F) * 0.7F,
-						false);
+				levelAsServer.addParticle(ParticleTypes.EXPLOSION, playerIn.getX(), playerIn.getY(), playerIn.getZ(), 1.0D, 0.0D, 0.0D);
+				levelAsServer.playSound(
+						playerIn,
+						playerIn.getX(),
+						playerIn.getY(),
+						playerIn.getZ(),
+						SoundEvents.LIGHTNING_BOLT_IMPACT,
+						SoundSource.BLOCKS,
+						0.5f,
+						(1.0F + (worldIn.random.nextFloat() - worldIn.random.nextFloat()) * 0.2F) * 0.7F);
+
 			}
 
-		return super.onItemRightClick(worldIn, playerIn, handIn);
+		return super.use(worldIn, playerIn, handIn);
 	}
-
 	@Override
-	public boolean hasEffect(ItemStack stack) {
-		return charge == maxCharge;
+	public boolean isFoil(ItemStack stack) {
+		return stack.isEnchanted() || charge == maxCharge;
 	}
-
 	private int getMultiplier() {
 		if(charge == 20) {
 			return 3;
