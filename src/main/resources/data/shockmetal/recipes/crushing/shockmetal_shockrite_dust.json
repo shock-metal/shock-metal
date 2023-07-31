@@ -9,6 +9,9 @@
             "tag": "forge:dusts/netherite"
         },
         {
+            "tag": "forge:dusts/netherite"
+        },
+        {
             "item": "shockmetal:ore_grinder"
         }
     ],
@@ -16,6 +19,6 @@
     "result":
     {
         "item": "shockmetal:shockrite_dust",
-        "count": 2
+        "count": 1
     }
 }

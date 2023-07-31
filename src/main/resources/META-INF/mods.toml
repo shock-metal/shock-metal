@@ -28,3 +28,10 @@ issueTrackerURL="https://github.com/shock-metal/shock-metal/issues"
     versionRange="${mc_version}"
     ordering="NONE"
     side="BOTH"
+
+[[dependencies.shockmetal]]
+modId="tetra"
+mandatory=false
+versionRange="[5,]"
+ordering="AFTER"
+side="BOTH"

@@ -7,10 +7,12 @@ buildscript {
             name "Parchment"
             url "https://maven.parchmentmc.org"
         }
+        maven { url = 'https://repo.spongepowered.org/repository/maven-public/' }
     }
     dependencies {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
         classpath 'org.parchmentmc:librarian:1.+'
+        classpath group: 'org.spongepowered', name: 'mixingradle', version: "0.7-SNAPSHOT"
     }
 }
 plugins {
@@ -19,10 +21,11 @@ plugins {
 }
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'org.parchmentmc.librarian.forgegradle'
+apply plugin: 'org.spongepowered.mixin'
 
 version = "${mc_version}-${mod_version}"
 group = "uk.co.shockwaveinteractive" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = "shockmetal"
+base.archivesName = "shockmetal"
 
 // Mojang ships Java 17 to end users in 1.18+, so your mod should target Java 17.
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
@@ -148,6 +151,9 @@ repositories {
 //        url 'https://maven.tterrag.com/'
 //    }
     maven {
+        url 'https://maven.blamejared.com'
+    }
+    maven {
         // location of the maven that hosts JEI files
         name = "Progwml6 maven"
         url = "https://dvs1.progwml6.com/files/maven/"
@@ -158,7 +164,10 @@ repositories {
         url = "https://modmaven.k-4u.nl"
     }
     maven {
-        url "https://www.cursemaven.com"
+        url "https://cursemaven.com"
+        content {
+            includeGroup "curse.maven"
+        }
     }
     maven {
         url 'https://modmaven.dev'
@@ -166,9 +175,6 @@ repositories {
     maven {
         name 'CurseForge'
         url 'https://minecraft.curseforge.com/api/maven/'
-    }
-    maven {
-        url 'https://maven.blamejared.com'
     }
     maven {
         name 'DVS1 Maven FS'
@@ -202,8 +208,8 @@ dependencies {
     runtimeOnly(fg.deobf("mezz.jei:jei-${mc_version}-forge:${jei_version}"))
 
 //    Tetra
-//    runtimeOnly fg.deobf("curse.maven:mgui-351914:${mgui_fileid}")
-//    runtimeOnly fg.deobf("curse.maven:tetra-289712:${tetra_fileid}")
+    //runtimeOnly fg.deobf("curse.maven:mgui-351914:${mgui_fileid}")
+    //runtimeOnly fg.deobf("curse.maven:tetra-289712:${tetra_fileid}")
 
 //    Thermal Series
     //runtimeOnly fg.deobf("curse.maven:cofh-core-69162:3155824")
