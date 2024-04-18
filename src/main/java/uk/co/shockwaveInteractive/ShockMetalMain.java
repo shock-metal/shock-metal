@@ -17,12 +17,16 @@ import org.apache.logging.log4j.Logger;
 import uk.co.shockwaveinteractive.config.ClientConfig;
 import uk.co.shockwaveinteractive.config.CommonConfig;
 import uk.co.shockwaveinteractive.integration.IntegrationHandler;
+import uk.co.shockwaveinteractive.integration.curios.CuriosIntegration;
 import uk.co.shockwaveinteractive.tabs.ShockMetalModTab;
+import uk.co.shockwaveinteractive.util.Utilities;
 import uk.co.shockwaveinteractive.util.handlers.ModEventHandlers;
 import uk.co.shockwaveinteractive.util.handlers.RegistryHandler;
 import uk.co.shockwaveinteractive.util.reference.MainReference;
 
 import java.util.Random;
+
+import static uk.co.shockwaveinteractive.util.reference.MainReference.ID_CURIOS;
 
 @Mod(MainReference.MODID)
 public class ShockMetalMain
@@ -33,7 +37,12 @@ public class ShockMetalMain
 	public static FMLCommonSetupEvent preIntEvent;
 	public static Random rnd;
 
+	public static boolean curiosLoaded = false;
+
 	public ShockMetalMain() {
+
+		curiosLoaded = Utilities.isModLoaded(ID_CURIOS);
+
 		// Register the setup method for modloading
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
 		// Register the enqueueIMC method for modloading
@@ -60,6 +69,7 @@ public class ShockMetalMain
 		IntegrationHandler.checkInstalled();
 		IntegrationHandler.runPreInit();
 		ModEventHandlers.onCommonSetup(event);
+		CuriosIntegration.register();
 	}
 
 	private void doClientStuff(final FMLClientSetupEvent event) {
