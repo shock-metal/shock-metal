@@ -18,6 +18,7 @@ import uk.co.shockwaveinteractive.config.ClientConfig;
 import uk.co.shockwaveinteractive.config.CommonConfig;
 import uk.co.shockwaveinteractive.integration.IntegrationHandler;
 import uk.co.shockwaveinteractive.tabs.ShockMetalModTab;
+import uk.co.shockwaveinteractive.util.handlers.ModEventHandlers;
 import uk.co.shockwaveinteractive.util.handlers.RegistryHandler;
 import uk.co.shockwaveinteractive.util.reference.MainReference;
 
@@ -58,6 +59,7 @@ public class ShockMetalMain
 		preIntEvent = event;
 		IntegrationHandler.checkInstalled();
 		IntegrationHandler.runPreInit();
+		ModEventHandlers.onCommonSetup(event);
 	}
 
 	private void doClientStuff(final FMLClientSetupEvent event) {

@@ -13,9 +13,9 @@ import static uk.co.shockwaveinteractive.init.Entities.SHOCK_GRENADE_ENTITY;
 import static uk.co.shockwaveinteractive.init.Entities.VACUUM_MINECART_ENTITY;
 
 @Mod.EventBusSubscriber(modid = MainReference.MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-public class ClientModEvents {
+public class ModClientEvents {
 
-    private ClientModEvents() {}
+    private ModClientEvents() {}
 
     @SubscribeEvent
     public static void SetUpClient(EntityRenderersEvent.RegisterRenderers event)

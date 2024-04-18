@@ -1,0 +1,8 @@
+{
+  "shield_cooldown_applied": {
+    "subtitles": "sounds.shockmetal.shield_cooldown_applied",
+    "sounds": [
+      "shockmetal:shield_cooldown_applied"
+    ]
+  }
+}

@@ -14,6 +14,7 @@ import uk.co.shockwaveinteractive.objects.armour.ArmourBase;
 import uk.co.shockwaveinteractive.objects.blocks.item.BlockItemBase;
 import uk.co.shockwaveinteractive.objects.items.ItemBase;
 import uk.co.shockwaveinteractive.objects.items.ItemRecipeTool;
+import uk.co.shockwaveinteractive.objects.items.ItemShieldModule;
 import uk.co.shockwaveinteractive.objects.items.ItemVacuumMinecart;
 import uk.co.shockwaveinteractive.objects.items.resources.ItemIngotShockmetal;
 import uk.co.shockwaveinteractive.objects.items.throwables.ItemGrenadeBase;
@@ -40,6 +41,7 @@ public class Items
 	public static final RegistryObject<Item> SHOCKRITE_DUST = REGISTRY_ITEMS.register(ID_SHOCKRITE_DUST, () -> new ItemBase(new Item.Properties().tab(ShockMetalMain.SHOCKMETALTAB).fireResistant()));
 	public static final RegistryObject<Item> ORE_GRINDER = REGISTRY_ITEMS.register(ID_ORE_GRINDER, () -> new ItemRecipeTool(50));
 	public static final RegistryObject<Item> FRAME_DIAMOND = REGISTRY_ITEMS.register(ID_FRAME_DIAMOND, ItemBase::new);
+	public static final RegistryObject<Item> SHIELD_MODULE = REGISTRY_ITEMS.register(ID_SHIELD_MODULE, () -> new ItemShieldModule());
 
 //	Projectiles
 	public static final RegistryObject<Item> SHOCK_GRENADE_ITEM = REGISTRY_ITEMS.register(ID_SHOCK_GRENADE,

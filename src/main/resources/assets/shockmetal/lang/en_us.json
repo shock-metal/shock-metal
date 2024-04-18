@@ -16,6 +16,7 @@
   "item.shockmetal.shockmetal_boots" : "Shock Metal Boots",
   "item.shockmetal.shock_grenade" : "Shock Grenade",
   "item.shockmetal.vacuum_minecart" : "Vacuum Minecart",
+  "item.shockmetal.shield_module" : "Shield Module",
 
   "material.shockmetal.shockmetal" : "Shock Metal",
   "tetra.material.shockmetal": "Shockmetal",
@@ -54,5 +55,7 @@
   "enchantment.shockmetal.shock_metal_aspect": "Atom Ripper",
 
   "book.shockmetal.name": "Shockathon",
-  "book.shockmetal.landing-text": "WIP Here you will find all there is to know about shockmetal!"
+  "book.shockmetal.landing-text": "WIP Here you will find all there is to know about shockmetal!",
+
+  "sounds.shockmetal.shield_cooldown_applied": "Shield Cooldown Active Alert"
 }

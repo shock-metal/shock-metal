@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:crafting_shaped",
+
+  "pattern":
+  [
+    "RIR",
+    "DID",
+    "RIR"
+  ],
+
+  "key":
+  {
+    "I":
+    {
+      "tag": "shockmetal:shockmetal_ingot"
+    },
+    "D":
+    {
+      "item": "forge:gems/diamond"
+    },
+    "R":
+    {
+      "tag": "forge:dusts/redstone"
+    }
+  },
+
+  "result":
+  {
+    "item": "shockmetal:shield_module",
+    "count": 1
+  }
+}

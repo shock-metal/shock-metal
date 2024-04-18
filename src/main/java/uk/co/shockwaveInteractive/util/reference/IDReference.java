@@ -23,6 +23,7 @@ public class IDReference {
     public static final String ID_SHOCKMETAL_LEGGINGS = "shockmetal_leggings";
     public static final String ID_SHOCKMETAL_BOOTS = "shockmetal_boots";
     public static final String ID_VACUUM_MINECART = "vacuum_minecart";
+    public static final String ID_SHIELD_MODULE = "shield_module";
 //    endregion
 
 //    region BLOCKS
@@ -40,4 +41,8 @@ public class IDReference {
     public static final String ID_ATOM_RIPPER_ENCHANT = "atom_ripper";
     public static final String ID_SHOCK_METAL_ASPECT_ENCHANT = "shock_metal_aspect";
 //    endregion
+
+//  region SOUNDS
+    public static final String ID_SOUND_COOLDOWN_APPLIED = "sound_cooldown_applied";
+//  endregion
 }
