@@ -11,7 +11,9 @@ public class Sounds {
     public static final DeferredRegister<SoundEvent> REGISTRY_SOUNDS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, MainReference.MODID);
     public static final ResourceLocation location = new ResourceLocation(MainReference.MODID);
 
-    public static final RegistryObject<SoundEvent> SHIELD_COOLDOWN_APPLIED = registerSoundEvent("shield_cooldown_applied");
+    public static final RegistryObject<SoundEvent> SHIELD_COOLDOWN_TONE = registerSoundEvent("shield_cooldown_tone");
+    public static final RegistryObject<SoundEvent> SHIELD_BREAK = registerSoundEvent("shield_break");
+    public static final RegistryObject<SoundEvent> SHIELD_RECHARGE = registerSoundEvent("shield_recharge");
 
     private static RegistryObject<SoundEvent> registerSoundEvent(String name) {
         return REGISTRY_SOUNDS.register(name, () -> new SoundEvent(new ResourceLocation(MainReference.MODID, name)));

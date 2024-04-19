@@ -2,20 +2,14 @@ package uk.co.shockwaveinteractive.gui;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.gui.GuiComponent;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiComponent;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.client.gui.overlay.ForgeGui;
 import net.minecraftforge.client.gui.overlay.IGuiOverlay;
-import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.items.IItemHandlerModifiable;
-import uk.co.shockwaveinteractive.integration.curios.CuriosProxy;
 import uk.co.shockwaveinteractive.objects.items.ItemShieldModule;
 import uk.co.shockwaveinteractive.util.InventoryUtilities;
-
-import java.util.function.Predicate;
 
 import static uk.co.shockwaveinteractive.util.reference.MainReference.MODID;
 
@@ -24,53 +18,55 @@ public class GuiShieldLevel extends GuiComponent {
 
     private static final Minecraft minecraft = Minecraft.getInstance();
 
-    public static boolean shouldShowShieldBar() {
-        ItemStack shieldModule = InventoryUtilities.getActiveShieldInInventory(minecraft.player);
-        return !shieldModule.isEmpty();
-    }
-
     public static void renderOverlay(ForgeGui gui, PoseStack ms, float pt, int width, int height) {
-        if (!shouldShowShieldBar())
+        ItemStack stack = InventoryUtilities.getActiveShieldInInventory(minecraft.player);
+
+        if(stack.isEmpty())
             return;
 
-        ItemStack stack = InventoryUtilities.getActiveShieldInInventory(minecraft.player);
-        ItemShieldModule shieldModule = (ItemShieldModule) stack.getItem();
+        long currentTime = minecraft.player.level.getGameTime();
 
-        if(shieldModule.isShieldDepleted(stack))
+        ItemShieldModule shieldModule = (ItemShieldModule) stack.getItem();
+        if(shieldModule.isShieldDepleted(stack)
+                || (shieldModule.getTotalDamageTaken() == 0
+                    && currentTime - shieldModule.getLastDamageTime() > (ItemShieldModule.SHIELD_RECHARGE_DELAY + 5) * 20))
             return;
 
         int maxShieldBuffer = ItemShieldModule.DAMAGE_THRESHOLD;
         int rechargeDelay = ItemShieldModule.SHIELD_RECHARGE_DELAY;
-
+        int yOffset = 20;
         int offsetX = Math.round((float) minecraft.getWindow().getGuiScaledWidth() / 2) - 54;
+        int barWidth = 108;
+        int barHeight = 18;
         int shieldLength = 96;
         int rechargeLength = 96;
-        long currentTime = System.currentTimeMillis();
 
         shieldLength *= ((maxShieldBuffer - shieldModule.getTotalDamageTaken()) / (double) maxShieldBuffer);
 
-        rechargeLength *= ((rechargeDelay - Math.round(currentTime - shieldModule.getLastDamageTime() * 1000)) / (double) rechargeDelay);
-
-        // minecraft.getWindow().getGuiScaledHeight() -
-        int yOffset = 30;
+        rechargeLength *=
+            (
+                (
+                        (rechargeDelay * 20) - Math.round(currentTime - shieldModule.getLastDamageTime())
+                )
+                / ((double) rechargeDelay * 20)
+            );
 
         RenderSystem.setShaderTexture(0, new ResourceLocation(MODID, "textures/gui/shield_gui_border.png"));
         // Stack xOffset, yOffset, textureXStart, textureYStart, textureXEnd, textureYEnd, textureSizeX, textureSizeY
-        blit(ms, offsetX, yOffset - 18, 0, 0, 108, 18, 256, 256);
+        blit(ms, offsetX, yOffset - 18, 0, 0, barWidth, barHeight, 256, 256);
         int shieldOffset = (int) (((0 + pt) / 3 % (33))) * 6;
 
         RenderSystem.setShaderTexture(0, new ResourceLocation(MODID, "textures/gui/shield_gui_shield.png"));
         blit(ms, offsetX + 9, yOffset - 9, 0, shieldOffset, shieldLength, 6, 256, 256);
 
         RenderSystem.setShaderTexture(0, new ResourceLocation(MODID, "textures/gui/shield_gui_shield.png"));
-        blit(ms, offsetX + 9, yOffset + 20, 0, shieldOffset + 20, rechargeLength, 6, 256, 256);
+        blit(ms, offsetX + 9, yOffset + 2, 0, shieldOffset, rechargeLength, 2, 256, 256);
 
 
         String text = (maxShieldBuffer - shieldModule.getTotalDamageTaken()) + "  /  " + maxShieldBuffer;
         int maxWidth = minecraft.font.width(maxShieldBuffer + "  /  " + maxShieldBuffer);
-        int offset = offsetX + 54 - maxWidth / 2 + (maxWidth - minecraft.font.width(text));
+        int offset = offsetX + 140 - maxWidth / 2 + (maxWidth - minecraft.font.width(text));
 
         drawString(ms, minecraft.font, text, offset, yOffset - 10, 0xFFFFFF);
-        drawString(ms, minecraft.font, String.valueOf((int) (0.15f * maxShieldBuffer)), offset + 69, yOffset - 20, 0xFFFFFF);
     }
 }

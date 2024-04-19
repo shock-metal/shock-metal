@@ -15,13 +15,11 @@ public class DamageEventHandler {
 
     @SubscribeEvent
     public void onEntityHurt(LivingHurtEvent event) {
-        if (event.getEntity() instanceof Player) {
-            Player player = (Player) event.getEntity();
+        if (event.getEntity() instanceof Player player) {
             boolean hasShieldModule = false;
 
             Predicate<ItemStack> itemPredicate = stack -> {
-                if (stack.getItem() instanceof ItemShieldModule) {
-                    ItemShieldModule shieldModule = (ItemShieldModule) stack.getItem();
+                if (stack.getItem() instanceof ItemShieldModule shieldModule) {
                     return shieldModule.isActive(stack);
                 }
                 return false;
@@ -64,7 +62,7 @@ public class DamageEventHandler {
 
                 if(player.getCooldowns().isOnCooldown(shieldItem)) {
                     shieldItem.ApplyCooldown(player);
-                    shieldItem.resetLastDamageTimeToCurrent();
+                    shieldItem.resetLastDamageTimeToCurrent(player.level);
                 } else {
                     // Calculate shield damage and damage reduction
                     int shieldDurability = shieldItem.getMaxDamage(activeItemStack) - shieldItem.getDamage(activeItemStack);
