@@ -32,8 +32,6 @@ import javax.annotation.Nullable;
 import java.util.List;
 
 import static net.minecraft.ChatFormatting.DARK_PURPLE;
-import static uk.co.shockwaveinteractive.util.reference.MainReference.TRANSLATION_INFO_PREFIX;
-import static uk.co.shockwaveinteractive.util.reference.MainReference.TRANSLATION_SHIFT_INFO;
 
 
 public class ShockmetalToolSword extends SwordItem
@@ -64,9 +62,9 @@ public class ShockmetalToolSword extends SwordItem
 
 		if(Screen.hasShiftDown())
 		{
-			tooltip.add(Component.translatable(TRANSLATION_INFO_PREFIX + "shockmetal.sword").withStyle(ChatFormatting.WHITE));
+			tooltip.add(Component.translatable("shockmetal.tooltip.sword").withStyle(ChatFormatting.WHITE));
 		}
-		else tooltip.add(Component.translatable(TRANSLATION_SHIFT_INFO).withStyle(ChatFormatting.GRAY));
+		else tooltip.add(Component.translatable("shockmetal.tooltip.shift-info").withStyle(ChatFormatting.GRAY));
 	}
 	@Override
 	public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker)

@@ -36,10 +36,15 @@
 
   "itemGroup.shockmetaltab" : "Shock Metal",
 
-  "info.shockmetal.gui.shockmetal.ingot": "Shocking!",
-  "info.shockmetal.gui.shift-info": "Hold <<SHIFT>> for more info",
-  "info.shockmetal.gui.shockmetal.sword": "Right click whilst sneaking to use AoE attack",
-  "info.shockmetal.gui.shock_grenade": "Deals explosive damage and light undead on fire, emits electric energy to nearby mobs...",
+  "shockmetal.tooltip.ingot": "Shocking!",
+  "shockmetal.tooltip.shift-info": "Hold SHIFT for more info",
+  "shockmetal.tooltip.sword": "Right click whilst sneaking to use AoE attack",
+  "shockmetal.tooltip.shock_grenade": "Deals explosive damage and light undead on fire, emits electric energy to nearby mobs...",
+  "shockmetal.tooltip.energy": "Energy: %d/%d",
+  "shockmetal.tooltip.energy.active": "Active: %s",
+
+  "shockmetal.msg.no_power": "Active: %s",
+  "shockmetal.msg.shield_overload": "Shield Overload! Reset in %s Seconds",
 
   "gui.shockmetalconfiguration.mainTitle" : "Shock Metal Config",
   "gui.shockmetalconfiguration.materialDamage" : "Shock Metal Damage Value",

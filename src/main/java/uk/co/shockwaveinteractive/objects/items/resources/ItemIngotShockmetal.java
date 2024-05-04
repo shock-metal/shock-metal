@@ -13,8 +13,6 @@ import uk.co.shockwaveinteractive.objects.items.ItemBase;
 import javax.annotation.Nullable;
 import java.util.List;
 
-import static uk.co.shockwaveinteractive.util.reference.MainReference.TRANSLATION_INFO_PREFIX;
-
 public class ItemIngotShockmetal extends ItemBase {
 
     public ItemIngotShockmetal() {
@@ -25,7 +23,7 @@ public class ItemIngotShockmetal extends ItemBase {
     public void appendHoverText(ItemStack stack, @Nullable Level worldIn, List<Component> tooltip, TooltipFlag flagIn) {
         super.appendHoverText(stack, worldIn, tooltip, flagIn);
 
-        tooltip.add(Component.translatable(TRANSLATION_INFO_PREFIX + "shockmetal.ingot").withStyle(ChatFormatting.DARK_PURPLE));
+        tooltip.add(Component.translatable("shockmetal.tooltip.ingot").withStyle(ChatFormatting.DARK_PURPLE));
     }
 
 }

@@ -7,7 +7,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import uk.co.shockwaveinteractive.util.reference.MainReference;
 
-public class Sounds {
+public class ModSounds {
     public static final DeferredRegister<SoundEvent> REGISTRY_SOUNDS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, MainReference.MODID);
     public static final ResourceLocation location = new ResourceLocation(MainReference.MODID);
 

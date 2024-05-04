@@ -7,7 +7,7 @@ import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.IItemHandlerModifiable;
 import net.minecraftforge.items.ItemHandlerHelper;
 import uk.co.shockwaveinteractive.integration.curios.CuriosProxy;
-import uk.co.shockwaveinteractive.objects.items.ItemShieldModule;
+import uk.co.shockwaveinteractive.objects.items.energytools.ItemShieldModule;
 
 import javax.annotation.Nonnull;
 import java.util.function.Predicate;

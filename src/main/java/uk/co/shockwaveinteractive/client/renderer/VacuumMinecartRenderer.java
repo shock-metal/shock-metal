@@ -1,4 +1,4 @@
-package uk.co.shockwaveinteractive.util.renderers;
+package uk.co.shockwaveinteractive.client.renderer;
 
 
 import com.mojang.blaze3d.vertex.PoseStack;

@@ -1,4 +1,4 @@
-package uk.co.shockwaveinteractive.gui;
+package uk.co.shockwaveinteractive.client.screen;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -8,7 +8,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.client.gui.overlay.ForgeGui;
 import net.minecraftforge.client.gui.overlay.IGuiOverlay;
-import uk.co.shockwaveinteractive.objects.items.ItemShieldModule;
+import uk.co.shockwaveinteractive.objects.items.energytools.ItemShieldModule;
 import uk.co.shockwaveinteractive.util.InventoryUtilities;
 
 import static uk.co.shockwaveinteractive.util.reference.MainReference.MODID;
@@ -27,10 +27,10 @@ public class GuiShieldLevel extends GuiComponent {
         long currentTime = minecraft.player.level.getGameTime();
 
         ItemShieldModule shieldModule = (ItemShieldModule) stack.getItem();
-        if(shieldModule.isShieldDepleted(stack)
-                || (shieldModule.getTotalDamageTaken() == 0
-                    && currentTime - shieldModule.getLastDamageTime() > (ItemShieldModule.SHIELD_RECHARGE_DELAY + 5) * 20))
-            return;
+//        if(shieldModule.isShieldDepleted(stack)
+//                || (shieldModule.getTotalDamageTaken() == 0
+//                    && currentTime - shieldModule.getLastDamageTime() > (ItemShieldModule.SHIELD_RECHARGE_DELAY + 5) * 20))
+//            return;
 
         int maxShieldBuffer = ItemShieldModule.DAMAGE_THRESHOLD;
         int rechargeDelay = ItemShieldModule.SHIELD_RECHARGE_DELAY;

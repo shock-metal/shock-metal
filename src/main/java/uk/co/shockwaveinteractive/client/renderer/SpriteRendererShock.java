@@ -1,4 +1,4 @@
-package uk.co.shockwaveinteractive.util.renderers;
+package uk.co.shockwaveinteractive.client.renderer;
 
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;

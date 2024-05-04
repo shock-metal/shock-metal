@@ -1,6 +1,10 @@
 package uk.co.shockwaveinteractive.util;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.ModList;
 
 public class Utilities {
@@ -20,4 +24,8 @@ public class Utilities {
         return !level.isClientSide();
     }
 
+    @OnlyIn(Dist.CLIENT)
+    public static Player getClientPlayer() {
+        return Minecraft.getInstance().player;
+    }
 }
