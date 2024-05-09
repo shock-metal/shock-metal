@@ -16,7 +16,7 @@
   "item.shockmetal.shockmetal_boots" : "Shock Metal Boots",
   "item.shockmetal.shock_grenade" : "Shock Grenade",
   "item.shockmetal.vacuum_minecart" : "Vacuum Minecart",
-  "item.shockmetal.shield_module" : "Shield Module",
+  "item.shockmetal.shield_module" : "Shock Metal Energy Shield",
 
   "material.shockmetal.shockmetal" : "Shock Metal",
   "tetra.material.shockmetal": "Shockmetal",
@@ -45,6 +45,7 @@
 
   "shockmetal.msg.no_power": "Out of power, shield inactive!",
   "shockmetal.msg.shield_overload": "Shield Overload! Reset in %s Seconds",
+  "shockmetal.msg.one_shield_active": "Only 1 active shield allowed",
 
   "gui.shockmetalconfiguration.mainTitle" : "Shock Metal Config",
   "gui.shockmetalconfiguration.materialDamage" : "Shock Metal Damage Value",

@@ -29,13 +29,15 @@ import uk.co.shockwaveinteractive.util.InventoryUtilities;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.function.Predicate;
 
 import static uk.co.shockwaveinteractive.util.EnergyUtilities.hasEnoughEnergy;
 import static uk.co.shockwaveinteractive.util.EnergyUtilities.useEnergy;
 
-//TODO NBT damage?
+//TODO add config items for shield values
 public class ItemShieldModule extends ItemEnergyBase {
     public static final int BASE_DAMAGE_THRESHOLD = 20; // Maximum damage threshold within the cooldown window
     public static final int BASE_SHIELD_RECHARGE_DELAY = 8; // Recharge Delay in seconds
@@ -87,13 +89,29 @@ public class ItemShieldModule extends ItemEnergyBase {
     }
 
     @Override
+    public boolean isEnchantable(ItemStack stack) {
+        return false;
+    }
+
+
+
+    @Override
     public InteractionResultHolder<ItemStack> use(Level world, Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
-        if (player.isShiftKeyDown() && !player.getCooldowns().isOnCooldown(stack.getItem())) {
-            switchActive(stack);
-            if(world.isClientSide) {
-                player.playSound(SoundEvents.EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
+        var activeShields = ItemShieldModule.getShieldsInInventory(player, true);
+        if (player.isShiftKeyDown()
+                && !player.getCooldowns().isOnCooldown(stack.getItem())
+                && getTotalDamageTaken(stack) == 0
+        ) {
+            if(!isActive(stack) && activeShields.isEmpty()) {
+                switchActive(stack);
+                if(world.isClientSide) {
+                    player.playSound(SoundEvents.EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
+                }
+            } else if (isActive(stack)) {
+                setActive(stack, false);
             }
+
             return InteractionResultHolder.success(stack);
         }
         return super.use(world, player, hand);
@@ -102,20 +120,32 @@ public class ItemShieldModule extends ItemEnergyBase {
     @Override
     public void inventoryTick(ItemStack stack, Level world, Entity entity, int p_41407_, boolean p_41408_) {
         int totalDamageTaken = getTotalDamageTaken(stack);
-        if (isActive(stack) && entity instanceof Player player && totalDamageTaken > 0) {
-            long currentTime = world.getGameTime();
-            if(currentTime - getLastDamageTime(stack) > getRechargeDelay(player) * 20) {
-                int newDamageTaken = totalDamageTaken - 1;
-                totalDamageTaken = Math.max(0, newDamageTaken);
-                setTotalDamageTaken(totalDamageTaken, stack);
-                if(world.isClientSide && !getPlayedRecharge(stack)) {
-                    this.PlayRechargeSound(player);
-                    setPlayedRecharge(true, stack);
-                }
+
+        if (isActive(stack) && entity instanceof Player player) {
+
+            var activeShields = ItemShieldModule.getShieldsInInventory(player, true);
+
+            if(activeShields.size() > 1) {
+                var lowestSheildEnergy = Collections.min(activeShields, Comparator.comparing(ItemEnergyBase::getEnergyStored));
+                setActive(lowestSheildEnergy, false);
+                player.sendSystemMessage(Component.translatable("shockmetal.msg.one_shield_active"));
             }
 
-            if(world.isClientSide() && totalDamageTaken >= getDamageThreshold(player)) {
+            if(totalDamageTaken > 0) {
+                long currentTime = world.getGameTime();
+                if(currentTime - getLastDamageTime(stack) > getRechargeDelay() * 20) {
+                    int newDamageTaken = totalDamageTaken - 1;
+                    totalDamageTaken = Math.max(0, newDamageTaken);
+                    setTotalDamageTaken(totalDamageTaken, stack);
+                    if(world.isClientSide && !getPlayedRecharge(stack)) {
+                        this.PlayRechargeSound(player);
+                        setPlayedRecharge(true, stack);
+                    }
+                }
+
+                if(world.isClientSide() && totalDamageTaken >= getDamageThreshold()) {
                     this.PlayCooldownLoopSound(player);
+                }
             }
         }
 
@@ -165,18 +195,18 @@ public class ItemShieldModule extends ItemEnergyBase {
 
     private void addShieldDamage(int amount, Level world, ItemStack stack, Player player) {
         resetLastDamageTimeToCurrent(world, stack);
-        setTotalDamageTaken(Math.min(getTotalDamageTaken(stack) + amount, getDamageThreshold(player)), stack);
+        setTotalDamageTaken(Math.min(getTotalDamageTaken(stack) + amount, getDamageThreshold()), stack);
     }
 
     private void applyCooldownIfNeeded(Player player, ItemStack stack) {
-        if (getTotalDamageTaken(stack) >= getDamageThreshold(player)) {
+        if (getTotalDamageTaken(stack) >= getDamageThreshold()) {
             ApplyCooldown(player);
-            player.sendSystemMessage(Component.translatable("shockmetal.msg.shield_overload", getRechargeDelay(player)));
+            player.sendSystemMessage(Component.translatable("shockmetal.msg.shield_overload", getRechargeDelay()));
         }
     }
 
     public void ApplyCooldown(Player player) {
-        player.getCooldowns().addCooldown(this, getRechargeDelay(player) * 20);
+        player.getCooldowns().addCooldown(this, getRechargeDelay() * 20);
     }
 
     @OnlyIn(Dist.CLIENT)
@@ -209,7 +239,6 @@ public class ItemShieldModule extends ItemEnergyBase {
 
     public int getTotalDamageTaken(ItemStack stack) {
         return stack.getOrCreateTag().getInt("shockmetal.total_damage_taken");
-
     }
 
     public void setTotalDamageTaken(int value, ItemStack stack) {
@@ -243,9 +272,9 @@ public class ItemShieldModule extends ItemEnergyBase {
         return ENERGY_HEART_COST * amount;
     }
 
-    public int getProtectableDamage(ItemStack stack, Player player)
+    public int getProtectableDamage(ItemStack stack)
     {
-        return  getDamageThreshold(player) - getTotalDamageTaken(stack);
+        return  getDamageThreshold() - getTotalDamageTaken(stack);
     }
 
     public float getTotalProtectableDamage(ItemStack stack)
@@ -274,7 +303,7 @@ public class ItemShieldModule extends ItemEnergyBase {
                 int effectiveDamage = Math.round(amount); // 3
 
                 // how much of the buffer is left
-                int shieldDurability = shieldItem.getProtectableDamage(shieldItemStack, player); // 2
+                int shieldDurability = shieldItem.getProtectableDamage(shieldItemStack); // 2
 
                 // Calculate how much damage the shield can absorb
                 int shieldDamage = Math.min(shieldDurability, effectiveDamage);
@@ -325,40 +354,52 @@ public class ItemShieldModule extends ItemEnergyBase {
         return itemStacks;
     }
 
-    public static int getDamageThreshold(ArrayList<ItemStack> shields) {
-        return shields.size() * BASE_DAMAGE_THRESHOLD;
+    public static int getDamageThreshold() {
+        return BASE_DAMAGE_THRESHOLD;
     }
 
-    public static int getDamageThreshold(Player player) {
-        return getDamageThreshold(getShieldsInInventory(player, true));
+//    public static int getDamageThreshold(ArrayList<ItemStack> shields) {
+//        return shields.size() * BASE_DAMAGE_THRESHOLD;
+//    }
+//
+//    public static int getDamageThreshold(Player player) {
+//        return getDamageThreshold(getShieldsInInventory(player, true));
+//    }
+
+//    public static float getTotalEnergyRemaining(ArrayList<ItemStack> shields) {
+//        float energy = 0f;
+//        for (var element : shields) {
+//            energy += ItemShieldModule.getEnergyStored(element);
+//        }
+//
+//        return energy;
+//    }
+//
+//    public static float getTotalEnergyRemaining(Player player) {
+//        return getTotalEnergyRemaining(getShieldsInInventory(player, true));
+//    }
+
+    public static float getTotalMaxEnergy() {
+        return (MAX_DAMAGE_VALUE * ENERGY_HEART_COST);
     }
 
-    public static float getTotalEnergyRemaining(ArrayList<ItemStack> shields) {
-        float energy = 0f;
-        for (var element : shields) {
-            energy += ItemShieldModule.getEnergyStored(element);
-        }
+//    public static float getTotalMaxEnergy(ArrayList<ItemStack> shields) {
+//        return shields.size() * (MAX_DAMAGE_VALUE * ENERGY_HEART_COST);
+//    }
+//
+//    public static float getTotalMaxEnergy(Player player) {
+//        return getTotalMaxEnergy(getShieldsInInventory(player, false));
+//    }
 
-        return energy;
+    public static int getRechargeDelay() {
+        return BASE_SHIELD_RECHARGE_DELAY;
     }
 
-    public static float getTotalEnergyRemaining(Player player) {
-        return getTotalEnergyRemaining(getShieldsInInventory(player, true));
-    }
+//    public static int getRechargeDelay(ArrayList<ItemStack> shields) {
+//        return shields.size() * BASE_SHIELD_RECHARGE_DELAY;
+//    }
 
-    public static float getTotalMaxEnergy(ArrayList<ItemStack> shields) {
-        return shields.size() * (MAX_DAMAGE_VALUE * ENERGY_HEART_COST);
-    }
-
-    public static float getTotalMaxEnergy(Player player) {
-        return getTotalMaxEnergy(getShieldsInInventory(player, false));
-    }
-
-    public static int getRechargeDelay(ArrayList<ItemStack> shields) {
-        return shields.size() * BASE_SHIELD_RECHARGE_DELAY;
-    }
-
-    public static int getRechargeDelay(Player player) {
-        return getRechargeDelay(getShieldsInInventory(player, true));
-    }
+//    public static int getRechargeDelay(Player player) {
+//        return getRechargeDelay(getShieldsInInventory(player, true));
+//    }
 }

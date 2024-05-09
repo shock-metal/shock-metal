@@ -8,7 +8,7 @@
   "integrityCost": "2",
   "integrityGain": "8",
   "magicCapacity": "200",
-  "toolLevel": "minecraft:diamond",
+  "toolLevel": "minecraft:netherite",
   "toolEfficiency": "10",
   "tints": { "glyph": "5647A8", "texture": "5647A8" },
   "textures": ["shiny", "default"],

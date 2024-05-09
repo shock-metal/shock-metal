@@ -230,8 +230,8 @@ dependencies {
     runtimeOnly(fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}"))
 
 //    Tetra
-    //runtimeOnly fg.deobf("curse.maven:mgui-351914:${mgui_fileid}")
-    //runtimeOnly fg.deobf("curse.maven:tetra-289712:${tetra_fileid}")
+    runtimeOnly fg.deobf("curse.maven:mgui-351914:${mgui_fileid}")
+    runtimeOnly fg.deobf("curse.maven:tetra-289712:${tetra_fileid}")
 
 //    Thermal Series
     //runtimeOnly fg.deobf("curse.maven:cofh-core-69162:3155824")
