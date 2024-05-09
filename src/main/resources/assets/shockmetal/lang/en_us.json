@@ -43,7 +43,7 @@
   "shockmetal.tooltip.energy": "Energy: %d/%d",
   "shockmetal.tooltip.energy.active": "Active: %s",
 
-  "shockmetal.msg.no_power": "Active: %s",
+  "shockmetal.msg.no_power": "Out of power, shield inactive!",
   "shockmetal.msg.shield_overload": "Shield Overload! Reset in %s Seconds",
 
   "gui.shockmetalconfiguration.mainTitle" : "Shock Metal Config",

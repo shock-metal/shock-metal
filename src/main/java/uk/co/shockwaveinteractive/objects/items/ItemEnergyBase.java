@@ -57,7 +57,7 @@ public abstract class ItemEnergyBase extends Item {
         }
     }
 
-    public int getEnergyStored(ItemStack stack) {
+    public static int getEnergyStored(ItemStack stack) {
         var energy = stack.getCapability(ForgeCapabilities.ENERGY);
 
         if(!energy.isPresent())
