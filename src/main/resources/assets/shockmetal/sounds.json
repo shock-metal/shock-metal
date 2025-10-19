@@ -1,0 +1,20 @@
+{
+  "shield_break": {
+    "subtitles": "sounds.shockmetal.shield_break",
+    "sounds": [
+      "shockmetal:shield_break"
+    ]
+  },
+  "shield_cooldown_tone": {
+    "subtitles": "sounds.shockmetal.shield_cooldown_tone",
+    "sounds": [
+      "shockmetal:shield_cooldown_tone"
+    ]
+  },
+  "shield_recharge": {
+    "subtitles": "sounds.shockmetal.shield_recharge",
+    "sounds": [
+      "shockmetal:shield_recharge"
+    ]
+  }
+}

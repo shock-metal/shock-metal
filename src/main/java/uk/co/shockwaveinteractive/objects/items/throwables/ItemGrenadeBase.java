@@ -25,8 +25,6 @@ import uk.co.shockwaveinteractive.util.Helpers;
 import javax.annotation.Nullable;
 import java.util.List;
 
-import static uk.co.shockwaveinteractive.util.reference.MainReference.TRANSLATION_SHIFT_INFO;
-
 /*
 * Base Implementation by CoFH
 * */
@@ -55,7 +53,7 @@ public class ItemGrenadeBase extends ItemBase {
             {
                 tooltip.add(Component.translatable(infoString).withStyle(ChatFormatting.WHITE));
             }
-            else tooltip.add(Component.translatable(TRANSLATION_SHIFT_INFO).withStyle(ChatFormatting.GRAY));
+            else tooltip.add(Component.translatable("shockmetal.tooltip.shift-info").withStyle(ChatFormatting.GRAY));
         }
     }
 

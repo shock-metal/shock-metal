@@ -16,6 +16,7 @@
   "item.shockmetal.shockmetal_boots" : "Shock Metal Boots",
   "item.shockmetal.shock_grenade" : "Shock Grenade",
   "item.shockmetal.vacuum_minecart" : "Vacuum Minecart",
+  "item.shockmetal.shield_module" : "Shock Metal Energy Shield",
 
   "material.shockmetal.shockmetal" : "Shock Metal",
   "tetra.material.shockmetal": "Shockmetal",
@@ -35,10 +36,16 @@
 
   "itemGroup.shockmetaltab" : "Shock Metal",
 
-  "info.shockmetal.gui.shockmetal.ingot": "Shocking!",
-  "info.shockmetal.gui.shift-info": "Hold <<SHIFT>> for more info",
-  "info.shockmetal.gui.shockmetal.sword": "Right click whilst sneaking to use AoE attack",
-  "info.shockmetal.gui.shock_grenade": "Deals explosive damage and light undead on fire, emits electric energy to nearby mobs...",
+  "shockmetal.tooltip.ingot": "Shocking!",
+  "shockmetal.tooltip.shift-info": "Hold SHIFT for more info",
+  "shockmetal.tooltip.sword": "Right click whilst sneaking to use AoE attack",
+  "shockmetal.tooltip.shock_grenade": "Deals explosive damage and light undead on fire, emits electric energy to nearby mobs...",
+  "shockmetal.tooltip.energy": "Energy: %d/%d",
+  "shockmetal.tooltip.energy.active": "Active: %s",
+
+  "shockmetal.msg.no_power": "Out of power, shield inactive!",
+  "shockmetal.msg.shield_overload": "Shield Overload! Reset in %s Seconds",
+  "shockmetal.msg.one_shield_active": "Only 1 active shield allowed",
 
   "gui.shockmetalconfiguration.mainTitle" : "Shock Metal Config",
   "gui.shockmetalconfiguration.materialDamage" : "Shock Metal Damage Value",
@@ -54,5 +61,9 @@
   "enchantment.shockmetal.shock_metal_aspect": "Atom Ripper",
 
   "book.shockmetal.name": "Shockathon",
-  "book.shockmetal.landing-text": "WIP Here you will find all there is to know about shockmetal!"
+  "book.shockmetal.landing-text": "WIP Here you will find all there is to know about shockmetal!",
+
+  "sounds.shockmetal.shield_cooldown_tone": "Shield Cooldown Active Alert",
+  "sounds.shockmetal.shield_break": "Shield Break",
+  "sounds.shockmetal.shield_recharge": "Shield Recharge"
 }

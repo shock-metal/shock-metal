@@ -14,6 +14,7 @@ Changelog can be found in CHANGELOG.md file or at https://github.com/shock-metal
 
 
 ## Mod Support
+* Curios
 * Thermal Expansion
 * Mekanism
 * Patchouli
@@ -24,4 +25,4 @@ Changelog can be found in CHANGELOG.md file or at https://github.com/shock-metal
 You have my permission to use my mod in mod packs
 
 License can be found in LICENSE.md file or at https://github.com/shock-metal/shock-metal/blob/master/LICENSE.md
-©2022 Shockwave Interactive / vNemesis
+©2024 Shockwave Interactive / vNemesis
