@@ -1,6 +1,6 @@
 {
-  "parent": "item/generated",
+  "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "shockmetal:items/manual_icon_texture"
+    "layer0": "shockmetal:item/manual_icon_texture"
   }
 }

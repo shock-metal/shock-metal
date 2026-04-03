@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "ingredient": {
+    "item": "shockmetal:shockrite_dust"
+  },
+  "result": {
+    "id": "shockmetal:shockmetal_ingot",
+    "count": 1
+  },
+  "experience": 3.0,
+  "cookingtime": 200,
+  "group": "shockmetal"
+}

@@ -1,0 +1,35 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern":
+  [
+      "CSC",
+      "SDS",
+      "CSC"
+  ],
+
+  "key":
+  {
+      "C": [
+    {
+      "tag": "c:storage_blocks/coal"
+    }
+      ],
+
+      "S":
+      {
+          "tag": "c:rods/wooden"
+      },
+
+      "D":
+      {
+          "tag": "c:gems/diamond"
+      }
+  },
+
+  "result":
+  {
+      "id": "shockmetal:frame_diamond",
+      "count": 1
+  }
+}

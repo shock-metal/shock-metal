@@ -1,0 +1,35 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern":
+  [
+      " I ",
+      "SFS",
+      "SBS"
+  ],
+
+  "key":
+  {
+      "I":
+      {
+          "tag": "c:ingots/iron"
+      },
+      "S":
+      {
+          "tag": "c:stones"
+      },
+      "F":
+      {
+          "item": "minecraft:flint"
+      },
+      "B":
+      {
+          "tag": "c:storage_blocks/iron"
+      }
+  },
+
+  "result":
+  {
+      "id": "shockmetal:ore_grinder"
+  }
+}

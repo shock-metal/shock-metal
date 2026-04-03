@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern":
+  [
+      "III",
+      " S ",
+      " S "
+  ],
+
+  "key":
+  {
+      "I":
+      {
+          "item": "shockmetal:shockmetal_ingot"
+      },
+
+      "S":
+      {
+          "tag": "c:rods/wooden"
+      }
+  },
+
+  "result":
+  {
+    "id": "shockmetal:shockmetal_pickaxe",
+    "count": 1
+  }
+}

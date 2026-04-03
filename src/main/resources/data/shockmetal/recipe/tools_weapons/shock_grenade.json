@@ -1,6 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
-
+  "category": "misc",
   "pattern":
   [
     "III",
@@ -12,7 +12,7 @@
   {
     "I":
     {
-      "tag": "forge:ingots/iron"
+      "tag": "c:ingots/iron"
     },
     "S":
     {
@@ -20,13 +20,12 @@
     },
     "G":
     {
-      "tag": "forge:gunpowder"
+      "tag": "c:gunpowder"
     }
   },
-
   "result":
   {
-    "item": "shockmetal:shock_grenade",
+    "id": "shockmetal:shock_grenade",
     "count": 16
   }
 }

@@ -1,6 +1,6 @@
 {
-    "parent": "item/generated",
+    "parent": "minecraft:item/generated",
     "textures": {
-        "layer0": "shockmetal:items/shockmetal_boots"
+        "layer0": "shockmetal:item/shockmetal_boots"
     }
 }

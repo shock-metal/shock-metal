@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:netherite_ingot"
+    },
+    {
+      "item": "shockmetal:ore_grinder"
+    }
+  ],
+  "result":
+  {
+    "id": "shockmetal:netherite_dust",
+    "count": 1
+  }
+}

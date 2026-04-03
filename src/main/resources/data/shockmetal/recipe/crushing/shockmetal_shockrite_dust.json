@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+      {
+          "item": "shockmetal:shockmetal_nether_ore_block"
+      },
+      {
+          "tag": "c:dusts/netherite"
+      },
+      {
+          "tag": "c:dusts/netherite"
+      },
+      {
+          "item": "shockmetal:ore_grinder"
+      }
+  ],
+  "result":
+  {
+      "id": "shockmetal:shockrite_dust",
+      "count": 1
+  }
+}

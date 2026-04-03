@@ -1,14 +1,14 @@
 {
-  "parent": "item/generated",
+  "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "shockmetal:items/throwable/shock_grenade"
+    "layer0": "shockmetal:item/throwable/shock_grenade"
   },
   "overrides": [
     {
       "predicate": {
         "thrown": 1
       },
-      "model": "shockmetal:items/shock_grenade_thrown"
+      "model": "shockmetal:item/shock_grenade_thrown"
     }
   ]
 }

@@ -5,19 +5,21 @@
       "item": "minecraft:book"
     },
     {
-      "tag": "forge:netherrack"
+      "tag": "c:netherrack"
     },
     {
       "item": "shockmetal:ore_grinder"
     }
   ],
   "result": {
-    "item": "patchouli:guide_book",
-    "nbt": "{\"patchouli:book\":\"shockmetal:shockathon\"}"
+    "id": "patchouli:guide_book",
+    "components": {
+      "patchouli:book": "shockmetal:shockathon"
+    }
   },
   "conditions": [
     {
-      "type": "forge:mod_loaded",
+      "type": "neoforge:mod_loaded",
       "modid": "patchouli"
     }
   ]

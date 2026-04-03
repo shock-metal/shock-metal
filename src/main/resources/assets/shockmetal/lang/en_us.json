@@ -1,58 +1,71 @@
 {
-  "item.shockmetal.shockmetal_ingot" : "Shock Metal Ingot",
-  "item.shockmetal.shockmetal_dust" : "Shock Metal Dust",
-  "item.shockmetal.shockrite_dust" : "Shockrite Dust",
-  "item.shockmetal.netherite_dust" : "Netherite Dust",
-  "item.shockmetal.ore_grinder" : "Manual Ore Grinder",
-  "item.shockmetal.frame_diamond" : "Frame: Diamond",
-  "item.shockmetal.shockmetal_axe" : "Shock Metal Axe",
-  "item.shockmetal.shockmetal_hoe" : "Shock Metal Hoe",
-  "item.shockmetal.shockmetal_pickaxe" : "Shock Metal Pickaxe",
-  "item.shockmetal.shockmetal_shovel" : "Shock Metal Shovel",
-  "item.shockmetal.shockmetal_sword" : "Shock Metal Sword",
-  "item.shockmetal.shockmetal_helmet" : "Shock Metal Helmet",
-  "item.shockmetal.shockmetal_chestplate" : "Shock Metal Chestplate",
-  "item.shockmetal.shockmetal_leggings" : "Shock Metal Leggings",
-  "item.shockmetal.shockmetal_boots" : "Shock Metal Boots",
-  "item.shockmetal.shock_grenade" : "Shock Grenade",
-  "item.shockmetal.vacuum_minecart" : "Vacuum Minecart",
+  "itemGroup.shockmetal": "Shock Metal",
+  "creativetab.shockmetal.main": "Shock Metal",
 
-  "material.shockmetal.shockmetal" : "Shock Metal",
+  "shockmetal.configuration.title": "Shock Metal Configs",
+  "shockmetal.configuration.section.shockmetal.common.toml": "Shock Metal Configs",
+  "shockmetal.configuration.section.shockmetal.common.toml.title": "Shock Metal Configs",
+  "shockmetal.configuration.items": "Item List",
+  "shockmetal.configuration.disableAtomRipperEnchant": "Disable Atom Ripper Enchantment",
+  "shockmetal.configuration.vacuumRange": "Vacuum Minecraft Range",
+  "shockmetal.configuration.oreGrinderUses": "Ore Grinder Uses",
+  "shockmetal.configuration.shieldDamageThreshold": "Shield Damage Threshold",
+
+  "block.shockmetal.shockmetal_block": "Block of Shock Metal",
+  "block.shockmetal.shockmetal_nether_ore_block": "Shock Metal Ore",
+
+  "item.shockmetal.shockmetal_ingot": "Shock Metal Ingot",
+  "item.shockmetal.shockmetal_dust": "Shock Metal Dust",
+  "item.shockmetal.shockrite_dust": "Shockrite Dust",
+  "item.shockmetal.netherite_dust": "Netherite Dust",
+  "item.shockmetal.ore_grinder": "Manual Ore Grinder",
+  "item.shockmetal.frame_diamond": "Frame: Diamond",
+  "item.shockmetal.shockmetal_axe": "Shock Metal Axe",
+  "item.shockmetal.shockmetal_hoe": "Shock Metal Hoe",
+  "item.shockmetal.shockmetal_pickaxe": "Shock Metal Pickaxe",
+  "item.shockmetal.shockmetal_shovel": "Shock Metal Shovel",
+  "item.shockmetal.shockmetal_sword": "Shock Metal Sword",
+  "item.shockmetal.shockmetal_helmet": "Shock Metal Helmet",
+  "item.shockmetal.shockmetal_chestplate": "Shock Metal Chestplate",
+  "item.shockmetal.shockmetal_leggings": "Shock Metal Leggings",
+  "item.shockmetal.shockmetal_boots": "Shock Metal Boots",
+  "item.shockmetal.shock_grenade": "Shock Grenade",
+  "item.shockmetal.vacuum_minecart": "Vacuum Minecart",
+
+  "material.shockmetal.shockmetal": "Shock Metal",
+
   "tetra.material.shockmetal": "Shockmetal",
   "tetra.material.shockmetal.prefix": "Shockmetal",
   "tetra.improvement.shockmetal_aspect.name": "Shockmetal",
 
-  "message.shockmetal.mm.desc" : "Currently work in progress!!!",
+  "message.shockmetal.mm.desc": "Currently work in progress!!!",
 
-  "container.molecular_manipulator" : "Molecular Manipulator",
+  "container.molecular_manipulator": "Molecular Manipulator",
 
-  "block.shockmetal.shockmetal_block" : "Shock Metal Block",
-  "block.shockmetal.shockmetal_nether_ore_block" : "Shock Metal Ore",
-
-  "tile.molecular_manipulator" : "Molecular Manipulator",
+  "tile.molecular_manipulator": "Molecular Manipulator",
 
   "entity.shockmetal.vacuum_minecart_entity": "Vacuum Minecart",
-
-  "itemGroup.shockmetaltab" : "Shock Metal",
+  "entity.shockmetal.shock_grenade_entity": "Shock Grenade",
 
   "info.shockmetal.gui.shockmetal.ingot": "Shocking!",
   "info.shockmetal.gui.shift-info": "Hold <<SHIFT>> for more info",
   "info.shockmetal.gui.shockmetal.sword": "Right click whilst sneaking to use AoE attack",
   "info.shockmetal.gui.shock_grenade": "Deals explosive damage and light undead on fire, emits electric energy to nearby mobs...",
 
-  "gui.shockmetalconfiguration.mainTitle" : "Shock Metal Config",
-  "gui.shockmetalconfiguration.materialDamage" : "Shock Metal Damage Value",
-  "gui.shockmetalconfiguration.thermalExpansionIntegration" : "Enable Thermal Expansion Integration",
-  "gui.shockmetalconfiguration.tinkersIntegration" : "Enable Tinkers Construct Integration",
-  "gui.shockmetalconfiguration.swordLightning" : "Enable / Disable Shockmetal sword lightning ability",
-  "gui.shockmetalconfiguration.ctgy.general.tooltip" : "Configure General Settings",
-  "gui.shockmetalconfiguration.ctgy.integration.tooltip" : "Configure Mod Integration Settings",
-  "fluid.fluidshockmetal" : "Molten Shock Metal",
-  "fluid.fluidshockmetal.name" : "Molten Shock Metal",
+  "gui.shockmetalconfiguration.mainTitle": "Shock Metal Config",
+  "gui.shockmetalconfiguration.materialDamage": "Shock Metal Damage Value",
+  "gui.shockmetalconfiguration.thermalExpansionIntegration": "Enable Thermal Expansion Integration",
+  "gui.shockmetalconfiguration.tinkersIntegration": "Enable Tinkers Construct Integration",
+  "gui.shockmetalconfiguration.swordLightning": "Enable / Disable Shockmetal sword lightning ability",
+  "gui.shockmetalconfiguration.ctgy.general.tooltip": "Configure General Settings",
+  "gui.shockmetalconfiguration.ctgy.integration.tooltip": "Configure Mod Integration Settings",
+
+  "fluid.fluidshockmetal": "Molten Shock Metal",
+  "fluid.fluidshockmetal.name": "Molten Shock Metal",
 
   "enchantment.shockmetal.atom_ripper": "Atom Ripper",
   "enchantment.shockmetal.shock_metal_aspect": "Atom Ripper",
-
+  
   "book.shockmetal.name": "Shockathon",
   "book.shockmetal.landing-text": "WIP Here you will find all there is to know about shockmetal!"
 }

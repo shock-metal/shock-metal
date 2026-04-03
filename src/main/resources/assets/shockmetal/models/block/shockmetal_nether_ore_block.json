@@ -1,6 +1,6 @@
 {
-    "parent": "block/cube_all",
+    "parent": "minecraft:block/cube_all",
     "textures": {
-        "all": "shockmetal:blocks/shockmetal_nether_ore_block"
+        "all": "shockmetal:block/shockmetal_nether_ore_block"
     }
 }

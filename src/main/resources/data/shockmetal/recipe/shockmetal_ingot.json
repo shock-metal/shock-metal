@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients":
+  [
+    {
+      "item": "shockmetal:shockmetal_block"
+    }
+  ],
+  "result":
+  {
+    "id": "shockmetal:shockmetal_ingot",
+    "count": 9
+  }
+}

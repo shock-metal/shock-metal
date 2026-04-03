@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern":
+  [
+      "I I",
+      "III",
+      "III"
+  ],
+
+  "key":
+  {
+      "I":
+      {
+          "item": "shockmetal:shockmetal_ingot"
+      }
+  },
+
+  "result":
+  {
+      "id": "shockmetal:shockmetal_chestplate"
+  }
+}

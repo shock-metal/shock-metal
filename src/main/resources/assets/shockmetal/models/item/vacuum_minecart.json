@@ -1,6 +1,6 @@
 {
-    "parent": "item/generated",
+    "parent": "minecraft:item/generated",
     "textures": {
-        "layer0": "shockmetal:items/entities/vacuum_minecart"
+        "layer0": "shockmetal:item/entities/vacuum_minecart"
     }
 }

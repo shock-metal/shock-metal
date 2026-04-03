@@ -1,6 +1,6 @@
 {
-    "parent": "item/handheld",
+    "parent": "minecraft:item/handheld",
     "textures": {
-        "layer0": "shockmetal:items/ore_grinder"
+        "layer0": "shockmetal:item/ore_grinder"
     }
 }

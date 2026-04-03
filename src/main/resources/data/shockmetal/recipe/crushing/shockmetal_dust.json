@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "shockmetal:shockmetal_ingot"
+    },
+    {
+      "item": "shockmetal:ore_grinder"
+    }
+  ],
+  "result":
+  {
+    "id": "shockmetal:shockmetal_dust",
+    "count": 1
+  }
+}

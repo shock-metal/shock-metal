@@ -28,7 +28,7 @@
     
     "result":
     {
-        "item": "shockmetal:molecular_manipulator",
+        "id": "shockmetal:molecular_manipulator",
         "count": 1
     }
 }

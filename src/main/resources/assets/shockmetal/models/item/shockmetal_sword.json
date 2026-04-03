@@ -1,6 +1,6 @@
 {
-    "parent": "item/handheld",
+    "parent": "minecraft:item/handheld",
     "textures": {
-        "layer0": "shockmetal:items/tools/shockmetal_sword"
+        "layer0": "shockmetal:item/tools/shockmetal_sword"
     }
 }
