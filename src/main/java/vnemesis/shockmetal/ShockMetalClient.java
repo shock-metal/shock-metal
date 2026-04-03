@@ -2,6 +2,7 @@ package vnemesis.shockmetal;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.geom.ModelLayers;
+import net.minecraft.resources.ResourceLocation;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
@@ -9,10 +10,12 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
+import net.neoforged.neoforge.client.event.RegisterGuiLayersEvent;
 import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 import vnemesis.shockmetal.client.renderer.SpriteRendererShock;
 import vnemesis.shockmetal.client.renderer.VacuumMinecartRenderer;
+import vnemesis.shockmetal.client.screen.GuiShieldLevel;
 import vnemesis.shockmetal.entity.ShockMetalEntitiesRegistry;
 
 import static vnemesis.shockmetal.reference.ModIdReference.SHOCKMETAL_MOD_ID;
@@ -36,5 +39,13 @@ public class ShockMetalClient {
             SpriteRendererShock::new);
         event.registerEntityRenderer(ShockMetalEntitiesRegistry.VACUUM_MINECART_ENTITY.get(),
             ctx -> new VacuumMinecartRenderer<>(ctx, ModelLayers.CHEST_MINECART));
+    }
+
+    @SubscribeEvent
+    static void onRegisterGuiLayers(RegisterGuiLayersEvent event) {
+        event.registerAboveAll(
+                ResourceLocation.fromNamespaceAndPath(SHOCKMETAL_MOD_ID, "shield_level"),
+                GuiShieldLevel.OVERLAY
+        );
     }
 }

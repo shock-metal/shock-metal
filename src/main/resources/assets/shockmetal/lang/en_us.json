@@ -10,6 +10,10 @@
   "shockmetal.configuration.vacuumRange": "Vacuum Minecraft Range",
   "shockmetal.configuration.oreGrinderUses": "Ore Grinder Uses",
   "shockmetal.configuration.shieldDamageThreshold": "Shield Damage Threshold",
+  "shockmetal.configuration.shieldGuiPosition": "Shield HUD Position",
+  "shockmetal.configuration.shieldMaxEnergy": "Shield Max Energy (FE)",
+
+  "shockmetal.hud.recharging": "Recharging",
 
   "block.shockmetal.shockmetal_block": "Block of Shock Metal",
   "block.shockmetal.shockmetal_nether_ore_block": "Shock Metal Ore",
@@ -66,6 +70,21 @@
   "enchantment.shockmetal.atom_ripper": "Atom Ripper",
   "enchantment.shockmetal.shock_metal_aspect": "Atom Ripper",
   
+  "item.shockmetal.shield_module": "Shield Module",
+
+  "shockmetal.tooltip.shift-info": "Hold [SHIFT] for more info",
+  "shockmetal.tooltip.energy": "Energy: %s / %s FE",
+
+  "shockmetal.tooltip.shield.active": "Active: %s",
+  "shockmetal.tooltip.shield.buffer": "Buffer: %s / %s",
+  "shockmetal.msg.one_shield_active": "Only one Shield Module may be active at a time.",
+  "shockmetal.msg.no_power": "Shield Module has no power!",
+  "shockmetal.msg.shield_overload": "Shield overloaded! Recharging in %s seconds.",
+
+  "sounds.shockmetal.shield_break": "Shield overloaded",
+  "sounds.shockmetal.shield_cooldown_tone": "Shield on cooldown",
+  "sounds.shockmetal.shield_recharge": "Shield recharged",
+
   "book.shockmetal.name": "Shockathon",
   "book.shockmetal.landing-text": "WIP Here you will find all there is to know about shockmetal!"
 }

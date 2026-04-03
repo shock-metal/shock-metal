@@ -11,46 +11,42 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.capabilities.Capabilities;
+import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import vnemesis.shockmetal.blocks.ShockMetalBlocksRegistry;
+import vnemesis.shockmetal.capabilities.ItemEnergy;
 import vnemesis.shockmetal.entity.ShockMetalEntitiesRegistry;
+import vnemesis.shockmetal.event.DamageEventHandler;
+import vnemesis.shockmetal.item.ItemEnergyBase;
 import vnemesis.shockmetal.item.ShockMetalItemsRegistry;
 import vnemesis.shockmetal.item.armour.ShockMetalArmorMaterials;
+import vnemesis.shockmetal.item.shield.ItemShieldModule;
+import vnemesis.shockmetal.sounds.ShockMetalSoundsRegistry;
 import vnemesis.shockmetal.tab.ShockMetalCreativeModeTabs;
 
 import static vnemesis.shockmetal.reference.ModIdReference.SHOCKMETAL_MOD_ID;
 
-// The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(SHOCKMETAL_MOD_ID)
 public class ShockMetal
 {
-    // Define mod id in a common place for everything to reference
-    // Directly reference a slf4j logger
     public static final Logger LOGGER = LogUtils.getLogger();
-//    public static final CreativeModeTab SHOCKMETALTAB = new ShockMetalModTab(
-//            CreativeModeTab.builder().title(new ).icon(() -> new net.minecraft.world.item.ItemStack(ShockMetalItems.SHOCKMETAL_INGOT.get())).build());
 
-
-    // The constructor for the mod class is the first code that is run when your mod is loaded.
-    // FML will recognize some parameter types like IEventBus or ModContainer and pass them in automatically.
     public ShockMetal(IEventBus modEventBus, ModContainer modContainer)
     {
-        // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
+        modEventBus.addListener(this::registerCapabilities);
 
         InitRegistries(modEventBus);
 
-        // Register ourselves for server and other game events we are interested in.
-        // Note that this is necessary if and only if we want *this* class (ShockMetal) to respond directly to events.
-        // Do not add this line if there are no @SubscribeEvent-annotated functions in this class, like onServerStarting() below.
+        // Register game-event listeners (damage handler etc.)
         NeoForge.EVENT_BUS.register(this);
+        NeoForge.EVENT_BUS.register(new DamageEventHandler());
 
-        // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
 
-        // Register our mod's ModConfigSpec so that FML can create and load the config file for us
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
 
@@ -58,7 +54,21 @@ public class ShockMetal
     {
     }
 
-    // Add the example block item to the building blocks tab
+    private void registerCapabilities(RegisterCapabilitiesEvent event)
+    {
+        // Register FE energy capability for all ItemEnergyBase items
+        event.registerItem(
+                Capabilities.EnergyStorage.ITEM,
+                (stack, ctx) -> {
+                    if (stack.getItem() instanceof ItemEnergyBase energyItem) {
+                        return new ItemEnergy(stack, energyItem.getEnergyMax());
+                    }
+                    return null;
+                },
+                ShockMetalItemsRegistry.SHIELD_MODULE.get()
+        );
+    }
+
     private void addCreative(BuildCreativeModeTabContentsEvent event)
     {
         if (event.getTabKey() == CreativeModeTabs.INGREDIENTS)
@@ -75,13 +85,16 @@ public class ShockMetal
             event.accept(ShockMetalBlocksRegistry.SHOCKMETAL_BLOCK);
             event.accept(ShockMetalBlocksRegistry.SHOCKMETAL_NETHER_ORE_BLOCK);
         }
+
+        if (event.getTabKey() == CreativeModeTabs.COMBAT)
+        {
+            event.accept(ShockMetalItemsRegistry.SHIELD_MODULE);
+        }
     }
 
-    // You can use SubscribeEvent and let the Event Bus discover methods to call
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event)
     {
-        // Do something when the server starts
         LOGGER.info("HELLO from server starting");
     }
 
@@ -92,5 +105,6 @@ public class ShockMetal
         ShockMetalItemsRegistry.register(modEventBus);
         ShockMetalBlocksRegistry.register(modEventBus);
         ShockMetalEntitiesRegistry.register(modEventBus);
+        ShockMetalSoundsRegistry.register(modEventBus);
     }
 }

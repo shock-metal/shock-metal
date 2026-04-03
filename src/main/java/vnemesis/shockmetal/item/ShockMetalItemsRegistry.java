@@ -7,6 +7,7 @@ import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import vnemesis.shockmetal.entity.projectile.ShockGrenadeEntity;
 import vnemesis.shockmetal.item.armour.ArmourBase;
+import vnemesis.shockmetal.item.shield.ItemShieldModule;
 import vnemesis.shockmetal.item.throwables.ItemGrenadeBase;
 import vnemesis.shockmetal.item.tools.*;
 import vnemesis.shockmetal.reference.ModIdReference;
@@ -63,4 +64,7 @@ public class ShockMetalItemsRegistry
     public static final DeferredItem<Item> SHOCKMETAL_CHESTPLATE = ITEMS.register(ID_SHOCKMETAL_CHESTPLATE, () -> new ArmourBase(ArmorItem.Type.CHESTPLATE));
     public static final DeferredItem<Item> SHOCKMETAL_LEGGINGS   = ITEMS.register(ID_SHOCKMETAL_LEGGINGS,   () -> new ArmourBase(ArmorItem.Type.LEGGINGS));
     public static final DeferredItem<Item> SHOCKMETAL_BOOTS      = ITEMS.register(ID_SHOCKMETAL_BOOTS,      () -> new ArmourBase(ArmorItem.Type.BOOTS));
+
+    //---------------------------- Energy Tools ----------------------------
+    public static final DeferredItem<Item> SHIELD_MODULE = ITEMS.register(ID_SHIELD_MODULE, ItemShieldModule::new);
 }
