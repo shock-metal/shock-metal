@@ -1,0 +1,7 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "#minecraft:is_nether",
+  "features": "shockmetal:shockmetal_nether_ore",
+  "step": "underground_ores"
+}
+
