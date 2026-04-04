@@ -1,6 +1,5 @@
 package vnemesis.shockmetal.item;
 
-import com.ibm.icu.impl.Pair;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
@@ -14,7 +13,6 @@ import net.minecraft.world.item.TooltipFlag;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.neoforge.capabilities.Capabilities;
-import net.neoforged.neoforge.capabilities.ICapabilityProvider;
 import net.neoforged.neoforge.energy.IEnergyStorage;
 import vnemesis.shockmetal.util.Helpers;
 
@@ -68,26 +66,25 @@ public abstract class ItemEnergyBase extends Item
     @Override
     public boolean isBarVisible(ItemStack stack) {
         var energy = stack.getCapability(Capabilities.EnergyStorage.ITEM);
-        return (energy.getEnergyStored() < energy.getMaxEnergyStored()) || (super.isBarVisible(stack));
+        if (energy == null) return super.isBarVisible(stack);
+        return energy.getEnergyStored() < energy.getMaxEnergyStored();
     }
 
     @Override
     public int getBarWidth(ItemStack stack) {
         IEnergyStorage cap = stack.getCapability(Capabilities.EnergyStorage.ITEM);
-        if (cap == null)
-            return super.getBarWidth(stack);
-
+        if (cap == null) return super.getBarWidth(stack);
+        if (cap.getMaxEnergyStored() == 0) return 0;
         return Math.min(13 * cap.getEnergyStored() / cap.getMaxEnergyStored(), 13);
     }
 
     @Override
     public int getBarColor(ItemStack stack) {
         IEnergyStorage cap = stack.getCapability(Capabilities.EnergyStorage.ITEM);
-        if (cap == null)
-            return super.getBarColor(stack);
-
-        Pair<Integer, Integer> energyStorage = Pair.of(cap.getEnergyStored(), cap.getMaxEnergyStored());
-        return Mth.hsvToRgb(Math.max(0.0F, energyStorage.first / (float) energyStorage.second) / 3.0F, 1.0F, 1.0F);
+        if (cap == null) return super.getBarColor(stack);
+        float ratio = cap.getMaxEnergyStored() == 0 ? 0f
+                : (float) cap.getEnergyStored() / cap.getMaxEnergyStored();
+        return Mth.hsvToRgb(Math.max(0.0F, ratio) / 3.0F, 1.0F, 1.0F);
     }
 
     @OnlyIn(Dist.CLIENT)
@@ -108,12 +105,14 @@ public abstract class ItemEnergyBase extends Item
         }
 
         IEnergyStorage energy = stack.getCapability(Capabilities.EnergyStorage.ITEM);
-        if (energy == null) {
-            Pair<Integer, Integer> energyStorage = Pair.of(energy.getEnergyStored(), energy.getMaxEnergyStored());
+        if (energy != null) {
             MutableComponent energyText = !sneakPressed
-                    ? Component.translatable("shockmetal.tooltip.energy", Helpers.condenseValue(energyStorage.first), Helpers.condenseValue(energyStorage.second))
-                    : Component.translatable("shockmetal.tooltip.energy", String.format("%,d", energyStorage.first), String.format("%,d", energyStorage.second));
-
+                    ? Component.translatable("shockmetal.tooltip.energy",
+                            Helpers.condenseValue(energy.getEnergyStored()),
+                            Helpers.condenseValue(energy.getMaxEnergyStored()))
+                    : Component.translatable("shockmetal.tooltip.energy",
+                            String.format("%,d", energy.getEnergyStored()),
+                            String.format("%,d", energy.getMaxEnergyStored()));
             tooltipComponents.add(energyText.withStyle(ChatFormatting.GREEN));
         }
     }

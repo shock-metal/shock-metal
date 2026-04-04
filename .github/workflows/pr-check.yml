@@ -1,0 +1,66 @@
+name: PR Build Check
+
+# Runs a build on every pull request targeting a Minecraft version branch (e.g. 1.21.x)
+# to ensure the mod still compiles before merging.
+#
+# Can also be triggered manually via the Actions tab to compare any two branches
+# without needing to open a PR first.
+on:
+  pull_request:
+    branches:
+      - '*.x'
+  workflow_dispatch:
+    inputs:
+      base_branch:
+        description: 'Branch to compare against (e.g. 1.21.x)'
+        required: true
+        default: '1.21.x'
+
+jobs:
+  build:
+    name: Build & Verify
+    runs-on: ubuntu-latest
+
+    # Resolve the base branch for both PR and manual triggers
+    env:
+      BASE_BRANCH: ${{ github.event.pull_request.base.ref || inputs.base_branch }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+
+      - name: Fetch base branch for comparison
+        run: git fetch origin ${{ env.BASE_BRANCH }}
+
+      - name: Summarise changed files vs ${{ env.BASE_BRANCH }}
+        run: |
+          echo "## 🔀 Changes vs \`${{ env.BASE_BRANCH }}\`" >> $GITHUB_STEP_SUMMARY
+          echo '```diff' >> $GITHUB_STEP_SUMMARY
+          git diff --stat origin/${{ env.BASE_BRANCH }}...HEAD >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "<details><summary>Full diff</summary>" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo '```diff' >> $GITHUB_STEP_SUMMARY
+          git diff origin/${{ env.BASE_BRANCH }}...HEAD -- '*.java' '*.gradle' '*.properties' '*.json' '*.toml' >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          echo "</details>" >> $GITHUB_STEP_SUMMARY
+
+      - name: Setup JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: Make Gradle wrapper executable
+        run: chmod +x ./gradlew
+
+      - name: Build with Gradle
+        run: ./gradlew build
+
